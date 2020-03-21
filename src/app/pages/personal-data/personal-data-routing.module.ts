@@ -6,6 +6,7 @@ import { PersonalDataPage } from './personal-data.page';
 const routes: Routes = [
   {
     path: '',
+<<<<<<< HEAD
     component: PersonalDataPage,
     children: [
       {
@@ -28,6 +29,10 @@ const routes: Routes = [
     ]
   },
 
+=======
+    component: PersonalDataPage
+  }
+>>>>>>> develop
 ];
 
 @NgModule({
