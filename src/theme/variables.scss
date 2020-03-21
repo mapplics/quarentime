@@ -3,6 +3,24 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  --ion-font-family : 'Roboto', sans-serif;
+
+  ion-title {
+    color: var(--ion-color-dark);
+    letter-spacing: -0.1px;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  ion-header {
+    padding-top: 16px;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
