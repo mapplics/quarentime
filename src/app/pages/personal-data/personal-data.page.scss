@@ -1,0 +1,46 @@
+
+.round-icon {
+  background-color: #ffffff;
+  color: var(--ion-color-light);
+  border: 1px solid  var(--ion-color-light);
+  border-radius: 50%;
+  padding: 8px 5px 5px 5px;
+  height: 33px;
+  width: 33px;
+  margin: auto;
+  &.active {
+    background-color: var(--ion-color-dark);
+    color: var(--ion-color-light);
+  }
+}
+
+.links-right::after {
+  content: '';
+  width: 50%;
+  height: 1px;
+  background: black;
+  display: block;
+  position: relative;
+  top: -15px;
+  margin-left: 60%;
+}
+
+//.links::after {
+//  content: '';
+//  width: 100%;
+//  height: 1px;
+//  background: black;
+//  display: block;
+//  position: relative;
+//  top: -15px;
+//}
+
+.links-left::after {
+  content: '';
+  width: 40%;
+  height: 1px;
+  background: black;
+  display: block;
+  position: relative;
+  top: -15px;
+}
