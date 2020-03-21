@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { QuestionsPageRoutingModule } from './questions-routing.module';
+import { VerifyPageRoutingModule } from './verify-routing.module';
 
-import { QuestionsPage } from './questions.page';
+import { VerifyPage } from './verify.page';
 import {HeaderModule} from '../header/header.module';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -15,10 +15,11 @@ import {TranslateModule} from '@ngx-translate/core';
         CommonModule,
         FormsModule,
         IonicModule,
-        QuestionsPageRoutingModule,
+        VerifyPageRoutingModule,
         HeaderModule,
-        TranslateModule
+        TranslateModule,
+        ReactiveFormsModule,
     ],
-  declarations: [QuestionsPage]
+  declarations: [VerifyPage]
 })
-export class QuestionsPageModule {}
+export class VerifyPageModule {}

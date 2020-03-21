@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-row class="ion-text-center ion-padding-horizontal">
+      <ion-col size="4" class="ion-no-padding">
+        <div class="round-icon completed" [ngClass]="isCompleted(1) ? 'active' : ''" (click)="navigateTo()">
+          <p class="ion-no-margin active">1</p>
+        </div>
+      </ion-col>
+      <ion-col size="4"  class="ion-no-padding">
+        <div class="round-icon active"  [ngClass]="isCompleted(2) ? 'active' : ''">
+          <p class="ion-no-margin">2</p>
+        </div>
+      </ion-col>
+      <ion-col size="4"  class="ion-no-padding">
+        <div class="round-icon"  [ngClass]="isCompleted(3) ? 'active' : ''">
+          <p class="ion-no-margin">3</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <h1 class="ion-margin-top ion-text-wrap ion-padding-start">{{'HEADER.'+ title | translate}}</h1>
+
+  </ion-toolbar>
+</ion-header>

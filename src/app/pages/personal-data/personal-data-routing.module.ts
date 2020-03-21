@@ -13,12 +13,16 @@ const routes: Routes = [
                 loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
             },
             {
+                path: 'verify',
+                loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
+            },
+            {
                 path: 'questions',
                 loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
             },
             {
-                path: 'symptoms',
-                loadChildren: () => import('./symptoms/symptoms.module').then( m => m.SymptomsPageModule)
+                path: 'health-status',
+                loadChildren: () => import('./health-status/health-status.module').then( m => m.HealthStatusPageModule)
             },
             {
                 path: '',
@@ -26,7 +30,15 @@ const routes: Routes = [
                 pathMatch: 'full'
             },
         ]
-    }
+    },
+  {
+    path: 'verify',
+    loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
+  },
+  {
+    path: 'health-status',
+    loadChildren: () => import('./health-status/health-status.module').then( m => m.HealthStatusPageModule)
+  }
 ];
 
 @NgModule({

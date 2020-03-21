@@ -1,0 +1,37 @@
+<app-header title="PERSONAL_INFORMATION"></app-header>
+
+<ion-content class="ion-padding">
+    <ion-item-group class="validation" [formGroup]="form">
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.NAME' | translate}}</ion-label>
+            <ion-input [placeholder]="'INFO.PLACEHOLDERS.NAME' | translate" mode="ios" formControlName="name"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.SURENAME' | translate}}</ion-label>
+            <ion-input [placeholder]="'INFO.PLACEHOLDERS.SURENAME' | translate" mode="ios" formControlName="surename"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.AGE' | translate}}</ion-label>
+            <ion-input [placeholder]="'INFO.PLACEHOLDERS.AGE' | translate" type="number" mode="ios" formControlName="age"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.PHONE' | translate}}</ion-label>
+            <span class="d-inline">
+                <ion-select  interface="popover" mode="ios" formControlName="country">
+                    <ion-select-option>asd</ion-select-option>
+                </ion-select>
+                  <ion-input [placeholder]="'INFO.PLACEHOLDERS.PHONE' | translate" type="tel" mode="ios" class="b-left" formControlName="phone"></ion-input>
+            </span>
+        </ion-item>
+    </ion-item-group>
+</ion-content>
+<ion-footer class="ion-no-border ion-text-center ion-padding">
+    <p class="ion-no-margin">{{'INFO.TERMS.LINE1' | translate }}
+        <br>
+        {{'INFO.TERMS.LINE2' | translate }}
+        <span (click)="policies()"><strong>{{'INFO.POLICIES' | translate }}</strong></span>
+    </p>
+</ion-footer>

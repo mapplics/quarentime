@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { QuestionsPageRoutingModule } from './questions-routing.module';
+import { HealthStatusPageRoutingModule } from './health-status-routing.module';
 
-import { QuestionsPage } from './questions.page';
+import { HealthStatusPage } from './health-status.page';
 import {HeaderModule} from '../header/header.module';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -15,10 +15,10 @@ import {TranslateModule} from '@ngx-translate/core';
         CommonModule,
         FormsModule,
         IonicModule,
-        QuestionsPageRoutingModule,
+        HealthStatusPageRoutingModule,
         HeaderModule,
         TranslateModule
     ],
-  declarations: [QuestionsPage]
+  declarations: [HealthStatusPage]
 })
-export class QuestionsPageModule {}
+export class HealthStatusPageModule {}
