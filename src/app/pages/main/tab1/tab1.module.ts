@@ -1,11 +1,12 @@
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../../../explore-container/explore-container.module';
 
+// @ts-ignore
 @NgModule({
   imports: [
     IonicModule,
@@ -16,4 +17,11 @@ import { ExploreContainerComponentModule } from '../../../explore-container/expl
   ],
   declarations: [Tab1Page]
 })
+
+const routes: Routes = [
+  {
+    path: '',
+    component: Tab1Page
+  }
+];
 export class Tab1PageModule {}
