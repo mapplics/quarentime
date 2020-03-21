@@ -12,7 +12,12 @@ export const locale = {
                     TITLE: 'La verficación falló',
                     MESSAGE: 'Por favor, ingrese un código válido'
                 }
-            }
+            },
+            TERMS: {
+                LINE1: 'We care about protecting your data.',
+                LINE2: 'Here’s our'
+            },
+            POLICIES: 'Privacy Policy'
         }
     }
 }
