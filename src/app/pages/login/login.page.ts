@@ -19,4 +19,12 @@ export class LoginPage extends PageInterface implements OnInit {
   ngOnInit() {
   }
 
+  onLoginFacebook() {
+
+  }
+
+  onLoginGoogle() {
+    
+  }
+
 }
