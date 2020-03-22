@@ -1,0 +1,56 @@
+<app-header title="VERIFY_ACCOUNT" [currentStep]="" [completedSteps]="[1]"></app-header>
+
+<ion-content class="ion-padding">
+  <p>{{'VERIFY.EXPLANATION' | translate}}</p>
+
+  <ion-item-group class="validation" [formGroup]="form">
+    <ion-row>
+      <ion-col size="1.9">
+        <ion-item>
+          <ion-input #digit1 formControlName="digit1" type="number"
+                     (ngModelChange)="digit2.setFocus()"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="1.9">
+        <ion-item >
+          <ion-input #digit2 formControlName="digit2" type="number"  (ngModelChange)="digit3.setFocus()"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="1.9">
+        <ion-item>
+          <ion-input #digit3 formControlName="digit3" type="number"  (ngModelChange)="digit4.setFocus()"></ion-input>
+        </ion-item>
+      </ion-col>
+      <p>-</p>
+      <ion-col size="1.9">
+        <ion-item>
+          <ion-input #digit4 formControlName="digit4" type="number"  (ngModelChange)="digit5.setFocus()"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="1.9">
+        <ion-item>
+          <ion-input #digit5 formControlName="digit5" type="number" (ngModelChange)="digit6.setFocus()"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="1.9">
+        <ion-item>
+          <ion-input #digit6 formControlName="digit6" type="number" (ngModelChange)="digit1.setFocus()"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-item-group>
+
+
+  <p class="ion-text-center">
+    {{'VERIFY.RESEND_CODE.QUESTION' | translate}}
+    <strong (click)="resendCode()">{{'VERIFY.RESEND_CODE.LINK' | translate}}</strong>
+  </p>
+</ion-content>
+
+<ion-footer class="ion-no-border ion-text-center ion-padding">
+  <p class="ion-no-margin">{{'VERIFY.TERMS.LINE1' | translate }}
+    <br>
+    {{'VERIFY.TERMS.LINE2' | translate }}
+    <span (click)="policies()"><strong>{{'VERIFY.POLICIES' | translate }}</strong></span>
+  </p>
+</ion-footer>

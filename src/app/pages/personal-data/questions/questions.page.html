@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>questions</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="QUESTIONS" [currentStep]="2" completedSteps="[1]"></app-header>
 
-<ion-content>
+<ion-content  class="ion-padding">
+    <div *ngFor="let q of questions">
+        <p>{{q.question}}</p>
+        <ion-buttons>
+            <ion-button [color]="q.selectedNo ? 'dark' : 'light'" fill="solid" (click)="q.answer = false">{{'QUESTION.NO' | translate}}</ion-button>
+            <ion-button [color]="q.selectedYes ? 'dark' : 'light'" fill="solid" (click)="q.answer = true">{{'QUESTION.YES' | translate}}</ion-button>
+        </ion-buttons>
+    </div>
+
+    <ion-item lines="none" detail="false">
+        <p>{{'QUESTION.CONFIRM_INFO' | translate}}</p>
+        <ion-checkbox slot="start" [(ngModel)]="accepted" [disabled]="!canCheck()" (click)="onCheck()"></ion-checkbox>
+    </ion-item>
 
 </ion-content>

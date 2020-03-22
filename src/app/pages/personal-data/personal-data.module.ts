@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { PersonalDataPageRoutingModule } from './personal-data-routing.module';
 import { PersonalDataPage } from './personal-data.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {HeaderModule} from './header/header.module';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import {TranslateModule} from '@ngx-translate/core';
         FormsModule,
         IonicModule,
         PersonalDataPageRoutingModule,
-        TranslateModule
+        TranslateModule,
+        HeaderModule
     ],
     declarations: [PersonalDataPage]
 })
