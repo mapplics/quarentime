@@ -1,4 +1,4 @@
-<app-header title="QUESTIONS" [stepsCompleted]="2"></app-header>
+<app-header title="QUESTIONS" [currentStep]="2" completedSteps="[1]"></app-header>
 
 <ion-content  class="ion-padding">
     <div *ngFor="let q of questions">
@@ -9,7 +9,7 @@
         </ion-buttons>
     </div>
 
-    <ion-item>
+    <ion-item lines="none" detail="false">
         <p>{{'QUESTION.CONFIRM_INFO' | translate}}</p>
         <ion-checkbox slot="start" [(ngModel)]="accepted" [disabled]="!canCheck()" (click)="onCheck()"></ion-checkbox>
     </ion-item>
