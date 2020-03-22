@@ -65,7 +65,7 @@ export class LoginPage extends PageInterface implements OnInit {
     }
 
     goToNextPage() {
-        this.navCtrl.navigateRoot('personal-data');
+        this.navCtrl.navigateRoot('onboarding');
     }
 
 }
