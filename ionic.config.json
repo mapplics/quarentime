@@ -1,5 +1,7 @@
 {
   "name": "quarentime",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
