@@ -1,9 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content class="ion-padding">
+  <ion-row class="ion-align-items-end" style="height: 100%;">
+    <ion-col>
+      <ion-row >
+        <ion-col class="ion-text-center">
+          <img class="logo" src="assets/img/logo.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+        <span class="title-logo">
+          {{'LOGIN.TITLE' | translate}}
+        </span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-margin-top">
+        <ion-col>
+          <ion-button
+              class="ion-text-capitalize"
+              color="dark"
+              expand="block"
+              (click)="onLoginFacebook()"> {{'LOGIN.FACEBOOK_BTN' | translate}}</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button
+              class="ion-text-capitalize"
+              color="dark"
+              expand="block"
+              (click)="onLoginGoogle()"> {{'LOGIN.GOOGLE_BTN' | translate}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
 </ion-content>
