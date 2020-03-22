@@ -1,0 +1,48 @@
+.status-text {
+  font-size: 9px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  color: var(--ion-color-dark);
+}
+
+.text-footer{
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.1px;
+  color: #000000;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.margin-dot-number{
+  margin-left: 10px;
+}
+
+.circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #fff;
+  line-height: 58px;
+  text-align: center;
+  margin: auto;
+}
+
+.bg-gray-blue{
+  background: var(--ion-color-gray-blue);
+}
+
+.bg-purple{
+  background: var(--ion-color-purple);
+}

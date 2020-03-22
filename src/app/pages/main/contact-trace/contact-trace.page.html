@@ -1,0 +1,66 @@
+<ion-header>
+  <app-header [btnBack]="true" [defaultHref]="'/main'" title="CONTACT_TRACE"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-icon name="ellipse" color="gray-blue"></ion-icon>
+      <br>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.HEALTHY' | translate}}</ion-text>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-icon name="ellipse" color="purple"></ion-icon>
+      <br>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.RECOVERED' | translate}}</ion-text>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-icon name="ellipse" color="light-blue"></ion-icon>
+      <br>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.POSITIVE' | translate}}</ion-text>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-icon name="ellipse" color="red"></ion-icon>
+      <br>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.HIGH_RISK' | translate}}</ion-text>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-icon name="ellipse" color="gold"></ion-icon>
+      <br>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.CARRIER' | translate}}</ion-text>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row class="ion-text-center ion-align-items-center" style="height: 80%">
+    <ion-col>
+      <div class="circle bg-gray-blue">SG</div>
+    </ion-col>
+    <div>
+      <div class="circle bg-purple" style="position: absolute; top:100px; left: 5px">MD</div>
+      <div class="circle bg-purple" style="position: absolute; top:300px; left: 30px">NL</div>
+      <div class="circle bg-gray-blue" style="position: absolute; top:100px; left: 180px">LA</div>
+      <div class="circle bg-purple" style="position: absolute; top:300px; left: 280px">JM</div>
+    </div>
+  </ion-row>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row class="ion-no-padding ion-no-margin">
+    <ion-col>
+      <ion-text class="text-footer">{{'CONTACT.TOTAL' | translate}}</ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding ion-no-margin">
+    <ion-col size="2">
+      <ion-icon name="ellipse" color="gray-blue"></ion-icon>
+      <ion-text class="margin-dot-number">2</ion-text>
+    </ion-col>
+    <ion-col size="2">
+      <ion-icon name="ellipse" color="purple"></ion-icon>
+      <ion-text class="margin-dot-number">3</ion-text>
+    </ion-col>
+  </ion-row>
+</ion-footer>
