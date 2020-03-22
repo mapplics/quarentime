@@ -18,6 +18,8 @@ export const locale = {
             TITLE4: 'Tené alertas! Estás cerca a un paciente de alto riesgo',
             SUBTITLE4: 'Tomá precauciones todos los días para mantener el espacio con otras personas.',
 
+            SKIP: 'Saltear',
+
         },
     }
 }

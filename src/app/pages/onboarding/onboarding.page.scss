@@ -1,0 +1,84 @@
+.slider-pager-page {
+  color: white !important;
+}
+
+.slider-pager-page.active {
+  color: red !important;
+}
+
+.board-img{
+ //aca iria el gif
+}
+
+.slider{
+  height:100vh;
+  width: 100%
+
+}
+
+.slider-slide {
+  height: 100vh;
+  width: 100% !important;
+
+
+}
+
+
+.slides-padding{
+  padding-right: 20px;
+  padding-left: 34px;
+  width: 100% !important;}
+
+.titulo{
+  padding-top: 55vh;
+  font-size: 28px;
+  margin-right: 20px;
+  }
+
+.titlestyle {
+  align-content: start;
+  font-size: 28px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: -0.56px;
+  color: #000000;
+
+}
+
+.detail {
+  width: 286px;
+
+  height: 44px;
+
+  font-size: 18px;
+
+  font-weight: normal;
+
+  font-stretch: normal;
+
+  font-style: normal;
+
+  line-height: 1.22;
+
+  letter-spacing: normal;
+
+  color: #000000;
+
+}
+
+
+.iconslide {
+
+  width: 42px;
+
+  height: 42px;
+
+  object-fit: contain;
+
+}
+
+.row-padding {
+  padding-left: 34px;
+}
