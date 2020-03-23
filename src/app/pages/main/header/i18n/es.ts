@@ -2,7 +2,7 @@ export const locale = {
     lang: 'es',
     data: {
         HEADER: {
-            CONTACT_TRACE: 'My Contact Trace ',
+            CONTACT_TRACE: 'Mi red de contactos ',
         }
     }
 };

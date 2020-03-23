@@ -60,6 +60,7 @@ export class ContactTracePage extends PageInterface implements OnInit {
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
         this.prepareCircle('JM', 'gold');
+        this.prepareCircle('LA', 'red');
 
 
     }
