@@ -6,26 +6,26 @@ import {MainPage} from './main.page';
 
 const routes: Routes = [
   {
-    path: 'main',
+    path: '',
     component: MainPage,
     children: [
       {
-        path: 'tab1',
+        path: 'contact-trace',
         children: [
           {
             path: '',
             loadChildren: () =>
-                import('./tab1/tab1.module').then(m => m.Tab1PageModule)
+                import('./contact-trace/contact-trace.module').then(m => m.ContactTracePageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'home',
         children: [
           {
             path: '',
             loadChildren: () =>
-                import('./tab2/tab2.module').then(m => m.Tab2PageModule)
+                import('./home/home.module').then(m => m.HomePageModule)
           }
         ]
       },
@@ -41,16 +41,18 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/main',
+        redirectTo: 'contact-trace',
         pathMatch: 'full'
       }
     ]
   },
-  {
+
+
+ /* {
     path: '',
-    redirectTo: '/main',
+    redirectTo: '/main/main/home',
     pathMatch: 'full'
-  }
+  }*/
 ];
 
 @NgModule({
