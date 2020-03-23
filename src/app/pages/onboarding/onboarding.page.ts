@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {PageInterface} from '../../core/page-interface';
-import {locale as english} from '../login/i18n/en';
-import {locale as spanish} from '../login/i18n/es';
+import {locale as english} from './i18n/en';
+import {locale as spanish} from './i18n/es';
 
 @Component({
   selector: 'app-onboarding',
@@ -20,5 +20,7 @@ export class OnboardingPage  extends PageInterface implements OnInit {
   }
 
 
+  goToHome() {
 
+  }
 }
