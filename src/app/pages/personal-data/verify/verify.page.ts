@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PageInterface} from '../../../core/page-interface';
 import {TranslateService} from '@ngx-translate/core';
 
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NavController} from '@ionic/angular';
+import {NavController, ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-verify',
@@ -18,11 +18,27 @@ export class VerifyPage extends PageInterface implements OnInit {
 
   constructor(public translateService: TranslateService,
               private formBuilder: FormBuilder,
-              private navController: NavController) {
+              private navController: NavController,
+              private toastController: ToastController) {
     super(translateService, english, spanish);
   }
 
-  @ViewChild('input', {static: false}) digit1;
+  async presentToast(head, mess) {
+    const toast = await this.toastController.create({
+      header: head,
+      message: mess,
+      duration: 2000,
+      color: 'danger',
+      position: 'top',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'warning-outline'
+        }
+      ]
+    });
+    toast.present();
+  }
 
   ngOnInit() {
     this.getTranslations('VERIFY.ERRORS');
@@ -54,7 +70,8 @@ export class VerifyPage extends PageInterface implements OnInit {
   validateCode(): void {
     // todo validation
     this.form.reset();
-    this.navController.navigateRoot('personal-data/questions');
+    this.presentToast('SDF', 'GG');
+    // this.navController.navigateRoot('personal-data/questions');
   }
 
 }
