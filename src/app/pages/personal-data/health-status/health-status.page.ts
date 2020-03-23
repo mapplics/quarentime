@@ -3,6 +3,7 @@ import {PageInterface} from '../../../core/page-interface';
 import {TranslateService} from '@ngx-translate/core';
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-health-status',
@@ -11,11 +12,15 @@ import {locale as spanish} from './i18n/es';
 })
 export class HealthStatusPage extends PageInterface implements OnInit {
 
-  constructor(public translateService: TranslateService) {
+  constructor(public translateService: TranslateService,
+              private navController: NavController) {
     super(translateService, english, spanish);
   }
 
   ngOnInit() {
   }
 
+  showHelp(): void {
+    this.navController.navigateForward('personal-data/help');
+  }
 }
