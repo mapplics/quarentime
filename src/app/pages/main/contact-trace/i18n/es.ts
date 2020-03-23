@@ -5,7 +5,7 @@ export const locale = {
             HEALTHY: 'saludable',
             RECOVERED: 'recuperado',
             POSITIVE: 'positivo',
-            HIGH_RISK: 'alto riesgo',
+            HIGH_RISK: 'riesgo',
             CARRIER: 'portador',
             TOTAL: 'Total'
         }
