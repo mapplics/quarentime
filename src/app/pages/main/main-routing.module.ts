@@ -16,7 +16,11 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
                 import('./contact-trace/contact-trace.module').then(m => m.ContactTracePageModule)
-          }
+          },
+          {
+            path: 'share',
+            loadChildren: () => import('./share/share.module').then( m => m.SharePageModule)
+          },
         ]
       },
       {
@@ -60,6 +64,8 @@ const routes: Routes = [
     path: 'add-friends',
     loadChildren: () => import('./add-friends/add-friends.module').then( m => m.AddFriendsPageModule)
   },
+
+
 
 
 

@@ -3,7 +3,7 @@ import {PageInterface} from '../../../core/page-interface';
 import {TranslateService} from '@ngx-translate/core';
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
-import {Platform} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import {CirclesModel} from './models/circles.model';
 import {SpacesWindowModel} from './models/spaces-window.model';
 
@@ -17,7 +17,8 @@ export class ContactTracePage extends PageInterface implements OnInit {
     spaces: SpacesWindowModel[] = [];
 
     constructor(public translateService: TranslateService,
-                private platform: Platform) {
+                private platform: Platform,
+                private navCtrl: NavController) {
         super(translateService, english, spanish);
     }
 
@@ -25,6 +26,11 @@ export class ContactTracePage extends PageInterface implements OnInit {
         console.log('width', this.platform.width());
         console.log('height', this.platform.height());
         this.calculateRamdon();
+
+    }
+
+    onShareContact() {
+        this.navCtrl.navigateForward('main/contact-trace/share');
 
     }
 
