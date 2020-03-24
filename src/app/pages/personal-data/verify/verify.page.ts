@@ -73,7 +73,7 @@ export class VerifyPage extends PageInterface implements OnInit {
     this.presentToast('SDF', 'GG');
     // todo si el cog va ok =>
     localStorage.setItem('codeVerified', '1');
-    // this.navController.navigateRoot('personal-data/questions');
+    this.navController.navigateRoot('personal-data/questions');
   }
 
 }

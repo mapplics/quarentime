@@ -25,6 +25,6 @@ export class HealthStatusPage extends PageInterface implements OnInit {
   }
 
   showHelp(): void {
-    this.navController.navigateForward('personal-data/help');
+    this.navCtrl.navigateForward('personal-data/help');
   }
 }
