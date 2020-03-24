@@ -92,7 +92,11 @@ export class InfoPage extends PageInterface implements OnInit {
         this.form.value.phone
     );
     this.personalDataService.personalData = data;
-    this.navController.navigateRoot('personal-data/verify');
+    if (!!(+localStorage.getItem('codeVerified'))) {
+      this.navController.navigateRoot('personal-data/questions');
+    } else {
+      this.navController.navigateRoot('personal-data/verify');
+    }
   }
 
   policies(): void {

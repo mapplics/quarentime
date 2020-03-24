@@ -71,6 +71,8 @@ export class VerifyPage extends PageInterface implements OnInit {
     // todo validation
     this.form.reset();
     this.presentToast('SDF', 'GG');
+    // todo si el cog va ok =>
+    localStorage.setItem('codeVerified', '1');
     // this.navController.navigateRoot('personal-data/questions');
   }
 
