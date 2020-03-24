@@ -30,12 +30,22 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'symptoms',
         children: [
           {
             path: '',
             loadChildren: () =>
-                import('./tab3/tab3.module').then(m => m.Tab3PageModule)
+                import('./symptoms/symptoms.module').then(m => m.SymptomsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'add-friends',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('./add-friends/add-friends.module').then(m => m.AddFriendsPageModule)
           }
         ]
       },
@@ -46,6 +56,12 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'add-friends',
+    loadChildren: () => import('./add-friends/add-friends.module').then( m => m.AddFriendsPageModule)
+  },
+
+
 
 
  /* {
