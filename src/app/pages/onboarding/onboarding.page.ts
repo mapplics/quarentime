@@ -13,15 +13,13 @@ import {Router} from "@angular/router";
 export class OnboardingPage  extends PageInterface implements OnInit {
 
   constructor(public translateService: TranslateService,
-              private router: Router,
-              private homeService: HomeService) {
+              private router: Router,) {
 
     super(translateService, english, spanish);
   }
 
   ngOnInit() {
   }
-
 
 
 
