@@ -21,6 +21,7 @@ export class VerifyPage extends PageInterface implements OnInit {
               private navController: NavController,
               private toastController: ToastController) {
     super(translateService, english, spanish);
+    this.getTranslations('VERIFY.ERRORS');
   }
 
   async presentToast(head, mess) {
@@ -70,8 +71,7 @@ export class VerifyPage extends PageInterface implements OnInit {
   validateCode(): void {
     // todo validation
     this.form.reset();
-    this.presentToast('SDF', 'GG');
-    // todo si el cog va ok =>
+    this.presentToast(this.translates.VERIFICATION_FAILED.TITLE, this.translates.VERIFICATION_FAILED.MESSAGE);
     localStorage.setItem('codeVerified', '1');
     this.navController.navigateRoot('personal-data/questions');
   }

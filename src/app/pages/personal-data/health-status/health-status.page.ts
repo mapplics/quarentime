@@ -13,7 +13,7 @@ import { NavController } from '@ionic/angular';
 export class HealthStatusPage extends PageInterface implements OnInit {
 
   constructor(public translateService: TranslateService,
-    private navCtrl: NavController) {
+    private navController: NavController) {
     super(translateService, english, spanish);
   }
 
@@ -21,10 +21,10 @@ export class HealthStatusPage extends PageInterface implements OnInit {
   }
 
   goToApp() {
-    this.navCtrl.navigateRoot('main/home');
+    this.navController.navigateRoot('main/home');
   }
 
   showHelp(): void {
-    this.navCtrl.navigateForward('personal-data/help');
+    this.navController.navigateForward('personal-data/help');
   }
 }

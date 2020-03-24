@@ -1,4 +1,4 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PageInterface} from '../../../core/page-interface';
 import {TranslateService} from '@ngx-translate/core';
@@ -9,7 +9,6 @@ import {NavController, PopoverController} from '@ionic/angular';
 import {CountryModel, PersonalDataModel} from '../models/personal-data.model';
 import {PersonalDataService} from '../personal-data.service';
 import {CountryPopoverComponent} from './country-popover/country-popover.component';
-import {debug} from 'util';
 
 @Component({
   selector: 'app-info',
