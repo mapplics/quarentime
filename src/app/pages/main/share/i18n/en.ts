@@ -10,6 +10,7 @@ export const locale = {
                 LINE2: 'We care about protecting your data.',
                 LINE3: 'Here’s our Privacy Policy.'
             },
+            SHARE_ERROR: 'An error has occurred. Try againo'
         }
     }
 };
