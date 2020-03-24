@@ -1,9 +1,49 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+<ion-row class="ion-padding-top ion-padding-start">
+  <ion-col size="8"><ion-label class="title">Hello, Donald</ion-label></ion-col>
+  <ion-col size="4">
+    <ion-row>
+    <ion-label class="my-status">My status</ion-label> &nbsp;
+      <span class="dot"></span>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+
+  <ion-row class="ion-padding-top ion-padding-start">
+    <ion-col>
+      <ion-row > <ion-label class="subtitle">Tips & Tricks</ion-label></ion-row>
+    </ion-col>
+  </ion-row>
+
+
+
+
+    <ion-slides pager="false" [options]="slideOpts" class="ion-padding">
+      <ion-slide class="slider-slide">
+        <ion-card></ion-card>
+      </ion-slide>
+
+           <ion-slide class="slider-slide">
+          <ion-card></ion-card>
+        </ion-slide>
+
+           <ion-slide class="slider-slide">
+          <ion-card></ion-card>
+        </ion-slide>
+
+           <ion-slide class="slider-slide">
+          <ion-card></ion-card>
+        </ion-slide>
+
+      <ion-slide class="slider-slide">
+        <ion-card></ion-card>
+      </ion-slide>
+
+
+
+    </ion-slides>
 
 </ion-content>
