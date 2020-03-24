@@ -10,6 +10,7 @@ import { InfoPage } from './info.page';
 import {HeaderComponent} from '../header/header.component';
 import {HeaderModule} from '../header/header.module';
 import {TranslateModule} from '@ngx-translate/core';
+import {CountryPopoverComponent} from './country-popover/country-popover.component';
 
 @NgModule({
     imports: [
@@ -22,8 +23,12 @@ import {TranslateModule} from '@ngx-translate/core';
         TranslateModule,
     ],
     entryComponents: [
-        HeaderComponent
+        HeaderComponent,
+        CountryPopoverComponent
     ],
-    declarations: [InfoPage]
+    declarations: [
+        InfoPage,
+        CountryPopoverComponent
+    ]
 })
 export class InfoPageModule {}

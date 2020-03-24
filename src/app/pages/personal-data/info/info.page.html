@@ -20,12 +20,15 @@
         <ion-item class="ion-margin-bottom">
             <ion-label position="stacked">{{'INFO.PHONE' | translate}}</ion-label>
             <span class="d-inline">
-                <ion-select  interface="popover" mode="ios" formControlName="country">
-                    <ion-select-option>asd</ion-select-option>
-                </ion-select>
-                  <ion-input [placeholder]="'INFO.PLACEHOLDERS.PHONE' | translate" type="tel" mode="ios" class="b-left" formControlName="phone"></ion-input>
+                <ion-icon slot="start" size="large" class="m-auto" [src]="currCountry.flag"></ion-icon>
+                <ion-icon name="chevron-down-outline" class="ion-padding b-right" (click)="presentPopover($event)"></ion-icon>
+                <ion-input [placeholder]="'INFO.PLACEHOLDERS.PHONE' | translate"
+                           type="tel" mode="ios"
+                           formControlName="phone">
+                </ion-input>
             </span>
         </ion-item>
+
     </ion-item-group>
 </ion-content>
 <ion-footer class="ion-no-border ion-text-center ion-padding">

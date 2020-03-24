@@ -4,6 +4,7 @@ import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
 import {TranslateService} from '@ngx-translate/core';
 import {NavController} from '@ionic/angular';
+import {PersonalDataService} from '../personal-data.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ export class HeaderComponent extends PageInterface implements OnInit {
   @Input() completedSteps: number[] = [];
 
   constructor(public translateService: TranslateService,
-              private navController: NavController) {
+              private navController: NavController,
+              private personalDataService: PersonalDataService) {
     super(translateService, english, spanish);
   }
 
@@ -42,6 +44,21 @@ export class HeaderComponent extends PageInterface implements OnInit {
   }
 
   navigateTo(page: string): void {
-    this.navController.navigateRoot('personal-data/' + page);
+    if (this.canNavigate(page)) {
+      this.navController.navigateRoot('personal-data/' + page);
+    }
+  }
+
+  canNavigate(page): boolean {
+    switch (page) {
+      case 'info':
+        return true;
+        break;
+      case 'questions':
+        return !!(+localStorage.getItem('codeVerified'));
+        break;
+      case 'health-status':
+        return  !!(+localStorage.getItem('codeVerified')); // todo add questions answered
+    }
   }
 }
