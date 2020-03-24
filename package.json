@@ -33,6 +33,7 @@
     "cordova-plugin-facebook4": "^6.4.0",
     "cordova-plugin-googleplus": "^8.4.0",
     "core-js": "^2.5.4",
+    "firebase": "^7.12.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -78,15 +79,13 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-facebook4": {
-        "APP_ID": "3838444702840085",
-        "APP_NAME": "quarentime",
-        "FACEBOOK_HYBRID_APP_EVENTS": "false",
-        "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0"
-      },
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "627240942816-bgee9h9q4t7a1jl6h3vtrgfs3063urkm.apps.googleusercontent.com",
         "PLAY_SERVICES_VERSION": "15.0.1"
+      },
+      "cordova-plugin-facebook4": {
+        "APP_ID": "647186859392789",
+        "APP_NAME": "Quarentime"
       }
     },
     "platforms": [
