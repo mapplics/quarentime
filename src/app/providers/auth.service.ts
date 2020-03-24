@@ -50,11 +50,12 @@ export class AuthService extends BaseService {
             } else {
                 this.loggedIn.next(false);
             }
-            debugger;
-            // firebaseUser ? this.loggedIn.next(true) : this.loggedIn.next(false);
-            firebaseUser.getIdToken().then((data) => {
-                console.log('token1', data);
-            });
+
+            /*
+             firebaseUser.getIdToken().then((data) => {
+                 console.log('token1', data);
+             });
+             */
         });
     }
 
