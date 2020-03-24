@@ -24,6 +24,7 @@ export class OnboardingPage  extends PageInterface implements OnInit {
 
 
   goToHome() {
-    this.router.navigate(['', 'main', 'home']);
+    // this.router.navigate(['', 'main', 'home']);
+    this.router.navigate(['personal-data']);
   }
 }

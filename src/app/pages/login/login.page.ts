@@ -7,7 +7,7 @@ import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
 import {ToastHelperService} from '../../shared/helpers/toast-helper.service';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
-import {NavController} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import * as firebase from 'firebase';
 import {AuthService} from '../../providers/auth.service';
 import {LoadingHelperService} from '../../shared/helpers/loading-helper.service';
@@ -25,7 +25,8 @@ export class LoginPage extends PageInterface implements OnInit {
                 private googlePlus: GooglePlus,
                 private navCtrl: NavController,
                 private authService: AuthService,
-                private loadingCtrl: LoadingHelperService) {
+                private loadingCtrl: LoadingHelperService,
+                private platform: Platform) {
         super(translateService, english, spanish);
     }
 
@@ -34,6 +35,10 @@ export class LoginPage extends PageInterface implements OnInit {
     }
 
     onLoginFacebook() {
+        if (this.platform.is('mobileweb')) {
+            this.goToNextPage();
+            return;
+        }
         this.loadingCtrl.presentLoading(this.translateService.instant('LOGIN.LOADING'))
             .then(() => {
                 // the permissions your facebook app needs from the user
@@ -67,6 +72,10 @@ export class LoginPage extends PageInterface implements OnInit {
     }
 
     onLoginGoogle() {
+        if (this.platform.is('mobileweb')) {
+            this.goToNextPage();
+            return;
+        }
         this.loadingCtrl.presentLoading(this.translateService.instant('LOGIN.LOADING'))
             .then(() => {
                 // https://ionicthemes.com/tutorials/about/ionic-google-login
@@ -108,7 +117,7 @@ export class LoginPage extends PageInterface implements OnInit {
     }
 
     goToNextPage() {
-        this.navCtrl.navigateRoot('onboarding');
+        this.navCtrl.navigateRoot('onboarding');        
     }
 
 }
