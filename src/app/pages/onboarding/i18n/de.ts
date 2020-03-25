@@ -1,5 +1,5 @@
 export const locale = {
-    lang: 'en',
+    lang: 'de',
     data: {
         ONBOARDING: {
             TITLE1: 'Invite family, friends and collegues.',

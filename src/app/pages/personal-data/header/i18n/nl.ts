@@ -1,5 +1,5 @@
 export const locale = {
-    lang: 'en',
+    lang: 'nl',
     data: {
         HEADER: {
             PERSONAL_INFORMATION: 'Personal Information',

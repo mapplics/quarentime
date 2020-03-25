@@ -14,8 +14,10 @@ export const locale = {
             TITLE4: 'Recibí alertas! Estas cerca de potenciales pacientes.',
             SUBTITLE4: 'Tomá precauciones siempre para mantener el espacio entre las personas.',
 
+            TITLE5: 'Gracias por registrarte!',
+
             SKIP: 'SALTEAR',
-            FINISH: 'FINALIZAR',
+            FINISH: 'COMENCEMOS',
 
         }
     }
