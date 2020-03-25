@@ -68,12 +68,6 @@ const routes: Routes = [
     path: 'invite',
     loadChildren: () => import('./invite/invite.module').then( m => m.InvitePageModule)
   },
-
-
-
-
-
-
  /* {
     path: '',
     redirectTo: '/main/main/home',
