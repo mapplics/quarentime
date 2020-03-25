@@ -32,11 +32,15 @@ export class LoginPage extends PageInterface implements OnInit {
 
     ngOnInit(): void {
         super.ngOnInit();
+
+        if (this.authService.isAuthenticated) {
+            this.goToPersonalData();
+        }
     }
 
     onLoginFacebook() {
         if (this.platform.is('desktop')) {
-            this.goToNextPage();
+            this.goToOnboarding();
             return;
         }
         this.loadingCtrl.presentLoading(this.translateService.instant('LOGIN.LOADING'))
@@ -65,6 +69,7 @@ export class LoginPage extends PageInterface implements OnInit {
                             */
                     })
                     .catch(e => {
+                        this.toastCtrl.errorToast(this.translateService.instant('LOGIN.LOGIN_ERR'));
                         console.log('Error logging into Facebook', e);
                         this.loadingCtrl.dismiss();
                     });
@@ -73,7 +78,7 @@ export class LoginPage extends PageInterface implements OnInit {
 
     onLoginGoogle() {
         if (this.platform.is('desktop')) {
-            this.goToNextPage();
+            this.goToOnboarding();
             return;
         }
         this.loadingCtrl.presentLoading(this.translateService.instant('LOGIN.LOADING'))
@@ -90,6 +95,7 @@ export class LoginPage extends PageInterface implements OnInit {
 
                     })
                     .catch(err => {
+                        this.toastCtrl.errorToast(this.translateService.instant('LOGIN.LOGIN_ERR'));
                         console.log('Error logging into Google', err);
                         this.loadingCtrl.dismiss();
                     });
@@ -103,8 +109,8 @@ export class LoginPage extends PageInterface implements OnInit {
             .then(success => {
                 // guardo la info del usuario en el storage
                 this.authService.saveUserLogged(success.user, type);
-                this.goToNextPage();
-                this.toastCtrl.successToast(this.translateService.instant('LOGIN.LOGIN_OK'));
+                this.goToOnboarding();
+                // this.toastCtrl.successToast(this.translateService.instant('LOGIN.LOGIN_OK'));
                 console.log('Firebase success: ' + JSON.stringify(success));
                 this.loadingCtrl.dismiss();
             })
@@ -116,8 +122,11 @@ export class LoginPage extends PageInterface implements OnInit {
 
     }
 
-    goToNextPage() {
+    goToOnboarding() {
         this.navCtrl.navigateRoot('onboarding');
+    }
+    goToPersonalData() {
+        this.navCtrl.navigateRoot('personal-data');
     }
 
 }

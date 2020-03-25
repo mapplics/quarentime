@@ -31,7 +31,7 @@ import {SocialSharing} from '@ionic-native/social-sharing/ngx';
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         Facebook,
         GooglePlus,
-        SocialSharing
+        SocialSharing,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     ],
     bootstrap: [AppComponent]
