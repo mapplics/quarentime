@@ -1,0 +1,54 @@
+<ion-header>
+  <app-header
+      title="CONTACT_TRACE"
+      [btnBack]="true"
+      [defaultHref]="'main/contact-trace'"
+      [btnShare]="true"
+      (onShare)="showInfo()"
+  ></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col class="ion-text-center ion-no-padding ion-no-margin">
+      <img src="assets/img/contact_share.png" width="60%">
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <p class="description-text">
+        {{'SHARE.DESCRIPTION' | translate}}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center ion-no-padding ion-no-margin" size="12">
+      <img src="assets/icon/warning.png" width="40px">
+      <p class="policies-text">
+        {{'SHARE.TERMS.LINE1' | translate}}<br>
+        {{'SHARE.TERMS.LINE2' | translate}}<br>
+        {{'SHARE.TERMS.LINE3' | translate}}
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button
+          class="ion-text-capitalize"
+          color="dark"
+          expand="block"
+          (click)="onInvite()"> {{'SHARE.INVITE_BTN' | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button
+          class="ion-text-capitalize"
+          color="purple"
+          expand="block"
+          (click)="onShare()"> {{'SHARE.SHARE_BTN' | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

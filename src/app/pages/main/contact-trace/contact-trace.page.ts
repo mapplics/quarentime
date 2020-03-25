@@ -3,7 +3,7 @@ import {PageInterface} from '../../../core/page-interface';
 import {TranslateService} from '@ngx-translate/core';
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
-import {Platform} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import {CirclesModel} from './models/circles.model';
 import {SpacesWindowModel} from './models/spaces-window.model';
 
@@ -17,7 +17,8 @@ export class ContactTracePage extends PageInterface implements OnInit {
     spaces: SpacesWindowModel[] = [];
 
     constructor(public translateService: TranslateService,
-                private platform: Platform) {
+                private platform: Platform,
+                private navCtrl: NavController) {
         super(translateService, english, spanish);
     }
 
@@ -28,14 +29,19 @@ export class ContactTracePage extends PageInterface implements OnInit {
 
     }
 
+    onShareContact() {
+        this.navCtrl.navigateForward('main/contact-trace/share');
+
+    }
+
     calculateRamdon() {
         this.spaces = [];
 
 
         let topInit = 100;
         let leftInit = 5;
-        const height = this.platform.height() * 0.50;
-        const width = this.platform.width() - 50;
+        const height = this.platform.height() * 0.50 - 60;
+        const width = this.platform.width() - 80;
         // ccalculo cuantos entran orizontalmente
         const totalWidth = Math.trunc(width / 60);
         // calculo cuantos entran verticalmente

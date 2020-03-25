@@ -60,9 +60,9 @@ export class AuthService extends BaseService {
         });
     }
 
-    saveUserLogged(user, type) {
+    saveUserLogged(user, type, refresh = false) {
         /*  el parametro true si esta vencido refresca el token */
-        return user.getIdToken(true)
+        return user.getIdToken(refresh)
             .then((token) => {
                 console.log('token2', token);
                 localStorage.setItem('quarentimeToken', token);

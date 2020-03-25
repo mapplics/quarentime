@@ -8,6 +8,7 @@ import { OnboardingPageRoutingModule } from './onboarding-routing.module';
 
 import { OnboardingPage } from './onboarding.page';
 import {TranslateModule} from "@ngx-translate/core";
+import {CircleAnimationModule} from '../../shared/component/circle-animation/circle-animation.module';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {TranslateModule} from "@ngx-translate/core";
         FormsModule,
         IonicModule,
         OnboardingPageRoutingModule,
-        TranslateModule
+        TranslateModule,
+        CircleAnimationModule
     ],
   declarations: [OnboardingPage]
 })
