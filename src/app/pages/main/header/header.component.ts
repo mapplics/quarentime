@@ -16,8 +16,13 @@ export class HeaderComponent extends PageInterface implements OnInit {
     /* variable utilizada para mostrar el boton atras */
     @Input() btnBack: boolean;
 
+    /* mostrar boton de compartir*/
+    @Input() btnShare: boolean;
+
     /* Evento utilizado cuando se quiere poner una accoin al boton atras*/
     @Output() goBack: EventEmitter<void> = new EventEmitter<void>();
+    /* Evento utilizado para la accion share*/
+    @Output() onShare: EventEmitter<void> = new EventEmitter<void>();
 
 
     constructor(public translateService: TranslateService) {
@@ -33,6 +38,10 @@ export class HeaderComponent extends PageInterface implements OnInit {
 
     onGoBack(): void {
         this.goBack.emit();
+    }
+
+    onShareContact(): void {
+        this.onShare.emit();
     }
 
 }

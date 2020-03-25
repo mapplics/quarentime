@@ -8,5 +8,11 @@
   <ion-title>
     <ion-label color="primary"><b>{{'HEADER.'+ title | translate}}</b></ion-label>
   </ion-title>
+
+  <ion-buttons slot="end" *ngIf="btnShare">
+    <ion-button (click)="onShareContact()">
+      <ion-icon color="dark" slot="icon-only" size="large" name="share-social-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-toolbar>
 

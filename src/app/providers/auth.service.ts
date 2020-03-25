@@ -59,9 +59,9 @@ export class AuthService extends BaseService {
         });
     }
 
-    saveUserLogged(user, type) {
+    saveUserLogged(user, type, refresh = false) {
         /*  el parametro true si esta vencido refresca el token */
-        return user.getIdToken(true)
+        return user.getIdToken(refresh)
             .then((token) => {
                 console.log('token2', token);
                 localStorage.setItem('quarentimeToken', token);
@@ -89,7 +89,7 @@ export class AuthService extends BaseService {
         return firebase.auth().currentUser;
     }
 
-    async getTokenRefresh() {
-        return await this.getActiveUser().getIdToken(true);
+    async getTokenRefresh(refresh = false) {
+        return await this.getActiveUser().getIdToken(refresh);
     }
 }

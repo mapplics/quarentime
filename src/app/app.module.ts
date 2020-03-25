@@ -10,7 +10,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {Facebook} from '@ionic-native/facebook/ngx';
-import {GooglePlus } from '@ionic-native/google-plus/ngx';
+import {GooglePlus} from '@ionic-native/google-plus/ngx';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,7 +27,8 @@ import {GooglePlus } from '@ionic-native/google-plus/ngx';
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         Facebook,
-        GooglePlus
+        GooglePlus,
+        SocialSharing
     ],
     bootstrap: [AppComponent]
 })

@@ -1,0 +1,96 @@
+.dot {
+  height: 16px;
+  width: 16px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+
+  animation: wave 3s alternate infinite;
+
+  &:nth-child(1) {
+    animation-delay: -0.5s;
+  }
+  &:nth-child(2) {
+    animation-delay: -1.0s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: -1.5s;
+  }
+  &:nth-child(4) {
+    animation-delay: -2.5s;
+  }
+
+  &:nth-child(5) {
+    animation-delay: -2.0s;
+  }
+  &:nth-child(6) {
+    animation-delay: -3.5s;
+  }
+  &:nth-child(7) {
+    animation-delay: -4.0s;
+  }
+  &:nth-child(8) {
+    animation-delay: -4.5s;
+  }
+  &:nth-child(9) {
+    animation-delay: -5.0s;
+  }
+  &:nth-child(10) {
+    animation-delay: -5.5s;
+  }
+}
+
+.gray{
+  background: var(--ion-color-gray-blue);
+}
+
+.purple{
+  background: var(--ion-color-purple);
+}
+
+.gold{
+  background: var(--ion-color-gold);
+}
+.red{
+  background: var(--ion-color-red);
+}
+.blue{
+  background: var(--ion-color-light-blue);
+}
+
+/*
+@keyframes wave {
+    0%, 60%, 100% {
+        transform: initial;
+    }
+
+    30% {
+        transform: translateY(-15px);
+    }
+}*/
+/*
+@keyframes wave {
+    0%   {background: red; left: 0px; top: 0px;}
+    25%  {background: yellow; left: 200px; top: 0px;}
+    50%  {background: blue; left: 200px; top: 200px;}
+    75%  {background: green; left: 0px; top: 200px;}
+    100% {background: red; left: 0px; top: 0px;}
+}
+ */
+
+@-webkit-keyframes wave {
+  0% { background-color: var(--ion-color-gray-blue); }
+  33% { background-color:var(--ion-color-purple); }
+  67% { background-color: var(--ion-color-gold); }
+  80% { background-color: var(--ion-color-light-blue); }
+  100% { background-color: var(--ion-color-red); }
+}
+
+@keyframes wave {
+  0% { background-color: var(--ion-color-gray-blue); }
+  33% { background-color:var(--ion-color-purple); }
+  67% { background-color: var(--ion-color-gold); }
+  80% { background-color: var(--ion-color-light-blue); }
+  100% { background-color: var(--ion-color-red); }
+}
