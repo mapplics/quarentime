@@ -91,6 +91,12 @@ export class InfoPage extends PageInterface implements OnInit {
         this.form.value.phone
     );
     this.personalDataService.personalData = data;
+
+    // send data to server
+    this.personalDataService.sendPersonalInformation().subscribe(
+      (response) => console.log(response)
+    )
+
     if (!!(+localStorage.getItem('codeVerified'))) {
       this.navController.navigateRoot('personal-data/questions');
     } else {

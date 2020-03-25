@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 import {BaseService} from '../../core/services/base.service';
 import {Router} from '@angular/router';
 import {CountryModel, PersonalDataModel} from './models/personal-data.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import {catchError, map} from "rxjs/internal/operators";
+import { GeneralResponse } from 'src/app/models/general-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonalDataService extends BaseService {
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+              public http: HttpClient) {
     super(router);
     this._countries = [
       new CountryModel('ar', 'Argentina', 'argentina.svg', '+54'),
@@ -28,5 +33,28 @@ export class PersonalDataService extends BaseService {
   get countries(): CountryModel[] {
     return this._countries;
   }
+
+  // send personal information
+  sendPersonalInformation(): Observable<{} | GeneralResponse> {
+    const url = `${this._API}User/PersonalInformation`;
+    // todo ver!!!
+    debugger;
+    return this.http.post<GeneralResponse>(url, {
+        email: "a@aa.com",
+        name: this._personalData.name,
+        surname: this._personalData.surename,
+        age: this._personalData.age,
+        phoneNumber: this._personalData.phone
+    })
+        .pipe(
+            map((res: GeneralResponse) => {
+              debugger;
+                return res;
+            }),
+            catchError(err => {
+                return this.handleError(err);
+            })
+        );
+}
 
 }

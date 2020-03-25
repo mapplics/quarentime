@@ -7,6 +7,7 @@ import {AuthModel} from '../models/auth.model';
 import {Facebook} from '@ionic-native/facebook/ngx';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import {ToastHelperService} from '../shared/helpers/toast-helper.service';
+import { promise } from 'protractor';
 
 @Injectable({
     providedIn: 'root'
@@ -38,7 +39,7 @@ export class AuthService extends BaseService {
         firebase.initializeApp(firebaseConfig);
         // Emit logged in status whenever auth state changes
         firebase.auth().onAuthStateChanged(firebaseUser => {
-
+        
             if (firebaseUser) {
                 this.auth = new AuthModel();
                 this.auth.name = firebaseUser.displayName;
@@ -89,7 +90,26 @@ export class AuthService extends BaseService {
         return firebase.auth().currentUser;
     }
 
+    getToken(): string {
+        return 'Bearer ' + localStorage.getItem('quarentimeToken');
+    }
+
+    refreshToken(): Promise<string> {
+       return this.getActiveUser().getIdToken(true).then(
+            (newToken) => { 
+                console.log('token-new', newToken);
+                localStorage.setItem('quarentimeToken', newToken);
+                return newToken;
+            }
+        );
+    }
+
     async getTokenRefresh() {
         return await this.getActiveUser().getIdToken(true);
+    }
+
+    get isAuthenticated() {
+        // todo => ver esto
+        return true;
     }
 }

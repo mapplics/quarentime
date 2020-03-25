@@ -11,6 +11,8 @@ import {AppComponent} from './app.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {Facebook} from '@ionic-native/facebook/ngx';
 import {GooglePlus } from '@ionic-native/google-plus/ngx';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth/auth.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
@@ -20,13 +22,15 @@ import {GooglePlus } from '@ionic-native/google-plus/ngx';
         IonicModule.forRoot(),
         AppRoutingModule,
         TranslateModule.forRoot(),
+        HttpClientModule,
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         Facebook,
-        GooglePlus
+        GooglePlus,
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     ],
     bootstrap: [AppComponent]
 })

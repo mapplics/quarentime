@@ -3,7 +3,8 @@ import {HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {throwError} from 'rxjs';
-import {GeneralResponse} from '../general-response.model';
+import { GeneralResponse } from 'src/app/models/general-response.model';
+
 
 
 @Injectable()
@@ -19,14 +20,10 @@ export class BaseService {
             .append('X-Requested-With', 'XMLHttpRequest');
 
     }
-
-    getToken(): string {
-        return 'Basic ' + localStorage.getItem('token');
-    }
-
     public handleError(error: HttpErrorResponse | any): any {
+        debugger;
         const response = new GeneralResponse();
-        response.data = [];
+        response.result = [];
         response.error = true;
 
         if (error.error) {
@@ -40,7 +37,7 @@ export class BaseService {
 
                 const arrayErrors = Object.keys(error.error.errors).map(i => error.error.errors[i]);
                 for (const err of arrayErrors) {
-                    response.data.push(err);
+                    response.result.push(err);
                 }
             }
         }
