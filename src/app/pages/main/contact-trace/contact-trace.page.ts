@@ -40,8 +40,8 @@ export class ContactTracePage extends PageInterface implements OnInit {
 
         let topInit = 100;
         let leftInit = 5;
-        const height = this.platform.height() * 0.50;
-        const width = this.platform.width() - 50;
+        const height = this.platform.height() * 0.50 - 60;
+        const width = this.platform.width() - 80;
         // ccalculo cuantos entran orizontalmente
         const totalWidth = Math.trunc(width / 60);
         // calculo cuantos entran verticalmente

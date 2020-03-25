@@ -117,7 +117,7 @@ export class LoginPage extends PageInterface implements OnInit {
     }
 
     goToNextPage() {
-        this.navCtrl.navigateRoot('onboarding');        
+        this.navCtrl.navigateRoot('onboarding');
     }
 
 }
