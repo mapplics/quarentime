@@ -40,6 +40,6 @@ export class SharePage extends PageInterface implements OnInit {
     }
 
     showInfo() {
-
+        this.navCtrl.navigateForward('main/contact-trace/share/why-contact');
     }
 }

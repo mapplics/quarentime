@@ -18,6 +18,8 @@ export const locale = {
 
             SKIP: 'SALTEAR',
             FINISH: 'COMENCEMOS',
+            FINISH: 'FINALIZAR',
+            LASTTITLE: 'Gracias por registrarte!'
 
         }
     }
