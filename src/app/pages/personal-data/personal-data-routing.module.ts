@@ -17,8 +17,8 @@ const routes: Routes = [
                 loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
             },
             {
-                path: 'questions',
-                loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
+                path: 'intake',
+                loadChildren: () => import('./intake/intake.module').then( m => m.IntakePageModule)
             },
             {
                 path: 'health-status',
@@ -32,17 +32,10 @@ const routes: Routes = [
         ]
     },
   {
-    path: 'verify',
-    loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
-  },
-  {
-    path: 'health-status',
-    loadChildren: () => import('./health-status/health-status.module').then( m => m.HealthStatusPageModule)
-  },
-  {
     path: 'help',
     loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
-  }
+  },
+
 ];
 
 @NgModule({

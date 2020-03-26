@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { QuestionsPageRoutingModule } from './questions-routing.module';
+import { ConfirmInfoPageRoutingModule } from './confirm-info-routing.module';
 
-import { QuestionsPage } from './questions.page';
-import {HeaderModule} from '../header/header.module';
+import { ConfirmInfoPage } from './confirm-info.page';
 import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
@@ -15,10 +14,9 @@ import {TranslateModule} from '@ngx-translate/core';
         CommonModule,
         FormsModule,
         IonicModule,
-        QuestionsPageRoutingModule,
-        HeaderModule,
+        ConfirmInfoPageRoutingModule,
         TranslateModule
     ],
-  declarations: [QuestionsPage]
+  declarations: [ConfirmInfoPage]
 })
-export class QuestionsPageModule {}
+export class ConfirmInfoPageModule {}

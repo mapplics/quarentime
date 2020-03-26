@@ -77,3 +77,23 @@
 .row-padding {
   padding-left: 34px;
 }
+
+.h-85 {
+  height: 85%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.thanks {
+  background-image:url('src/assets/img/thanks.png') ;
+  background-repeat: no-repeat;
+  //background-attachment: fixed;
+  background-position: top center;
+  background-size: auto 85%;
+}
+
+.button-last {
+  margin-top: 50vh;
+}

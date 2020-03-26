@@ -1,81 +1,95 @@
-
 <ion-content >
-  <app-circle-animation></app-circle-animation>
   <div class="board-img">
-  <ion-slides pager="true" >
-    <ion-slide class="slider-slide">
-      <ion-col class="slides-padding ">
-        <div>
-          <div class="ion-text-right">
-            <ion-button (click)="goToHome()" size="small" fill="outline"
-                        color="primary">{{'ONBOARDING.SKIP' | translate}}</ion-button>
+    <ion-slides pager="true">
+      <ion-slide class="slider-slide">
+        <app-circle-animation></app-circle-animation>
+        <ion-col class="slides-padding ">
+          <div>
+            <div class="ion-text-right">
+              <ion-button (click)="goToHome()" size="small" fill="outline"
+                          color="primary">{{'ONBOARDING.SKIP' | translate}}</ion-button>
+            </div>
+            <ion-row class="titulo">
+              <ion-img class="iconslide" src="/assets/icon/icon-addfriends.png"></ion-img>
+            </ion-row>
+            <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE1' | translate}}</ion-row>
           </div>
-          <ion-row class="titulo">
-            <ion-img class="iconslide" src="/assets/icon/icon-addfriends.png"></ion-img>
+          <ion-row class="ion-padding-top">
+            <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE1' | translate}}</ion-label>
           </ion-row>
-          <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE1' | translate}}</ion-row>
-        </div>
-        <ion-row class="ion-padding-top">
-          <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE1' | translate}}</ion-label>
-        </ion-row>
-      </ion-col>
-    </ion-slide>
+        </ion-col>
+      </ion-slide>
 
-    <ion-slide class="slider-slide">
-      <ion-col class="slides-padding ">
-        <div>
-          <div class="ion-text-right">
-            <ion-button (click)="goToHome()" size="small" fill="outline"
-                        color="primary">{{'ONBOARDING.SKIP' | translate}}</ion-button>
+      <ion-slide class="slider-slide">
+        <app-circle-animation></app-circle-animation>
+        <ion-col class="slides-padding ">
+          <div>
+            <div class="ion-text-right">
+              <ion-button (click)="goToHome()" size="small" fill="outline"
+                          color="primary">{{'ONBOARDING.SKIP' | translate}}</ion-button>
+            </div>
+            <ion-row class="titulo">
+              <ion-img class="iconslide" src="/assets/icon/symptoms.png"></ion-img>
+            </ion-row>
+            <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE2' | translate}}</ion-row>
           </div>
-          <ion-row class="titulo">
-            <ion-img class="iconslide" src="/assets/icon/symptoms.png"></ion-img>
+          <ion-row class="ion-padding-top">
+            <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE2' | translate}}</ion-label>
           </ion-row>
-          <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE2' | translate}}</ion-row>
-        </div>
-        <ion-row class="ion-padding-top">
-          <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE2' | translate}}</ion-label>
-        </ion-row>
-      </ion-col>
-    </ion-slide>
+        </ion-col>
+      </ion-slide>
 
-    <ion-slide class="slider-slide">
-      <ion-col class="slides-padding ">
-        <div>
-          <div class="ion-text-right">
-            <ion-button (click)="goToHome()" size="small" fill="outline"
-                        color="primary">{{'ONBOARDING.SKIP' | translate}}</ion-button>
+      <ion-slide class="slider-slide">
+        <app-circle-animation></app-circle-animation>
+        <ion-col class="slides-padding ">
+          <div>
+            <div class="ion-text-right">
+              <ion-button (click)="goToHome()" size="small" fill="outline"
+                          color="primary">{{'ONBOARDING.SKIP' | translate}}</ion-button>
+            </div>
+            <ion-row class="titulo">
+              <ion-img class="iconslide" src="/assets/icon/track.png"></ion-img>
+            </ion-row>
+            <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE3' | translate}}</ion-row>
           </div>
-          <ion-row class="titulo">
-            <ion-img class="iconslide" src="/assets/icon/track.png"></ion-img>
+          <ion-row class="ion-padding-top">
+            <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE3' | translate}}</ion-label>
           </ion-row>
-          <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE3' | translate}}</ion-row>
-        </div>
-        <ion-row class="ion-padding-top">
-          <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE3' | translate}}</ion-label>
-        </ion-row>
-      </ion-col>
-    </ion-slide>
+        </ion-col>
+      </ion-slide>
 
-    <ion-slide class="slider-slide">
-      <ion-col class="slides-padding ">
-        <div>
-          <div class="ion-text-right">
-            <ion-button (click)="goToHome()" size="small" fill="outline"
-                        color="primary">{{'ONBOARDING.FINISH' | translate}}</ion-button>
+      <ion-slide class="slider-slide">
+        <app-circle-animation></app-circle-animation>
+        <ion-col class="slides-padding ">
+          <div>
+            <div class="ion-text-right">
+              <ion-button (click)="goToHome()" size="small" fill="outline"
+                          color="primary">{{'ONBOARDING.SKIP' | translate}}</ion-button>
+            </div>
+            <ion-row class="titulo">
+              <ion-img class="iconslide" src="/assets/icon/notifications.png"></ion-img>
+            </ion-row>
+            <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE4' | translate}}</ion-row>
           </div>
-          <ion-row class="titulo">
-            <ion-img class="iconslide" src="/assets/icon/notifications.png"></ion-img>
+          <ion-row class="ion-padding-top">
+            <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE4' | translate}}</ion-label>
           </ion-row>
-          <ion-row class="ion-text-left ion-padding-top titlestyle"> {{'ONBOARDING.TITLE4' | translate}}</ion-row>
-        </div>
-        <ion-row class="ion-padding-top">
-          <ion-label class="detail ion-text-left">{{'ONBOARDING.SUBTITLE4' | translate}}</ion-label>
-        </ion-row>
 
-      </ion-col>
-    </ion-slide>
+        </ion-col>
+      </ion-slide>
 
-  </ion-slides>
+      <ion-slide class="slider-slide thanks">
+        <ion-col class="slides-padding h-100">
+          <ion-row class="h-85 ion-align-items-center">
+            <div class="ion-text-center ">
+              <ion-row class="ion-padding-top titlestyle"> {{'ONBOARDING.TITLE5' | translate}}</ion-row>
+            </div>
+          </ion-row>
+          <ion-button (click)="goToHome()" fill="solid" class="ion-margin-top" expand="block"
+                      color="primary">{{'ONBOARDING.FINISH' | translate}}</ion-button>
+        </ion-col>
+      </ion-slide>
+
+    </ion-slides>
   </div>
 </ion-content>

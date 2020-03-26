@@ -9,6 +9,7 @@ import {NavController, PopoverController} from '@ionic/angular';
 import {CountryModel, PersonalDataModel} from '../models/personal-data.model';
 import {PersonalDataService} from '../personal-data.service';
 import {CountryPopoverComponent} from './country-popover/country-popover.component';
+import {ArrayHelper} from '../../../shared/helpers/array.helper';
 import { take } from 'rxjs/internal/operators';
 
 @Component({
@@ -38,6 +39,7 @@ export class InfoPage extends PageInterface implements OnInit {
 
   ngOnInit() {
     this.countries = this.personalDataService.countries;
+    this.countries = ArrayHelper.sortAsc(this.countries, 'name', this.currentLanguage);
     this.initForm();
   }
 
@@ -48,7 +50,7 @@ export class InfoPage extends PageInterface implements OnInit {
   async presentPopover(ev) {
     const popover = await this.popoverController.create({
       component: CountryPopoverComponent,
-      componentProps: {countries : this.countries},
+      componentProps: {countries : this.countries, currentLanguage: this.currentLanguage},
       event: ev,
       translucent: true
     });
@@ -101,7 +103,7 @@ export class InfoPage extends PageInterface implements OnInit {
     )
 
     if (!!(+localStorage.getItem('codeVerified'))) {
-      this.navController.navigateRoot('personal-data/questions');
+      this.navController.navigateRoot('personal-data/intake');
     } else {
       this.navController.navigateRoot('personal-data/verify');
     }

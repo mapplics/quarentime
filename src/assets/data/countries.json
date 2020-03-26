@@ -1,0 +1,50 @@
+[
+  {
+    "tag": "ar",
+    "name": {
+      "es": "Argentina",
+      "en": "Argentina",
+      "nl": "Argentinië",
+      "mk": "Аргентина",
+      "de": "Argentinien"
+    },
+    "flag": "argentina.svg",
+    "prefix" : "+54"
+  },
+  {
+    "tag": "mk",
+    "name": {
+      "es": "Macedonia",
+      "en": "Macedonia",
+      "nl": "Macedonië",
+      "mk": "Македонија",
+      "de": "Mazedonien"
+    },
+    "flag": "macedonia.svg",
+    "prefix" : "+389"
+  },
+  {
+    "tag": "de",
+    "name":{
+      "es": "Alemania",
+      "en": "Germany",
+      "nl": "Duitsland",
+      "mk": "Германија",
+      "de": "Deutschland"
+    },
+    "flag": "germany.svg",
+    "prefix" : "+49"
+  },
+  {
+    "tag": "nl",
+    "name": {
+      "es": "Holanda",
+      "en": "Netherlands",
+      "nl": "Nederland",
+      "mk": "Холандија",
+      "de": "Niederlande"
+    },
+    "flag": "netherlands.svg",
+    "prefix" : "+31"
+  }
+]

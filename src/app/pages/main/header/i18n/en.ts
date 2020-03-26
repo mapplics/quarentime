@@ -3,7 +3,8 @@ export const locale = {
     data: {
         HEADER: {
             CONTACT_TRACE: 'My contact trace ',
-            INVITE: 'Invite people'
+            INVITE: 'Invite people',
+            QUESTIONS_TITLE: 'Intake'
         }
     }
 };

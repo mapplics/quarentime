@@ -1,4 +1,4 @@
 <ion-item *ngFor="let c of countries" (click)="dismiss(c)">
     <ion-icon [src]="c.flag" slot="start"></ion-icon>
-    <ion-label>{{c.name}}</ion-label>
+    <ion-label>{{c.name[currentLanguage]}}</ion-label>
 </ion-item>

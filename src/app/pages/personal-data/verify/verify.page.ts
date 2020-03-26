@@ -73,7 +73,7 @@ export class VerifyPage extends PageInterface implements OnInit {
     this.form.reset();
     this.presentToast(this.translates.VERIFICATION_FAILED.TITLE, this.translates.VERIFICATION_FAILED.MESSAGE);
     localStorage.setItem('codeVerified', '1');
-    this.navController.navigateRoot('personal-data/questions');
+    this.navController.navigateRoot('personal-data/intake');
   }
 
 }

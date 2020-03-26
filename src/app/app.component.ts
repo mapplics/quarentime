@@ -5,6 +5,7 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AuthService} from './providers/auth.service';
 import {Router} from '@angular/router';
+import {PersonalDataService} from './pages/personal-data/personal-data.service';
 
 @Component({
     selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent {
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private dataService: PersonalDataService
     ) {
         this.initializeApp();
     }
@@ -25,6 +27,7 @@ export class AppComponent {
     initializeApp() {
         this.authService.init();
         this.platform.ready().then(() => {
+            this.dataService.loadData();
             if (this.platform.is('ios')) {
                 this.statusBar.styleDefault();
             }
