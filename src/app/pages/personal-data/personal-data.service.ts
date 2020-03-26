@@ -21,12 +21,12 @@ export class PersonalDataService extends BaseService {
                 public http: HttpClient) {
         super(router);
         this._questionAnswers = {
-            hasRecentTravelLast14Days: null,
-            hasRecentTravelBeforeSymptoms: null,
-            hasCloseContact: null,
-            hasSymptoms: null,
-            hasRecovered: null,
-            isTestedPositive: null,
+            hasRecentTravelLast14Days: false,
+            hasRecentTravelBeforeSymptoms: false,
+            hasCloseContact: false,
+            hasSymptoms: false,
+            hasRecovered: false,
+            isTestedPositive: false,
             symptoms: []
         };
     }
@@ -64,6 +64,14 @@ export class PersonalDataService extends BaseService {
         this._questions = data;
     }
 
+    get currentStatus(): any {
+        return JSON.parse(localStorage.getItem('health'));
+    }
+
+    set currentStatus(data) {
+        localStorage.setItem('health', data);
+    }
+
     // send personal information
     sendPersonalInformation(): Observable<{} | GeneralResponse> {
         debugger;
@@ -91,7 +99,7 @@ export class PersonalDataService extends BaseService {
         return this.http.post<GeneralResponse>(url, this._questionAnswers)
             .pipe(
                 map((res: GeneralResponse) => {
-                    debugger;
+                    this.currentStatus = res.result;
                     return res;
                 }),
                 catchError(err => {

@@ -2,9 +2,10 @@
 
 ion-card {
   min-height: 85%;
+  height: 85%;
   margin-left: 2px;
   margin-right: 2px;
-  margin-botom: 10px;
+  margin-bottom: 10px;
 }
 .fixed-content {
   height: 100%;
@@ -15,4 +16,12 @@ ion-card {
   color: #ffffff;
   font-size: 50px;
   letter-spacing: -0.1px;
+}
+.h-100 {
+  min-height: 100% !important;
+  height: 100% !important;
+}
+
+.align-between{
+  align-content: space-between
 }

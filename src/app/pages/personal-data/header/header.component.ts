@@ -14,6 +14,8 @@ import {PersonalDataService} from '../personal-data.service';
 export class HeaderComponent extends PageInterface implements OnInit {
 
   @Input() title: string;
+  @Input() subTitle: string;
+  @Input() name: string;
   @Input() currentStep: number;
   @Input() completedSteps: number[] = [];
 

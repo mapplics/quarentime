@@ -1,16 +1,21 @@
-<app-header title="HEALTH_STATUS" [currentStep]="3" [completedSteps]="[1,2]"></app-header>
+<app-header title="HEALTH_STATUS" [currentStep]="3" [completedSteps]="[1,2]"
+            subTitle="HEALTH_STATUS_SUBT" [name]="userName"></app-header>
 
 <ion-content class="ion-padding" >
   <div slot="fixed" class="fixed-content">
-    <ion-card color="purple">
-        <ion-row class="ion-align-items-baseline">
-          <ion-col size="12" class="ion-text-end">
-            <ion-icon name="help-circle-outline" size="large" color="light" (click)="showHelp()"></ion-icon>
-          </ion-col>
-          <ion-col size="12">
-            <span class="status-text">High-RISK patient</span>
-          </ion-col>
-        </ion-row>
+    <ion-card [ngStyle]="{'background-color': status.color_hex}">
+      <ion-row class="h-100 align-between">
+        <ion-col size="12" class="ion-text-end">
+          <ion-icon name="help-circle-outline" size="large" color="light" (click)="showHelp()"></ion-icon>
+        </ion-col>
+        <ion-col size="12" class="ion-padding">
+          <ion-icon *ngIf="showBadge()" [src]="getIcon()" size="large"></ion-icon>
+          <div>
+            <ion-badge mode="ios" color="medium" *ngIf="showBadge()">{{('STATUS.'+status.status+'.TAG') | translate}}</ion-badge>
+          </div>
+          <span class="status-text">{{('STATUS.'+status.status+'.TITLE') | translate}}</span>
+        </ion-col>
+      </ion-row>
     </ion-card>
     <ion-button (click)="goToApp()" fill="solid" color="primary" expand="block">{{'STATUS.BUTTON' | translate}}</ion-button>
   </div>

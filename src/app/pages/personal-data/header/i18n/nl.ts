@@ -6,7 +6,8 @@ export const locale = {
             SYMPTOMS: 'My current symptoms',
             QUESTIONS: 'Are you at risk?',
             VERIFY_ACCOUNT: 'Verify account',
-            HEALTH_STATUS: 'Ready to use Quarentime.org! This is your initial status.',
+            HEALTH_STATUS: 'Thanks',
+            HEALTH_STATUS_SUBT: 'Your initial status is:',
             INTAKE: 'Quarentime Intake'
         }
     }
