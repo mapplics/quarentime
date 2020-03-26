@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: QuestionsPage
-  }
+  },
 ];
 
 @NgModule({

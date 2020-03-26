@@ -3,33 +3,23 @@
     <ion-row class="ion-text-center ion-padding-horizontal">
       <ion-col size="4" class="ion-no-padding progressBar">
         <div class="round-icon" [ngClass]="getColor(1)" (click)="navigateTo('info')">
-          <p class="ion-no-margin">1</p>
+          <p *ngIf="!isCompleted(1)" class="ion-no-margin">1</p>
+          <ion-icon color="success" *ngIf="isCompleted(1)" name="checkmark-sharp" ></ion-icon>
         </div>
       </ion-col>
       <ion-col size="4"  class="ion-no-padding progressBar">
-        <div class="round-icon" [ngClass]="getColor(2)" (click)="navigateTo('questions')">
-          <p class="ion-no-margin">2</p>
+        <div class="round-icon" [ngClass]="getColor(2)" (click)="navigateTo('intake')">
+          <p *ngIf="!isCompleted(2)" class="ion-no-margin">2</p>
+          <ion-icon color="success" *ngIf="isCompleted(2)" name="checkmark-sharp"></ion-icon>
         </div>
       </ion-col>
       <ion-col size="4"  class="ion-no-padding progressBar last">
         <div class="round-icon" [ngClass]="getColor(3)" (click)="navigateTo('health-status')">
-          <p class="ion-no-margin">3</p>
+          <p *ngIf="!isCompleted(3)" class="ion-no-margin">3</p>
+          <ion-icon color="success" *ngIf="isCompleted(3)" name="checkmark-sharp"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
-<!--    <div class="row">-->
-<!--      <div class="col-xs-12 col-md-8 offset-md-2 block border">-->
-<!--        <div class="wrapper-progressBar">-->
-<!--          <ul class="progressBar">-->
-<!--            <div class="round-icon" [ngClass]="getColor(1)" (click)="navigateTo('info')">-->
-<!--              <p class="ion-no-margin active">1</p>-->
-<!--            </div>-->
-<!--            <li class="active">2</li>-->
-<!--            <li>3</li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
     <h1 class="ion-margin-top ion-text-wrap ion-padding-start">{{'HEADER.'+ title | translate}}</h1>
 
   </ion-toolbar>

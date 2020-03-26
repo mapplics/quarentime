@@ -19,14 +19,28 @@ export class PersonalDataModel {
 export class CountryModel {
 
     tag: string;
-    name: string;
+    name: any;
     flag: string;
     prefix: string;
 
-    constructor(tag, name, flag, prefix) {
-        this.tag = tag;
-        this.name = name;
-        this.flag = 'assets/icon/flags/' + flag;
-        this.prefix = prefix;
+    constructor() {
+    }
+
+    public static createFromObject(d: any): CountryModel {
+        const data = new CountryModel();
+        data.tag = d.tag;
+        data.name = d.name;
+        data.flag = 'assets/icon/flags/' + d.flag;
+        data.prefix = d.prefix;
+        return data;
+    }
+
+    public static createFromObjectCollection(objects: any): CountryModel[] {
+        const array: CountryModel [] = [];
+
+        for (const obj of objects) {
+            array.push(this.createFromObject(obj));
+        }
+        return array;
     }
 }

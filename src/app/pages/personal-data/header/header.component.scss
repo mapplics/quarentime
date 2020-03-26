@@ -15,8 +15,9 @@ ion-header {
     border: 1px solid  var(--ion-color-dark);
   }
   &.completed {
-    background-color: var(--ion-color-dark);
-    color: var(--ion-color-medium);
+    background-color: rgb(168, 249, 161);
+    border: 1px solid rgb(168, 249, 161);
+    //color: rgb(168, 249, 161);
   }
 }
 
@@ -31,6 +32,6 @@ ion-header {
 }
 
 .progressBar div.completed:after {
-  background-color: var(--ion-color-dark);
+  background-color: rgb(168, 249, 161);
 }
 

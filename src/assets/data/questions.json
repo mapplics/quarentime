@@ -1,0 +1,102 @@
+[
+  {
+    "question": {
+      "en": "1. Do you have tested positive of COVID-19?",
+      "es": "1. ¿Te hiciste la prueba de COVID-19 y dió positivo?"
+    },
+    "first": true,
+    "type": "simple",
+    "comment":  null,
+    "options": null,
+    "yesQuestion": {
+      "question": {
+        "en": "1a. Have you been discharged from Covid-19?",
+        "es": "1a. ¿Fuiste descartado de covid?"
+      },
+      "type": "simple",
+      "comment":  null
+    },
+    "noQuestion": {
+      "question": {
+        "en": "Have you developed any of the following new symptoms within the last 14 days?",
+        "es": "¿Tuviste alguno de estos síntomas dentro de los últimos 14 días?"
+      },
+      "type": "multiple",
+      "comment": {
+        "en": "Select at least two symptoms if applicable.",
+        "es": "Seleccione al menos 2 síntomas que hayas experimentado"
+      },
+      "options": [
+        {
+          "text": {
+            "en": "Fever",
+            "es": "Fiebre"
+          },
+          "value": "Fever"
+        },
+        {
+          "text": {
+            "en": "Cough (dry)",
+            "es": "Tos (seca)"
+          },
+          "value": "DryCough"
+        },
+        {
+          "text": {
+            "en": "Difficulty breathing",
+            "es": "Dificultad para respirar"
+          },
+          "value": "DifficultBreathing"
+        },
+        {
+          "text": {
+            "en": "Throat pain and/or runny nose",
+            "es": "Dolor de garganta y/o mucosidad"
+          },
+          "value": "ThroatPainRunnyNose"
+        },
+        {
+          "text": {
+            "en": "Fatigue",
+            "es": "Fatiga"
+          },
+          "value": "Fatigue"
+        },
+        {
+          "text": {
+            "en": "None of the above",
+            "es": "Ninguna de las anteriores"
+          },
+          "value": null
+        }
+      ],
+      "yesQuestion": {
+        "question": {
+          "en": "2a. Have you travelled to a high risk area before your symptom started?",
+          "es": "2a. ¿Viajaste a algún área des riesgo antes de experimentar los síntomas?"
+        },
+        "type": "simple",
+        "comment": null,
+        "options": null,
+        "noQuestion": {
+          "question": {
+            "en": "2b. Have you come in close contact (less than 1m/ 3feet) with a confirmed or suspected COVID-19 case?",
+            "es": "2b. ¿Estuviste en contacto cercano (menos de 1mt) con una persona con COVID-19?"
+          },
+          "type": "simple",
+          "comment": null,
+          "options": null
+        }
+      },
+      "noQuestion": {
+        "question": {
+          "en": "2a. Have you travelled to a high risk area within the last 14 days?",
+          "es": "2a. ¿Viajaste a un aŕea de riesgo dentro de los últimos 14 días?"
+        },
+        "type": "simple",
+        "comments": null,
+        "options": null
+      }
+    }
+  }
+]

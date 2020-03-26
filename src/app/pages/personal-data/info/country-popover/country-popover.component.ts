@@ -11,12 +11,14 @@ import {debug} from 'util';
 export class CountryPopoverComponent implements OnInit {
 
   countries: CountryModel[];
+  currentLanguage: string;
 
   constructor(private popoverController: PopoverController,
               private navParams: NavParams) { }
 
   ngOnInit() {
     this.countries = this.navParams.data.countries;
+    this.currentLanguage = this.navParams.data.currentLanguage;
   }
 
   dismiss(country: CountryModel): void {

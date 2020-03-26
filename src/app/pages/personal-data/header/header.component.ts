@@ -54,7 +54,7 @@ export class HeaderComponent extends PageInterface implements OnInit {
       case 'info':
         return true;
         break;
-      case 'questions':
+      case 'intake':
         return !!(+localStorage.getItem('codeVerified'));
         break;
       case 'health-status':
