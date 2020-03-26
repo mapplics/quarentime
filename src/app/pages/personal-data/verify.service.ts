@@ -22,7 +22,7 @@ export class VerifyService extends BaseService {
 
     // send personal information
     sendVerifyCode(): Observable<{} | GeneralResponse> {
-        const url = `${this._API}User//User/VerifyPhone`;
+        const url = `${this._API}User/VerifyPhone`;
         return this.http.post<GeneralResponse>(url, null)
             .pipe(
                 map((res: GeneralResponse) => {
@@ -30,40 +30,6 @@ export class VerifyService extends BaseService {
                 }),
                 catchError(err => {
                     return this.handleError(err);
-                })
-            );
-    }
-
-    
-
-    loadData() {
-        this.getCountries().pipe(take(1)).subscribe(
-            (data: CountryModel[]) => {
-                this.countries = data;
-            });
-
-        this.getQuestions().pipe(take(1)).subscribe(
-            (data: QuestionModel[]) => {
-                this.questions = data;
-            });
-    }
-
-    private getCountries(): Observable<any> {
-        const url = 'assets/data/countries.json';
-        return this.http.get<any>(url)
-            .pipe(
-                map(res => {
-                    return CountryModel.createFromObjectCollection(res);
-                })
-            );
-    }
-
-    private getQuestions(): Observable<any> {
-        const url = 'assets/data/questions.json';
-        return this.http.get<any>(url)
-            .pipe(
-                map(res => {
-                    return QuestionModel.createFromObjectCollection(res);
                 })
             );
     }
