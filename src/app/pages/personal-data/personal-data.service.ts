@@ -81,7 +81,7 @@ export class PersonalDataService extends BaseService {
             name: this._personalData.name,
             surname: this._personalData.surename,
             age: this._personalData.age,
-            phoneNumber: this._personalData.phone
+            phone_number: this._personalData.phone
         })
             .pipe(
                 map((res: GeneralResponse) => {

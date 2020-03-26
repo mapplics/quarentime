@@ -6,6 +6,11 @@ import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NavController, ToastController} from '@ionic/angular';
+import { LoadingHelperService } from 'src/app/shared/helpers/loading-helper.service';
+import { VerifyService } from '../verify.service';
+import { take } from 'rxjs/internal/operators';
+import { GeneralResponse } from 'src/app/models/general-response.model';
+import { ToastHelperService } from 'src/app/shared/helpers/toast-helper.service';
 
 @Component({
   selector: 'app-verify',
@@ -19,6 +24,9 @@ export class VerifyPage extends PageInterface implements OnInit {
   constructor(public translateService: TranslateService,
               private formBuilder: FormBuilder,
               private navController: NavController,
+              private loadingCtrl: LoadingHelperService,
+              private verifyService: VerifyService,
+              private toastCtrl: ToastHelperService,
               private toastController: ToastController) {
     super(translateService, english, spanish);
     this.getTranslations('VERIFY.ERRORS');
@@ -42,6 +50,8 @@ export class VerifyPage extends PageInterface implements OnInit {
   }
 
   ngOnInit() {
+    this.sendCode();
+
     this.getTranslations('VERIFY.ERRORS');
     this.form = this.formBuilder.group({
       digit1: ['', [Validators.required, Validators.maxLength(1)]],
@@ -57,23 +67,45 @@ export class VerifyPage extends PageInterface implements OnInit {
         this.validateCode();
       }
     });
-
   }
 
   resendCode(): void {
-    // todo
+    this.sendCode();
   }
 
   policies(): void {
     // todo
   }
 
-  validateCode(): void {
-    // todo validation
-    this.form.reset();
-    this.presentToast(this.translates.VERIFICATION_FAILED.TITLE, this.translates.VERIFICATION_FAILED.MESSAGE);
-//    localStorage.setItem('codeVerified', '1');
-    this.navController.navigateRoot('personal-data/intake');
+  sendCode() {
+    this.verifyService.sendVerifyCode().pipe(
+      take(1)
+    ).subscribe(
+      (response: GeneralResponse) => {
+          console.log(response);
+        }
+      )
   }
 
+  validateCode(): void {
+    // todo validation
+    let code = `${this.form.value.digit1}${this.form.value.digit2}${this.form.value.digit3}-${this.form.value.digit4}${this.form.value.digit5}${this.form.value.digit6}`;
+    this.loadingCtrl.presentLoading(this.translateService.instant('INFO.SENDING'))
+      .then(() => {
+      this.verifyService.confirmVerifyCode(code).pipe(
+        take(1)
+      ).subscribe(
+        (response: GeneralResponse) => {
+          if (response.error) {
+            this.presentToast(this.translates.VERIFICATION_FAILED.TITLE, this.translates.VERIFICATION_FAILED.MESSAGE);
+            this.form.reset();
+          } else {
+            this.toastCtrl.successToast(this.translates.VERIFICATION_SUCCESS);          
+            this.navController.navigateRoot('personal-data/intake');
+          }
+          this.loadingCtrl.dismiss();
+        }        
+      );
+    }); 
+  }
 }

@@ -39,7 +39,7 @@ export class LoginPage extends PageInterface implements OnInit {
     }
 
     onLoginFacebook() {
-        if (this.platform.is('desktop')) {
+        if (this.platform.is('mobileweb')) {
             this.goToOnboarding();
             return;
         }
@@ -77,7 +77,7 @@ export class LoginPage extends PageInterface implements OnInit {
     }
 
     onLoginGoogle() {
-        if (this.platform.is('desktop')) {
+        if (this.platform.is('mobileweb')) {
             this.goToOnboarding();
             return;
         }

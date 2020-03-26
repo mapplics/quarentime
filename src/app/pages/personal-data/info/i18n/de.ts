@@ -3,6 +3,7 @@ export const locale = {
     data: {        
         INFO: {
             SENDING: 'Sending data',
+            SENDING_ERROR: `We couldn't send the data, please check your network connection and try again.`,
             NAME: 'Name',
             SURENAME: 'Surename',
             AGE: 'Age',
