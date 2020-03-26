@@ -30,9 +30,6 @@ export class YesAnswerPage extends PageInterface implements OnInit {
     this.question.answer = value;
     this.personalDataService._questionAnswers.hasRecovered = value;
     this.navController.navigateForward('personal-data/intake/confirm');
-
-    // else {
-    // }
   }
 
 }

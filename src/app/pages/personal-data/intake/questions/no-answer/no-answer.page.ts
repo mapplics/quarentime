@@ -33,9 +33,12 @@ export class NoAnswerPage extends PageInterface implements OnInit {
     const feverOpt = this.question.options.find(x => x.value === 'Fever');
     // todo dependiendo de la respuesta navega a una u a otra
     if (selected.length === 1 && selected.includes(noneOpt)) {
+      this.personalDataService._questionAnswers.symptoms = [];
+      this.personalDataService._questionAnswers.hasSymptoms = false;
       this.personalDataService.currentQuestion = this.question.noQuestion;
       this.navController.navigateForward('/personal-data/intake/questions/noAnswer/noAnswer');
     } else {
+      this.personalDataService._questionAnswers.hasSymptoms = true;
       this.personalDataService.currentQuestion = this.question.yesQuestion;
       this.navController.navigateForward('/personal-data/intake/questions/noAnswer/yesAnswer');
     }
