@@ -15,6 +15,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 import { VerifyService } from '../verify.service';
 import { GeneralResponse } from 'src/app/models/general-response.model';
 import { LoadingHelperService } from 'src/app/shared/helpers/loading-helper.service';
+import { ToastHelperService } from 'src/app/shared/helpers/toast-helper.service';
 
 @Component({
   selector: 'app-info',
@@ -31,7 +32,8 @@ export class InfoPage extends PageInterface implements OnInit {
               private authService: AuthService,
               private verifyService: VerifyService,
               private formBuilder: FormBuilder,
-              private navController: NavController,              
+              private navController: NavController,        
+              private toastCtrl: ToastHelperService,      
               private personalDataService: PersonalDataService,
               private popoverController: PopoverController) {
     super(translateService, english, spanish);
@@ -112,13 +114,17 @@ export class InfoPage extends PageInterface implements OnInit {
           ).subscribe(      
             (response: GeneralResponse) => {
               if (response.error) {
-                // todo
+                this.toastCtrl.errorToast(this.translateService.instant('INFO.SENDING_ERROR'));                
               } else {
-                this.goToNextPage();
+                this.goToNextPage();                
               }
+              this.loadingCtrl.dismiss();
+            },
+            () => {
+              this.toastCtrl.errorToast(this.translateService.instant('INFO.SENDING_ERROR'));                
+              this.loadingCtrl.dismiss();
             }
-          )
-        
+          ) 
         });
     });
   }

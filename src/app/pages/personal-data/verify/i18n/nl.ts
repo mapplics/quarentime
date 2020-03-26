@@ -2,6 +2,8 @@ export const locale = {
     lang: 'nl',
     data: {
         VERIFY: {
+            VERIFYING: 'Verifying code',
+            VERIFICATION_SUCCESS: 'The verification was successful',
             EXPLANATION: 'Enter the 6 digits code we sent you via SMS to continue',
             RESEND_CODE: {
                 QUESTION: "Didn't get the code?",
