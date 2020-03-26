@@ -39,15 +39,17 @@ export class AuthService extends BaseService {
         firebase.initializeApp(firebaseConfig);
         // Emit logged in status whenever auth state changes
         firebase.auth().onAuthStateChanged(firebaseUser => {
-        
+            debugger;
             if (firebaseUser) {
                 this.auth = new AuthModel();
                 this.auth.name = firebaseUser.displayName;
                 this.auth.email = firebaseUser.email;
+                localStorage.setItem('quarentimeEmail', firebaseUser.email);
                 this.auth.refreshToken = firebaseUser.refreshToken;
                 this.auth.photoUrl = firebaseUser.photoURL;
                 this.auth.loginType = localStorage.getItem('quarentimeType');
                 this.loggedIn.next(true);
+                this.getTokenRefresh()
             } else {
                 this.loggedIn.next(false);
             }
@@ -58,6 +60,11 @@ export class AuthService extends BaseService {
              });
              */
         });
+
+        // firebase.auth().onIdTokenChanged(firebaseUser => {
+        //     debugger;
+
+        // })
     }
 
     saveUserLogged(user, type, refresh = false) {
@@ -94,6 +101,10 @@ export class AuthService extends BaseService {
         return 'Bearer ' + localStorage.getItem('quarentimeToken');
     }
 
+    getEmail(): string {
+        return localStorage.getItem('quarentimeEmail');
+    }
+
     refreshToken(): Promise<string> {
        return this.getActiveUser().getIdToken(true).then(
             (newToken) => { 
@@ -109,7 +120,12 @@ export class AuthService extends BaseService {
     }
 
     get isAuthenticated() {
-        // todo => ver esto
-        return true;
+        // si hay token esta ok, y lo mando a refresacar
+        if (this.getToken) {
+            // refresco el token por las dudas            
+            return true;
+        } else {
+            return false;
+        }
     }
 }

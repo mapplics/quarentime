@@ -4,8 +4,9 @@ import {Router} from '@angular/router';
 import {CountryModel, PersonalDataModel} from './models/personal-data.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import {catchError, map} from "rxjs/internal/operators";
+import {catchError, map, retry} from "rxjs/internal/operators";
 import { GeneralResponse } from 'src/app/models/general-response.model';
+import { AuthService } from 'src/app/providers/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import { GeneralResponse } from 'src/app/models/general-response.model';
 export class PersonalDataService extends BaseService {
 
   constructor(public router: Router,
+              public authService: AuthService,
               public http: HttpClient) {
     super(router);
     this._countries = [
@@ -36,11 +38,13 @@ export class PersonalDataService extends BaseService {
 
   // send personal information
   sendPersonalInformation(): Observable<{} | GeneralResponse> {
+
+    
     const url = `${this._API}User/PersonalInformation`;
     // todo ver!!!
     debugger;
     return this.http.post<GeneralResponse>(url, {
-        email: "a@aa.com",
+        email: this.authService.getEmail(),
         name: this._personalData.name,
         surname: this._personalData.surename,
         age: this._personalData.age,
@@ -50,7 +54,8 @@ export class PersonalDataService extends BaseService {
             map((res: GeneralResponse) => {
               debugger;
                 return res;
-            }),
+            })
+            ,
             catchError(err => {
                 return this.handleError(err);
             })

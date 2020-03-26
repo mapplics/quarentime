@@ -33,7 +33,7 @@ export class LoginPage extends PageInterface implements OnInit {
     ngOnInit(): void {
         super.ngOnInit();
 
-        if (this.authService.isAuthenticated) {
+        if (this.authService.isAuthenticated) {            
             this.goToPersonalData();
         }
     }

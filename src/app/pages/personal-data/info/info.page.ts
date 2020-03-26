@@ -9,6 +9,7 @@ import {NavController, PopoverController} from '@ionic/angular';
 import {CountryModel, PersonalDataModel} from '../models/personal-data.model';
 import {PersonalDataService} from '../personal-data.service';
 import {CountryPopoverComponent} from './country-popover/country-popover.component';
+import { take } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-info',
@@ -93,7 +94,9 @@ export class InfoPage extends PageInterface implements OnInit {
     this.personalDataService.personalData = data;
 
     // send data to server
-    this.personalDataService.sendPersonalInformation().subscribe(
+    this.personalDataService.sendPersonalInformation().pipe(
+      take(1)
+    ).subscribe(      
       (response) => console.log(response)
     )
 
