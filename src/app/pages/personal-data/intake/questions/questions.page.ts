@@ -24,10 +24,10 @@ export class QuestionsPage extends PageInterface implements OnInit {
     super(translateService, english, spanish);
   }
 
-
   ngOnInit() {
     this.questions = this.personalDataService.questions;
     this.currentQuestion = this.questions[0];
+    this.personalDataService.currentQuestion = this.currentQuestion;
   }
 
   onCheck(): void {
@@ -44,39 +44,28 @@ export class QuestionsPage extends PageInterface implements OnInit {
 
   answer(value) {
     this.currentQuestion.answer = value;
-    if (!this.lastStep()) {
-      this.currentQuestion = value ? this.currentQuestion.yesQuestion : this.currentQuestion.noQuestion;
-      console.log(this.currentQuestion);
-      this.navController.navigateRoot('/personal-data/intake/questions');
+    this.personalDataService._questionAnswers.isTestedPositive = value;
+    if (value) {
+      this.personalDataService.currentQuestion = this.currentQuestion.yesQuestion;
+      this.navController.navigateForward(`/personal-data/intake/questions/yesAnswer`);
     } else {
-      this.navController.navigateForward('personal-data/intake/confirm');
+      this.personalDataService.currentQuestion = this.currentQuestion.noQuestion;
+      this.navController.navigateForward(`/personal-data/intake/questions/noAnswer`);
     }
+    // else {
+    //   this.navController.navigateForward('personal-data/intake/confirm');
+    // }
   }
 
   goBack(): void {
     this.navController.pop();
   }
 
-  next(): void {
-    const selected = this.currentQuestion.options.filter(x => x.selected);
-    const noneOpt = this.currentQuestion.options.find(x => x.value === null);
-    debugger;
-    if (!this.lastStep()) {
-      if (selected.length === 1 && selected.includes(noneOpt)) {
-        this.currentQuestion = this.currentQuestion.noQuestion;
-      } else {
-        this.currentQuestion = this.currentQuestion.yesQuestion;
-      }
-      this.navController.navigateRoot('/personal-data/intake/questions');
-    } else {
-      this.navController.navigateForward('personal-data/intake/confirm');
-    }
-  }
 
   changeChecked(event, opt): void {
     if (opt.value === null) {
       if (event.detail.checked) {
-       this.disableAll();
+        this.disableAll();
       } else {
         this.enableAll();
       }

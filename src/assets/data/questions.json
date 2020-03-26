@@ -18,8 +18,8 @@
     },
     "noQuestion": {
       "question": {
-        "en": "Have you developed any of the following new symptoms within the last 14 days?",
-        "es": "¿Tuviste alguno de estos síntomas dentro de los últimos 14 días?"
+        "en": "2. Have you developed any of the following new symptoms within the last 14 days?",
+        "es": "2. ¿Tuviste alguno de estos síntomas dentro de los últimos 14 días?"
       },
       "type": "multiple",
       "comment": {

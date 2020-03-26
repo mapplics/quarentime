@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { QuestionsPage } from './questions.page';
+import { NoAnswerPage } from './no-answer.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: QuestionsPage
-  },
-  {
-    path: 'yesAnswer',
-    loadChildren: () => import('./yes-answer/yes-answer.module').then( m => m.YesAnswerPageModule)
+    component: NoAnswerPage
   },
   {
     path: 'noAnswer',
     loadChildren: () => import('./no-answer/no-answer.module').then( m => m.NoAnswerPageModule)
+  },
+  {
+    path: 'yesAnswer',
+    loadChildren: () => import('./yes-answer/yes-answer.module').then( m => m.YesAnswerPageModule)
   },
 ];
 
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class QuestionsPageRoutingModule {}
+export class NoAnswerPageRoutingModule {}

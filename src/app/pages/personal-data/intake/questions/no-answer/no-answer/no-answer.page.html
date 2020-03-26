@@ -1,0 +1,15 @@
+<ion-header class="ion-no-border">
+  <app-header title="QUESTIONS_TITLE" [btnBack]="true" [defaultHref]="'../../questions'"></app-header>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <div>
+    <p><strong>{{question.question[currentLanguage]}}</strong></p>
+<!--    <p *ngIf="question.comment"><i>{{question.comment[currentLanguage]}}</i></p>-->
+    <ion-buttons>
+      <ion-button [color]="question.selectedYes ? 'dark' : 'medium'" fill="solid" (click)="answer(true)">{{'QUESTIONS.YES' | translate}}</ion-button>
+      <ion-button [color]="question.selectedNo ? 'dark' : 'medium'" fill="solid" (click)="answer( false)">{{'QUESTIONS.NO' | translate}}</ion-button>
+    </ion-buttons>
+  </div>
+</ion-content>

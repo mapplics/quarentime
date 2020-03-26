@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <app-header title="QUESTIONS_TITLE" [btnBack]="true" [defaultHref]="'../../questions'"></app-header>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <div>
+    <p><strong>{{question.question[currentLanguage]}}</strong></p>
+    <p *ngIf="question.comment"><i>{{question.comment[currentLanguage]}}</i></p>
+    <div>
+      <ion-item *ngFor="let opt of question.options" lines="none" detail="false">
+        <ion-checkbox [(ngModel)]="opt.selected"
+                      (ionChange)="changeChecked($event, opt)"
+                      [disabled]="opt.disabled">
+        </ion-checkbox>
+        <p class="ion-margin-start">{{opt.text[currentLanguage]}}</p>
+      </ion-item>
+    </div>
+  </div>
+
+</ion-content>

@@ -14,10 +14,21 @@ import { AuthService } from 'src/app/providers/auth.service';
 })
 export class PersonalDataService extends BaseService {
 
+    public _questionAnswers: any;
+
     constructor(public router: Router,
                 private authService: AuthService,
                 public http: HttpClient) {
         super(router);
+        this._questionAnswers = {
+            hasRecentTravelLast14Days: null,
+            hasRecentTravelBeforeSymptoms: null,
+            hasCloseContact: null,
+            hasSymptoms: null,
+            hasRecovered: null,
+            isTestedPositive: null,
+            symptoms: []
+        };
     }
 
     private _personalData: PersonalDataModel;
@@ -37,6 +48,14 @@ export class PersonalDataService extends BaseService {
         this._countries = data;
     }
 
+    private _currentQuestion: QuestionModel;
+    get currentQuestion(): QuestionModel {
+        return this._currentQuestion;
+    }
+    set currentQuestion(data) {
+        this._currentQuestion = data;
+    }
+
     private _questions: QuestionModel[] = [];
     get questions(): QuestionModel[] {
         return this._questions;
@@ -47,7 +66,7 @@ export class PersonalDataService extends BaseService {
 
     // send personal information
     sendPersonalInformation(): Observable<{} | GeneralResponse> {
-      debugger;
+        debugger;
         const url = `${this._API}User/PersonalInformation`;
         return this.http.post<GeneralResponse>(url, {
             email: this.authService.getEmail(),
@@ -66,7 +85,20 @@ export class PersonalDataService extends BaseService {
             );
     }
 
-    
+    sendSurvey(): Observable<{} | GeneralResponse> {
+        debugger;
+        const url = `${this._API}User/Survey`;
+        return this.http.post<GeneralResponse>(url, this._questionAnswers)
+            .pipe(
+                map((res: GeneralResponse) => {
+                    debugger;
+                    return res;
+                }),
+                catchError(err => {
+                    return this.handleError(err);
+                })
+            );
+    }
 
     loadData() {
         this.getCountries().pipe(take(1)).subscribe(

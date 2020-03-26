@@ -8,7 +8,9 @@ export const locale = {
             TERMS_COND: 'Terms and Conditions',
             CONNECTOR: 'and',
             PRIVACY_POLICY: 'Privacy Policy',
-           BUTTON: 'Next'
+            BUTTON: 'Next',
+            LOADING: 'Loading...'
+
         }
     }
 }
