@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class PersonalDataService extends BaseService {
+export class VerifyService extends BaseService {
 
     constructor(public router: Router,
                 private authService: AuthService,
@@ -20,42 +20,10 @@ export class PersonalDataService extends BaseService {
         super(router);
     }
 
-    private _personalData: PersonalDataModel;
-    get personalData(): PersonalDataModel {
-        return this._personalData;
-    }
-
-    set personalData(data) {
-        this._personalData = data;
-    }
-
-    private _countries: CountryModel[] = [];
-    get countries(): CountryModel[] {
-        return this._countries;
-    }
-    set countries(data) {
-        this._countries = data;
-    }
-
-    private _questions: QuestionModel[] = [];
-    get questions(): QuestionModel[] {
-        return this._questions;
-    }
-    set questions(data) {
-        this._questions = data;
-    }
-
     // send personal information
-    sendPersonalInformation(): Observable<{} | GeneralResponse> {
-      debugger;
-        const url = `${this._API}User/PersonalInformation`;
-        return this.http.post<GeneralResponse>(url, {
-            email: this.authService.getEmail(),
-            name: this._personalData.name,
-            surname: this._personalData.surename,
-            age: this._personalData.age,
-            phoneNumber: this._personalData.phone
-        })
+    sendVerifyCode(): Observable<{} | GeneralResponse> {
+        const url = `${this._API}User//User/VerifyPhone`;
+        return this.http.post<GeneralResponse>(url, null)
             .pipe(
                 map((res: GeneralResponse) => {
                     return res;

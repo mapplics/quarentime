@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: ''
+  api: 'https://quarentime-user-api-rcgccs4vga-ew.a.run.app/'
 };

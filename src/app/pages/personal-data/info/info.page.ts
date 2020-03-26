@@ -11,6 +11,7 @@ import {PersonalDataService} from '../personal-data.service';
 import {CountryPopoverComponent} from './country-popover/country-popover.component';
 import {ArrayHelper} from '../../../shared/helpers/array.helper';
 import { take } from 'rxjs/internal/operators';
+import { AuthService } from 'src/app/providers/auth.service';
 
 @Component({
   selector: 'app-info',
@@ -23,6 +24,7 @@ export class InfoPage extends PageInterface implements OnInit {
   countries: CountryModel[];
 
   constructor(public translateService: TranslateService,
+              private authService: AuthService,
               private formBuilder: FormBuilder,
               private navController: NavController,
               private personalDataService: PersonalDataService,
@@ -68,7 +70,7 @@ export class InfoPage extends PageInterface implements OnInit {
       name: ['', Validators.required],
       surename: ['', Validators.required],
       age: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.minLength(14)]],
+      phone: ['', [Validators.required, Validators.minLength(13)]],
       country: ['', Validators.required]
     });
     if (this.personalDataService.personalData) {
@@ -86,6 +88,7 @@ export class InfoPage extends PageInterface implements OnInit {
   }
 
   saveData(): void {
+    debugger;
     const data = new PersonalDataModel(
         this.form.value.name,
         this.form.value.surename,
@@ -95,18 +98,19 @@ export class InfoPage extends PageInterface implements OnInit {
     );
     this.personalDataService.personalData = data;
 
-    // send data to server
-    this.personalDataService.sendPersonalInformation().pipe(
-      take(1)
-    ).subscribe(      
-      (response) => console.log(response)
-    )
-
-    if (!!(+localStorage.getItem('codeVerified'))) {
-      this.navController.navigateRoot('personal-data/intake');
-    } else {
-      this.navController.navigateRoot('personal-data/verify');
-    }
+    // send data to server but first refresh the token
+    this.authService.refreshToken().then(() => {    
+      this.personalDataService.sendPersonalInformation().pipe(
+        take(1)
+      ).subscribe(      
+        (response) => console.log(response)
+      )
+      if (!!(+localStorage.getItem('codeVerified'))) {
+        this.navController.navigateRoot('personal-data/intake');
+      } else {
+        this.navController.navigateRoot('personal-data/verify');
+      }
+    });
   }
 
   policies(): void {

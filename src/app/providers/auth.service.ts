@@ -121,7 +121,7 @@ export class AuthService extends BaseService {
 
     get isAuthenticated() {
         // si hay token esta ok, y lo mando a refresacar
-        if (this.getToken) {
+        if (this.getEmail()) {
             // refresco el token por las dudas            
             return true;
         } else {
