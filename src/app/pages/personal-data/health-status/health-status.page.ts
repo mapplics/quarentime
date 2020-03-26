@@ -3,6 +3,9 @@ import {PageInterface} from '../../../core/page-interface';
 import {TranslateService} from '@ngx-translate/core';
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
+import {locale as macedonian} from './i18n/mk';
+import {locale as germany} from './i18n/de';
+import {locale as dutch} from './i18n/nl';
 import { NavController } from '@ionic/angular';
 import {PersonalDataService} from '../personal-data.service';
 
@@ -19,10 +22,10 @@ export class HealthStatusPage extends PageInterface implements OnInit {
   constructor(public translateService: TranslateService,
               private navController: NavController,
               private personalDataService: PersonalDataService) {
-    super(translateService, english, spanish);
+    super(translateService, english, spanish, macedonian, germany, dutch);
   }
 
-  ngOnInit() {;
+  ngOnInit() {
     this.userName = localStorage.getItem('quarentimeName');
     this.status = this.personalDataService.currentStatus;
   }

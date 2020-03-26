@@ -5,7 +5,10 @@ import {TranslateService} from '@ngx-translate/core';
 
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
-import {NavController, PopoverController, LoadingController} from '@ionic/angular';
+import {locale as macedonian} from './i18n/mk';
+import {locale as germany} from './i18n/de';
+import {locale as dutch} from './i18n/nl';
+import {NavController, PopoverController} from '@ionic/angular';
 import {CountryModel, PersonalDataModel} from '../models/personal-data.model';
 import {PersonalDataService} from '../personal-data.service';
 import {CountryPopoverComponent} from './country-popover/country-popover.component';
@@ -32,11 +35,11 @@ export class InfoPage extends PageInterface implements OnInit {
               private authService: AuthService,
               private verifyService: VerifyService,
               private formBuilder: FormBuilder,
-              private navController: NavController,        
-              private toastCtrl: ToastHelperService,      
+              private navController: NavController,
+              private toastCtrl: ToastHelperService,
               private personalDataService: PersonalDataService,
               private popoverController: PopoverController) {
-    super(translateService, english, spanish);
+    super(translateService, english, spanish, macedonian, germany, dutch);
   }
 
   @HostListener('window:keyup', ['$event'])
