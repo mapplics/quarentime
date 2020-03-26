@@ -14,6 +14,8 @@ export const locale = {
                     '2. Direct physical contact with a probable or confirmed case;;<br><br>' +
                     '3. Direct care for a patient with probable or confirmed COVID-19 disease without using proper personal protective equipment;<br><br>' +
                     '4. Other situations as indicated by local risk assessments.'
-            }}
+            },
+            NEXT: 'Next'
+        }
     }
 }

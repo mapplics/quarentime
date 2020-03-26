@@ -8,6 +8,7 @@ import { NoAnswerPageRoutingModule } from './no-answer-routing.module';
 
 import { NoAnswerPage } from './no-answer.page';
 import {HeaderModule} from '../../../../main/header/header.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {HeaderModule} from '../../../../main/header/header.module';
         FormsModule,
         IonicModule,
         NoAnswerPageRoutingModule,
-        HeaderModule
+        HeaderModule,
+        TranslateModule
     ],
   declarations: [NoAnswerPage]
 })

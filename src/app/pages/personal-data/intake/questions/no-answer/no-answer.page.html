@@ -16,6 +16,7 @@
         <p class="ion-margin-start">{{opt.text[currentLanguage]}}</p>
       </ion-item>
     </div>
+    <ion-button expand="block" (click)="next()" [disabled]="!valid">{{'QUESTIONS.NEXT' | translate}}</ion-button>
   </div>
 
 </ion-content>

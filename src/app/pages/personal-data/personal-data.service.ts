@@ -99,7 +99,7 @@ export class PersonalDataService extends BaseService {
         return this.http.post<GeneralResponse>(url, this._questionAnswers)
             .pipe(
                 map((res: GeneralResponse) => {
-                    this.currentStatus = res.result;
+                    this.currentStatus = JSON.stringify(res.result);
                     return res;
                 }),
                 catchError(err => {

@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestionModel} from '../../../models/question.model';
 import {TranslateService} from '@ngx-translate/core';
 import {NavController} from '@ionic/angular';
@@ -22,13 +22,6 @@ export class NoAnswerPage extends PageInterface implements OnInit {
     super(translateService, english, spanish);
   }
 
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
-      this.next();
-    }
-  }
-
   ngOnInit() {
     this.question = this.personalDataService.currentQuestion;
   }
@@ -37,6 +30,7 @@ export class NoAnswerPage extends PageInterface implements OnInit {
     const selected = this.question.options.filter(x => x.selected);
     this.personalDataService._questionAnswers.symptoms = selected.map(x => x.value);
     const noneOpt = this.question.options.find(x => x.value === null);
+    const feverOpt = this.question.options.find(x => x.value === 'Fever');
     // todo dependiendo de la respuesta navega a una u a otra
     if (selected.length === 1 && selected.includes(noneOpt)) {
       this.personalDataService.currentQuestion = this.question.noQuestion;
@@ -66,6 +60,10 @@ export class NoAnswerPage extends PageInterface implements OnInit {
   enableAll(): void {
     const opts = this.question.options.filter(x => x.value !== null);
     opts.forEach(x => x.disabled = false);
+  }
+
+  get valid(): boolean {
+    return this.question.options.filter(x => x.selected === true).length > 0;
   }
 
 }
