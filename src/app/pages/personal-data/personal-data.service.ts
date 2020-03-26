@@ -15,6 +15,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 export class PersonalDataService extends BaseService {
 
     constructor(public router: Router,
+                private authService: AuthService,
                 public http: HttpClient) {
         super(router);
     }
@@ -50,7 +51,7 @@ export class PersonalDataService extends BaseService {
         // todo ver!!!
         debugger;
         return this.http.post<GeneralResponse>(url, {
-            email: "a@aa.com",
+           email: this.authService.getEmail(),
             name: this._personalData.name,
             surname: this._personalData.surename,
             age: this._personalData.age,
