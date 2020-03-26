@@ -18,9 +18,6 @@ export const locale = {
 
             SKIP: 'SKIP',
             FINISH: "LET'S START",
-            FINISH: 'FINISH',
-            LASTTITLE: 'Thanks for signing up!'
-
         }
     }
 };
