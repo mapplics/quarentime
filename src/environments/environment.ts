@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://quarentime-user-api-rcgccs4vga-ew.a.run.app/'
+  api: 'https://quarentime-user-api-rcgccs4vga-ew.a.run.app/',
+  availableLangs: ['es', 'en', 'mk', 'nl', 'de']
 };
 
 /*

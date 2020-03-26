@@ -21,7 +21,7 @@ export class PageInterface implements OnInit, OnDestroy {
         if (this.translateService.currentLang) {
             this.currentLanguage = this.translateService.currentLang;
         } else {
-            this.currentLanguage = 'es';
+            this.currentLanguage = 'en';
             this.translateService.use(this.currentLanguage);
         }
     }

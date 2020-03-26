@@ -14,6 +14,8 @@ import {GooglePlus } from '@ionic-native/google-plus/ngx';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import {SocialSharing} from '@ionic-native/social-sharing/ngx';
+import {Globalization} from '@ionic-native/globalization/ngx';
+import {Contacts} from '@ionic-native/contacts/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -32,6 +34,8 @@ import {SocialSharing} from '@ionic-native/social-sharing/ngx';
         Facebook,
         GooglePlus,
         SocialSharing,
+        Globalization,
+        Contacts,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     ],
     bootstrap: [AppComponent]

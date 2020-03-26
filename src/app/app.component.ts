@@ -6,6 +6,10 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AuthService} from './providers/auth.service';
 import {Router} from '@angular/router';
 import {PersonalDataService} from './pages/personal-data/personal-data.service';
+import { Globalization } from '@ionic-native/globalization/ngx';
+import {TranslateService} from '@ngx-translate/core';
+import {environment} from '../environments/environment';
+
 
 @Component({
     selector: 'app-root',
@@ -19,7 +23,9 @@ export class AppComponent {
         private statusBar: StatusBar,
         private authService: AuthService,
         private router: Router,
-        private dataService: PersonalDataService
+        private dataService: PersonalDataService,
+        private globalization: Globalization,
+        private translateService: TranslateService
     ) {
         this.initializeApp();
     }
@@ -28,6 +34,15 @@ export class AppComponent {
         this.authService.init();
         this.platform.ready().then(() => {
             this.dataService.loadData();
+            this.globalization.getPreferredLanguage()
+                .then((res) => {
+                    const lang = res.value.split('-')[0];
+                    if (this.canChangeLang(lang)) {
+                        this.translateService.use(lang);
+                    }
+                })
+                .catch(e => console.log(e));
+
             if (this.platform.is('ios')) {
                 this.statusBar.styleDefault();
             }
@@ -37,5 +52,9 @@ export class AppComponent {
                 }
             });
         });
+    }
+
+    canChangeLang(lang): boolean {
+        return environment.availableLangs.includes(lang);
     }
 }
