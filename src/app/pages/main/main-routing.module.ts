@@ -61,10 +61,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'add-friends',
-    loadChildren: () => import('./add-friends/add-friends.module').then( m => m.AddFriendsPageModule)
-  },
-  {
     path: 'invite',
     loadChildren: () => import('./invite/invite.module').then( m => m.InvitePageModule)
   },

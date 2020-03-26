@@ -28,6 +28,7 @@ export class SharePage extends PageInterface implements OnInit {
     }
 
     onInvite() {
+        this.navCtrl.navigateForward('main/invite');
 
     }
 
