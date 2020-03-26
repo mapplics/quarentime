@@ -1,6 +1,7 @@
 import {OnDestroy, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, Subscription} from 'rxjs';
+import { LoadingController } from '@ionic/angular';
 
 export interface Locale {
     lang: string;
@@ -15,7 +16,8 @@ export class PageInterface implements OnInit, OnDestroy {
 
     public componentDestroyed = new Subject();
 
-    constructor(public translateService: TranslateService,
+    constructor(
+        public translateService: TranslateService,
                 ...translations) {
         this.loadTranslations(...translations);
         if (this.translateService.currentLang) {

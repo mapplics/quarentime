@@ -1,7 +1,8 @@
 export const locale = {
     lang: 'de',
-    data: {
+    data: {        
         INFO: {
+            SENDING: 'Sending data',
             NAME: 'Name',
             SURENAME: 'Surename',
             AGE: 'Age',

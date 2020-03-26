@@ -34,4 +34,33 @@ export class VerifyService extends BaseService {
             );
     }
 
+    // send personal information
+    confirmVerifyCode(code: string): Observable<{} | GeneralResponse> {
+        const url = `${this._API}User/ConfirmVerificationCode`;
+        return this.http.post<GeneralResponse>(url, {"code": code})
+            .pipe(
+                map((res: GeneralResponse) => {
+                    if (res.result) {
+                        localStorage.setItem('codeVerified', '1');                        
+                    } else {
+                        res.error = true;                                                
+                    }
+                    return res;
+                }),
+                catchError(err => {
+                    return this.handleError(err);
+                })
+            );
+    }
+
+    get isVerifiedUser(): boolean {
+        if (localStorage.getItem('codeVerified')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
+
 }

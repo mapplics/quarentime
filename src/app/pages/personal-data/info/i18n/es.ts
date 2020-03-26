@@ -2,6 +2,7 @@ export const locale = {
     lang: 'es',
     data: {
         INFO: {
+            SENDING: 'Sending data',
             NAME: 'Nombre',
             SURENAME: 'Apellido',
             AGE: 'Edad',
