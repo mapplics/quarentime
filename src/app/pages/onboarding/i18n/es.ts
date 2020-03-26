@@ -16,6 +16,7 @@ export const locale = {
 
             SKIP: 'SALTEAR',
             FINISH: 'FINALIZAR',
+            LASTTITLE: 'Gracias por registrarte!'
 
         }
     }

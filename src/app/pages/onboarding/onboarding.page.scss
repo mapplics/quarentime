@@ -7,7 +7,10 @@
 }
 
 .board-img{
- //aca iria el gif
+  background-image: url("/assets/img/Group 111@3x.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .slider{
@@ -76,4 +79,12 @@
 
 .row-padding {
   padding-left: 34px;
+}
+
+
+.buttonlast{
+  position: fixed;
+  left: 5px;
+  bottom: 10px;
+  right: 5px;
 }

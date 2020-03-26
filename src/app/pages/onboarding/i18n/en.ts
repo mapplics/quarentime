@@ -16,6 +16,7 @@ export const locale = {
 
             SKIP: 'SKIP',
             FINISH: 'FINISH',
+            LASTTITLE: 'Thanks for signing up!'
 
         }
     }

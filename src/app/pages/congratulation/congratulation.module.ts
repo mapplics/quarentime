@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { WhyContactPageRoutingModule } from './why-contact-routing.module';
+import { CongratulationPageRoutingModule } from './congratulation-routing.module';
 
-import { WhyContactPage } from './why-contact.page';
-import {HeaderModule} from "../../header/header.module";
+import { CongratulationPage } from './congratulation.page';
 import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
@@ -15,10 +14,9 @@ import {TranslateModule} from "@ngx-translate/core";
         CommonModule,
         FormsModule,
         IonicModule,
-        WhyContactPageRoutingModule,
-        HeaderModule,
+        CongratulationPageRoutingModule,
         TranslateModule
     ],
-  declarations: [WhyContactPage]
+  declarations: [CongratulationPage]
 })
-export class WhyContactPageModule {}
+export class CongratulationPageModule {}

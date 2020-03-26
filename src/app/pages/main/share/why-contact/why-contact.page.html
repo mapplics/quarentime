@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>why-contact</ion-title>
-  </ion-toolbar>
+  <app-header
+          title="WHY_CONTACT_TRACE"
+          [btnBack]="true"
+          [defaultHref]="'main/contact-trace/share'"
+  ></app-header>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+  <ion-label class="title ion-padding"> {{'WHY.TITLE' | translate}}</ion-label>
+
+
+  <div class="subtitle ion-padding-start ion-padding-top">{{'WHY.SUBTITLE' | translate}}</div>
+
+ <div class="text ion-padding-start ion-padding-end">{{'WHY.TEXT.LINE1' | translate}}</div>
+
+  <div class="subtitle ion-padding-start ion-padding-top">{{'WHY.SUBTITLE2' | translate}}</div>
+
+  <div class="text ion-padding-start ion-padding-end">{{'WHY.TEXT.LINE2' | translate}}</div>
+  <div class="text ion-padding-start ion-padding-end">{{'WHY.TEXT.LINE3' | translate}}</div>
+
+
+
+
 
 </ion-content>

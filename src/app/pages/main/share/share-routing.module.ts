@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: SharePage
+  },
+  {
+    path: 'why-contact',
+    loadChildren: () => import('./why-contact/why-contact.module').then( m => m.WhyContactPageModule)
   }
 ];
 
