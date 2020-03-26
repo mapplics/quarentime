@@ -2,7 +2,10 @@
   {
     "question": {
       "en": "1. Do you have tested positive of COVID-19?",
-      "es": "1. ¿Te hiciste la prueba de COVID-19 y dió positivo?"
+      "es": "1. ¿Te hiciste la prueba de COVID-19 y dió positivo?",
+      "mk": "",
+      "nl": "",
+      "de": ""
     },
     "first": true,
     "type": "simple",
@@ -11,7 +14,10 @@
     "yesQuestion": {
       "question": {
         "en": "1a. Have you been discharged from Covid-19?",
-        "es": "1a. ¿Fuiste descartado de covid?"
+        "es": "1a. ¿Fuiste descartado de covid?",
+        "mk": "",
+        "nl": "",
+        "de": ""
       },
       "type": "simple",
       "comment":  null
@@ -19,39 +25,57 @@
     "noQuestion": {
       "question": {
         "en": "2. Have you developed any of the following new symptoms within the last 14 days?",
-        "es": "2. ¿Tuviste alguno de estos síntomas dentro de los últimos 14 días?"
+        "es": "2. ¿Tuviste alguno de estos síntomas dentro de los últimos 14 días?",
+        "mk": "",
+        "nl": "",
+        "de": ""
       },
       "type": "multiple",
       "comment": {
         "en": "Select at least two symptoms if applicable.",
-        "es": "Seleccione al menos 2 síntomas que hayas experimentado"
+        "es": "Seleccione al menos 2 síntomas que hayas experimentado",
+        "mk": "",
+        "nl": "",
+        "de": ""
       },
       "options": [
         {
           "text": {
             "en": "Fever",
-            "es": "Fiebre"
+            "es": "Fiebre",
+            "mk": "",
+            "nl": "",
+            "de": ""
           },
           "value": "Fever"
         },
         {
           "text": {
             "en": "Cough (dry)",
-            "es": "Tos (seca)"
+            "es": "Tos (seca)",
+            "mk": "",
+            "nl": "",
+            "de": ""
           },
           "value": "DryCough"
         },
         {
           "text": {
             "en": "Difficulty breathing",
-            "es": "Dificultad para respirar"
+            "es": "Dificultad para respirar",
+            "mk": "",
+            "nl": "",
+            "de": ""
           },
           "value": "DifficultBreathing"
         },
         {
           "text": {
             "en": "Throat pain and/or runny nose",
-            "es": "Dolor de garganta y/o mucosidad"
+            "es": "Dolor de garganta y/o mucosidad",
+            "mk": "",
+            "nl": "",
+            "de": ""
           },
           "value": "ThroatPainRunnyNose"
         },
@@ -65,7 +89,10 @@
         {
           "text": {
             "en": "None of the above",
-            "es": "Ninguna de las anteriores"
+            "es": "Ninguna de las anteriores",
+            "mk": "",
+            "nl": "",
+            "de": ""
           },
           "value": null
         }
@@ -73,7 +100,10 @@
       "yesQuestion": {
         "question": {
           "en": "2a. Have you travelled to a high risk area before your symptom started?",
-          "es": "2a. ¿Viajaste a algún área des riesgo antes de experimentar los síntomas?"
+          "es": "2a. ¿Viajaste a algún área des riesgo antes de experimentar los síntomas?",
+          "mk": "",
+          "nl": "",
+          "de": ""
         },
         "type": "simple",
         "comment": null,
@@ -81,7 +111,10 @@
         "noQuestion": {
           "question": {
             "en": "2b. Have you come in close contact (less than 1m/ 3feet) with a confirmed or suspected COVID-19 case?",
-            "es": "2b. ¿Estuviste en contacto cercano (menos de 1mt) con una persona con COVID-19?"
+            "es": "2b. ¿Estuviste en contacto cercano (menos de 1mt) con una persona con COVID-19?",
+            "mk": "",
+            "nl": "",
+            "de": ""
           },
           "type": "simple",
           "comment": null,
@@ -91,7 +124,10 @@
       "noQuestion": {
         "question": {
           "en": "2a. Have you travelled to a high risk area within the last 14 days?",
-          "es": "2a. ¿Viajaste a un aŕea de riesgo dentro de los últimos 14 días?"
+          "es": "2a. ¿Viajaste a un aŕea de riesgo dentro de los últimos 14 días?",
+          "mk": "",
+          "nl": "",
+          "de": ""
         },
         "type": "simple",
         "comments": null,
