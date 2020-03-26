@@ -5,13 +5,16 @@ import {TranslateService} from '@ngx-translate/core';
 
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
-import {NavController, PopoverController} from '@ionic/angular';
+import {NavController, PopoverController, LoadingController} from '@ionic/angular';
 import {CountryModel, PersonalDataModel} from '../models/personal-data.model';
 import {PersonalDataService} from '../personal-data.service';
 import {CountryPopoverComponent} from './country-popover/country-popover.component';
 import {ArrayHelper} from '../../../shared/helpers/array.helper';
 import { take } from 'rxjs/internal/operators';
 import { AuthService } from 'src/app/providers/auth.service';
+import { VerifyService } from '../verify.service';
+import { GeneralResponse } from 'src/app/models/general-response.model';
+import { LoadingHelperService } from 'src/app/shared/helpers/loading-helper.service';
 
 @Component({
   selector: 'app-info',
@@ -24,9 +27,11 @@ export class InfoPage extends PageInterface implements OnInit {
   countries: CountryModel[];
 
   constructor(public translateService: TranslateService,
+              private loadingCtrl: LoadingHelperService,
               private authService: AuthService,
+              private verifyService: VerifyService,
               private formBuilder: FormBuilder,
-              private navController: NavController,
+              private navController: NavController,              
               private personalDataService: PersonalDataService,
               private popoverController: PopoverController) {
     super(translateService, english, spanish);
@@ -98,19 +103,32 @@ export class InfoPage extends PageInterface implements OnInit {
     );
     this.personalDataService.personalData = data;
 
-    // send data to server but first refresh the token
-    this.authService.refreshToken().then(() => {    
-      this.personalDataService.sendPersonalInformation().pipe(
-        take(1)
-      ).subscribe(      
-        (response) => console.log(response)
-      )
-      if (!!(+localStorage.getItem('codeVerified'))) {
-        this.navController.navigateRoot('personal-data/intake');
-      } else {
-        this.navController.navigateRoot('personal-data/verify');
-      }
+    this.loadingCtrl.presentLoading(this.translateService.instant('INFO.SENDING'))
+      .then(() => {
+        // send data to server but first refresh the token
+        this.authService.refreshToken().then(() => {    
+          this.personalDataService.sendPersonalInformation().pipe(
+            take(1)
+          ).subscribe(      
+            (response: GeneralResponse) => {
+              if (response.error) {
+                // todo
+              } else {
+                this.goToNextPage();
+              }
+            }
+          )
+        
+        });
     });
+  }
+
+  goToNextPage() {
+    if (this.verifyService.isVerifiedUser) {
+      this.navController.navigateRoot('personal-data/intake');
+    } else {
+      this.navController.navigateRoot('personal-data/verify');
+    }
   }
 
   policies(): void {
