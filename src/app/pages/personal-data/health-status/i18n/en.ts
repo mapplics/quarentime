@@ -4,7 +4,7 @@ export const locale = {
         STATUS: {
             BUTTON: 'Create my contact trace',
             healthy: {
-                TITLE: 'Healthy'
+                TITLE: 'Healthy',
             },
             healty_social_distancing: {
                 TITLE: 'Healthy - Keep social distancing'

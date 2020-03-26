@@ -6,6 +6,8 @@ import {locale as spanish} from './i18n/es';
 import {locale as macedonian} from './i18n/mk';
 import {locale as germany} from './i18n/de';
 import {locale as dutch} from './i18n/nl';
+import {ActivatedRoute} from '@angular/router';
+import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 
 @Component({
   selector: 'app-help',
@@ -15,48 +17,52 @@ import {locale as dutch} from './i18n/nl';
 export class HelpPage extends PageInterface implements OnInit {
 
   cards: any[];
+  colors = {
+    healthy: 'BLUE',
+    healty_social_distancing: 'BLUE',
+    low_probability_suspected: 'YELLOW',
+    high_probability_suspected: 'YELLOW',
+    flu_like: 'BLUE',
+    positive: 'RED',
+    recovered: 'PURPLE'
+  };
 
-  constructor(public translateService: TranslateService) {
+  status: any;
+  colorTranslation: string;
+
+  constructor(public translateService: TranslateService,
+              private route: ActivatedRoute,
+              private loadingController: LoadingHelperService) {
     super(translateService, english, spanish, macedonian, germany, dutch);
+    this.getTranslations('HELP');
   }
 
   ngOnInit() {
-    this.cards = [
-      {
-        color: 'gray-blue',
-        title: 'HELP.HEALTHY.TITLE',
-        content: 'HELP.HEALTHY.TEXT',
-        selected: true
-      },
-      {
-        color: 'purple',
-        title: 'HELP.RECOVERED.TITLE',
-        content: 'HELP.RECOVERED.TEXT',
-        selected: false
-      },
-      {
-        color: 'light-blue',
-        title: 'HELP.TESTED_POSITIVE.TITLE',
-        content: 'HELP.TESTED_POSITIVE.TEXT',
-        selected: false
-      },
-      {
-        color: 'gold',
-        title: 'HELP.POTENTIAL_CARRIER.TITLE',
-        content: 'HELP.POTENTIAL_CARRIER.TEXT',
-        selected: false
-      },
-      {
-        color: 'red',
-        title: 'HELP.HIGH_RISK.TITLE',
-        content: 'HELP.HIGH_RISK.TEXT',
-        selected: false
-      }
-    ];
+    this.loadingController.presentLoading(this.translates.LOADING).then(() => {
+      this.route.queryParams.subscribe(params => {
+        this.status = params.status;
+        this.colorTranslation = this.getColor();
+        this.loadingController.dismiss();
+      });
+    });
+
   }
 
   toggleCard(card): void {
     card.selected = !card.selected;
   }
 
+  getColor(): string {
+    switch (this.status.status) {
+      case 'healthy':
+      case 'healty_social_distancing' :
+      case 'flu_like':
+        return 'BLUE';
+      case 'low_probability_suspected':
+      case 'high_probability_suspected':
+        return 'YELLOW';
+      case 'recovered': return 'PURPLE';
+      case 'positive': return 'RED';
+    }
+  }
 }

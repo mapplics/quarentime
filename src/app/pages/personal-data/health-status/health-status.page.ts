@@ -35,7 +35,7 @@ export class HealthStatusPage extends PageInterface implements OnInit {
   }
 
   showHelp(): void {
-    this.navController.navigateForward('personal-data/help');
+    this.navController.navigateForward('personal-data/help', { queryParams: {status: this.status }});
   }
 
   showBadge(): boolean {

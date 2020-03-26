@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button color="primary"></ion-back-button>
@@ -7,18 +7,20 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div *ngFor="let card of cards">
-        <ion-card>
-            <ion-card-header [color]="card.color" (click)="toggleCard(card)">
-                <ion-item lines="none" [color]="card.color">
-                    <ion-label color="light">{{card.title | translate}}</ion-label>
-                    <ion-icon size="small" color="light" slot="end" [name]="card.selected? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-                </ion-item>
-            </ion-card-header>
-            <ion-card-content *ngIf="card.selected">
-               <p class="ion-padding-top">{{card.content | translate}}</p>
-            </ion-card-content>
-        </ion-card>
+<ion-content class="ion-padding-start" *ngIf="status">
+    <ion-row>
+        <ion-col size="auto" class="ion-padding">
+            <h5 class="ion-no-margin">{{'HELP.GROUP' | translate}}</h5>
+        </ion-col>
+        <ion-col  class="color-title ion-padding-start ion-padding-vertical" [ngStyle]="{'background-color': status.color_hex}">
+            <ion-text color="light">
+                <h5 class="ion-no-margin"><strong>{{('HELP.'+colorTranslation+'.COLOR') | translate}}</strong></h5>
+            </ion-text>
+        </ion-col>
+    </ion-row>
+    <div class="ion-padding">
+        <h4><strong>{{('HELP.'+colorTranslation+'.TITLE') | translate}}</strong></h4>
+        <p [innerHTML]="('HELP.'+colorTranslation+'.TEXT') | translate"></p>
     </div>
+
 </ion-content>
