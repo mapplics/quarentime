@@ -9,6 +9,11 @@ import {locale as dutch} from './i18n/nl';
 import {ContactFieldType, Contacts, IContactFindOptions} from '@ionic-native/contacts/ngx';
 import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 import {NavController} from '@ionic/angular';
+import {ContactModel} from './models/contact.model';
+import {InviteService} from './invite.service';
+import {take} from 'rxjs/operators';
+import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
+import {GeneralResponse} from '../../../models/general-response.model';
 
 @Component({
     selector: 'app-invite',
@@ -26,7 +31,9 @@ export class InvitePage extends PageInterface implements OnInit {
     constructor(public translateService: TranslateService,
                 private contacts: Contacts,
                 private loadingController: LoadingHelperService,
-                private navController: NavController) {
+                private navController: NavController,
+                private inviteService: InviteService,
+                private toastController: ToastHelperService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
         this.getTranslations('INVITE');
     }
@@ -50,8 +57,8 @@ export class InvitePage extends PageInterface implements OnInit {
                 this.sort(this.filteredList);
                 this.loadingController.dismiss();
             }).catch((err) => {
-                alert(err);
                 this.loadingController.dismiss();
+                this.navController.pop();
             });
         });
     }
@@ -81,8 +88,17 @@ export class InvitePage extends PageInterface implements OnInit {
     }
 
     sendInvite(): void {
-        // todo
-        this.navController.navigateRoot('congratulation');
+        const list = ContactModel.createFromObjectCollection(this.selectedContacts);
+        this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
+            this.inviteService.sendInvite(list).pipe(take(1)).subscribe(
+                (resp: GeneralResponse) => {
+                    this.loadingController.dismiss();
+                    this.navController.navigateRoot('congratulation');
+                }, (err) => {
+                    this.loadingController.dismiss();
+                    this.toastController.errorToast(err.message);
+                });
+        });
     }
 
     sort(list): void {

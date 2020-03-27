@@ -5,7 +5,8 @@ export const locale = {
             SEARCHBAR: 'Ingresá nombre o teléfono',
             LIST_HEADER: 'asd',
             BUTTON: 'Enviar invitación',
-            LOADING: 'Cargando contactos...'
+            LOADING: 'Cargando contactos...',
+            SENDING_INVITE: 'Enviando invitaciones...'
         }
     }
 };
