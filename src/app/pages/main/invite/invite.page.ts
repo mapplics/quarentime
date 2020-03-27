@@ -10,10 +10,10 @@ import {ContactFieldType, Contacts, IContactFindOptions} from '@ionic-native/con
 import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 import {NavController} from '@ionic/angular';
 import {ContactModel} from './models/contact.model';
-import {InviteService} from './invite.service';
 import {take} from 'rxjs/operators';
 import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
 import {GeneralResponse} from '../../../models/general-response.model';
+import {ContactTraceService} from '../contact-trace.service';
 
 @Component({
     selector: 'app-invite',
@@ -32,7 +32,7 @@ export class InvitePage extends PageInterface implements OnInit {
                 private contacts: Contacts,
                 private loadingController: LoadingHelperService,
                 private navController: NavController,
-                private inviteService: InviteService,
+                private contactTraceService: ContactTraceService,
                 private toastController: ToastHelperService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
         this.getTranslations('INVITE');
@@ -94,7 +94,7 @@ export class InvitePage extends PageInterface implements OnInit {
     sendInvite(): void {
         const list = ContactModel.createFromObjectCollection(this.selectedContacts);
         this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
-            this.inviteService.sendInvite(list).pipe(take(1)).subscribe(
+            this.contactTraceService.sendInvite(list).pipe(take(1)).subscribe(
                 (resp: GeneralResponse) => {
                     this.loadingController.dismiss();
                     this.navController.navigateRoot('congratulation');
