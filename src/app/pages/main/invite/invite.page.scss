@@ -1,0 +1,10 @@
+.floating-button {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 15px;
+  position: sticky;
+  z-index: 5000;
+  height: 51px;
+  border-radius: 4px;
+}

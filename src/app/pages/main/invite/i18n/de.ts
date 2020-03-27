@@ -4,7 +4,8 @@ export const locale = {
         INVITE: {
             SEARCHBAR: 'Enter name or phone',
             LIST_HEADER: 'Quick add',
-            BUTTON: 'Send invite'
+            BUTTON: 'Send invite',
+            LOADING: 'Loading contacts...'
         }
     }
 };
