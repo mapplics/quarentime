@@ -44,12 +44,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'add-friends',
+        path: 'invite',
         children: [
           {
             path: '',
-            loadChildren: () =>
-                import('./add-friends/add-friends.module').then(m => m.AddFriendsPageModule)
+            loadChildren: () => import('./invite/invite.module').then( m => m.InvitePageModule)
           }
         ]
       },
@@ -59,10 +58,6 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: 'invite',
-    loadChildren: () => import('./invite/invite.module').then( m => m.InvitePageModule)
   },
  /* {
     path: '',
