@@ -82,7 +82,7 @@ export class InvitePage extends PageInterface implements OnInit {
 
     sendInvite(): void {
         // todo
-        this.navController.navigateRoot('main');
+        this.navController.navigateRoot('congratulation');
     }
 
     sort(list): void {

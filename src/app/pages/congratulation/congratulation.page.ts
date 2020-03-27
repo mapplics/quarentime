@@ -6,6 +6,7 @@ import {locale as germany} from './i18n/de';
 import {locale as dutch} from './i18n/nl';
 import {TranslateService} from '@ngx-translate/core';
 import {PageInterface} from '../../core/page-interface';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-congratulation',
@@ -14,11 +15,16 @@ import {PageInterface} from '../../core/page-interface';
 })
 export class CongratulationPage extends PageInterface implements OnInit {
 
-  constructor(public translateService: TranslateService) {
+  constructor(public translateService: TranslateService,
+              private navController: NavController) {
     super(translateService, english, spanish, macedonian, germany, dutch);
   }
 
   ngOnInit() {
+  }
+
+  done(): void {
+    this.navController.navigateRoot('main');
   }
 
 }
