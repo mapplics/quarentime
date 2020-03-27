@@ -41,7 +41,7 @@ export class VerifyService extends BaseService {
             .pipe(
                 map((res: GeneralResponse) => {
                     if (res.result) {
-                        localStorage.setItem('codeVerified', '1');                        
+                        this.setUserVerified();                  
                     } else {
                         res.error = true;                                                
                     }
@@ -59,6 +59,10 @@ export class VerifyService extends BaseService {
         } else {
             return false;
         }
+    }
+
+    setUserVerified() {
+        localStorage.setItem('codeVerified', '1');
     }
 
     

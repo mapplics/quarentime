@@ -103,7 +103,7 @@ export class VerifyPage extends PageInterface implements OnInit {
             this.presentToast(this.translates.VERIFICATION_FAILED.TITLE, this.translates.VERIFICATION_FAILED.MESSAGE);
             this.form.reset();
           } else {
-            this.toastCtrl.successToast(this.translates.VERIFICATION_SUCCESS);          
+            this.toastCtrl.successToast(this.translates.VERIFY.VERIFICATION_SUCCESS);          
             this.navController.navigateRoot('personal-data/intake');
           }
           this.loadingCtrl.dismiss();
