@@ -55,7 +55,7 @@ export class VerifyPage extends PageInterface implements OnInit {
   ngOnInit() {
     this.sendCode();
 
-    this.getTranslations('VERIFY.ERRORS');
+    this.getTranslations('VERIFY');
     this.form = this.formBuilder.group({
       digit1: ['', [Validators.required, Validators.maxLength(1)]],
       digit2: ['', [Validators.required, Validators.maxLength(1)]],
@@ -100,10 +100,10 @@ export class VerifyPage extends PageInterface implements OnInit {
       ).subscribe(
         (response: GeneralResponse) => {
           if (response.error) {
-            this.presentToast(this.translates.VERIFICATION_FAILED.TITLE, this.translates.VERIFICATION_FAILED.MESSAGE);
+            this.presentToast(this.translates.ERRORS.VERIFICATION_FAILED.TITLE, this.translates.ERRORS.VERIFICATION_FAILED.MESSAGE);
             this.form.reset();
           } else {
-            this.toastCtrl.successToast(this.translates.VERIFY.VERIFICATION_SUCCESS);          
+            this.toastCtrl.successToast(this.translates.VERIFICATION_SUCCESS);          
             this.navController.navigateRoot('personal-data/intake');
           }
           this.loadingCtrl.dismiss();

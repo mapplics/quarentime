@@ -39,6 +39,7 @@ export class AppComponent {
             this.globalization.getPreferredLanguage()
                 .then((res) => {
                     const lang = res.value.split('-')[0];
+                    debugger;
                     this.storageService.storeUserLanguage(lang);
                     if (this.canChangeLang(lang)) {
                         this.translateService.use(lang);

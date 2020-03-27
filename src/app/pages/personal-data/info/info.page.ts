@@ -93,8 +93,9 @@ export class InfoPage extends PageInterface implements OnInit {
       this.form.get('phone').setValue(data.phone);
       this.form.get('country').setValue(data.country);
     } else {
-      // find the user country
-      const currCountry = this.countries.find(x => x.tag === this.storageService.userLanguage);
+      // find the user country      
+      //const currCountry = this.countries.find(x => x.tag === this.storageService.userLanguage);
+      const currCountry = this.countries.find(x => x.tag === 'ar');
       this.form.get('country').setValue(currCountry);
       this.form.get('phone').setValue(currCountry.prefix);
     }
@@ -122,8 +123,8 @@ export class InfoPage extends PageInterface implements OnInit {
               if (response.error) {
                 this.toastCtrl.errorToast(this.translateService.instant('INFO.SENDING_ERROR'));                
               } else {
-                this.goToNextPage(response.result.verified);                
-                //this.goToNextPage(true);                
+                // this.goToNextPage(response.result.verified);                
+                this.goToNextPage(true);                
               }
               this.loadingCtrl.dismiss();
             },
