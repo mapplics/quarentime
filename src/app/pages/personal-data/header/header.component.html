@@ -20,9 +20,15 @@
         </div>
       </ion-col>
     </ion-row>
-    <h1 class="ion-margin-top ion-text-wrap ion-padding-start">{{'HEADER.'+ title | translate}}
-      {{name ? name+'!' : ''}}<br>
-    {{(subTitle ? 'HEADER.'+ subTitle: '') | translate }}</h1>
+    <ion-title>
+      <ion-label color="primary" class="ion-text-wrap">
+        <b>
+          {{'HEADER.'+ title | translate}}
+          {{name ? name+'!' : ''}}<br>
+          {{(subTitle ? 'HEADER.'+ subTitle: '') | translate }}
+        </b>
+      </ion-label>
+    </ion-title>
 
   </ion-toolbar>
 </ion-header>

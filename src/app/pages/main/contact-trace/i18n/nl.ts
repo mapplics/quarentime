@@ -6,7 +6,9 @@ export const locale = {
             RECOVERED: 'Recovered',
             POSITIVE: 'positive',
             HIGH_RISK: 'high-risk',
-            CARRIER: 'carrier'
+            CARRIER: 'carrier',
+            TOTAL: 'Total',
+            PENDING: 'Pending'
         }
     }
 };

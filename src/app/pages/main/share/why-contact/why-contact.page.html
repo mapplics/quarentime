@@ -1,27 +1,21 @@
 <ion-header>
-  <app-header
-          title="WHY_CONTACT_TRACE"
-          [btnBack]="true"
-          [defaultHref]="'main/contact-trace/share'"
-  ></app-header>
+    <app-header
+            title="WHY_CONTACT_TRACE"
+            [btnBack]="true"
+            [defaultHref]="'main/contact-trace/share'"
+    ></app-header>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-label class="title ion-padding"> {{'WHY.TITLE' | translate}}</ion-label>
+    <div class="ion-padding-horizontal">
+        <h4><b>{{'WHY.TITLE' | translate}}</b></h4>
+        <p class="subtitle">{{'WHY.SUBTITLE' | translate}}</p>
+        <p class="text">{{'WHY.TEXT.LINE1' | translate}}</p>
 
-
-  <div class="subtitle ion-padding-start ion-padding-top">{{'WHY.SUBTITLE' | translate}}</div>
-
- <div class="text ion-padding-start ion-padding-end">{{'WHY.TEXT.LINE1' | translate}}</div>
-
-  <div class="subtitle ion-padding-start ion-padding-top">{{'WHY.SUBTITLE2' | translate}}</div>
-
-  <div class="text ion-padding-start ion-padding-end">{{'WHY.TEXT.LINE2' | translate}}</div>
-  <div class="text ion-padding-start ion-padding-end">{{'WHY.TEXT.LINE3' | translate}}</div>
-
-
-
-
+        <p class="subtitle ion-padding-top">{{'WHY.SUBTITLE2' | translate}}</p>
+        <p class="text">{{'WHY.TEXT.LINE2' | translate}}</p>
+        <p class="text">{{'WHY.TEXT.LINE3' | translate}}</p>
+    </div>
 
 </ion-content>

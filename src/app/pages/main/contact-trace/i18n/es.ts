@@ -7,7 +7,8 @@ export const locale = {
             POSITIVE: 'positivo',
             HIGH_RISK: 'riesgo',
             CARRIER: 'portador',
-            TOTAL: 'Total'
+            TOTAL: 'Total',
+            PENDING: 'Pendientes'
         }
     }
 };

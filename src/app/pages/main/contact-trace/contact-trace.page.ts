@@ -34,7 +34,10 @@ export class ContactTracePage extends PageInterface implements OnInit {
 
     onShareContact() {
         this.navCtrl.navigateForward('main/contact-trace/share');
+    }
 
+    onShowDetails(): void {
+        this.navCtrl.navigateForward('main/contact-trace/share/why-contact');
     }
 
     calculateRamdon() {
