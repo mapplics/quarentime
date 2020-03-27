@@ -1,12 +1,15 @@
 export const locale = {
     lang: 'de',
     data: {
-        CONTACT: {
+        HOME: {
             HEALTHY: 'healthy',
             RECOVERED: 'Recovered',
             POSITIVE: 'positive',
             HIGH_RISK: 'high-risk',
-            CARRIER: 'carrier'
+            CARRIER: 'carrier',
+            TIPS: 'Tips & Tricks',
+            HELLO: 'Hello',
+            STATUS: 'My status'
         }
     }
 };

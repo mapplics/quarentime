@@ -9,22 +9,25 @@ import {PageInterface} from '../../../core/page-interface';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+    selector: 'app-home',
+    templateUrl: './home.page.html',
+    styleUrls: ['./home.page.scss'],
 })
 export class HomePage extends PageInterface implements OnInit {
-   slideOpts = {
-    slidesPerView: 2,
-  };
+    slideOpts = {
+        slidesPerView: 2,
+    };
 
-  constructor(public translateService: TranslateService,
-              ) {
-      super(translateService, english, spanish, macedonian, germany, dutch);
-  }
+    userName: string;
 
-  ngOnInit() {
-    // console.log(this.homeService.itemsInformationList);
-  }
+    constructor(public translateService: TranslateService,
+    ) {
+        super(translateService, english, spanish, macedonian, germany, dutch);
+    }
+
+    ngOnInit() {
+        this.userName = localStorage.getItem('quarentimeName');
+        // console.log(this.homeService.itemsInformationList);
+    }
 
 }
