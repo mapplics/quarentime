@@ -8,6 +8,7 @@ import {locale as germany} from './i18n/de';
 import {locale as dutch} from './i18n/nl';
 import { NavController } from '@ionic/angular';
 import {PersonalDataService} from '../personal-data.service';
+import {StorageService} from '../../../shared/services/storage.service';
 
 @Component({
   selector: 'app-health-status',
@@ -21,12 +22,13 @@ export class HealthStatusPage extends PageInterface implements OnInit {
 
   constructor(public translateService: TranslateService,
               private navController: NavController,
-              private personalDataService: PersonalDataService) {
+              private personalDataService: PersonalDataService,
+              private storageService: StorageService) {
     super(translateService, english, spanish, macedonian, germany, dutch);
   }
 
   ngOnInit() {
-    this.userName = localStorage.getItem('quarentimeName');
+    this.userName = this.storageService.personalDataName;
     this.status = this.personalDataService.currentStatus;
   }
 

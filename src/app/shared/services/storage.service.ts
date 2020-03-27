@@ -28,6 +28,10 @@ export class StorageService {
         return this.getItem('quarentimeUserLanguage');
     }
 
+    get userStatusColor(): string {
+        return JSON.parse(this.getItem('health')).color_hex;
+    }
+
     private getItem(tag: string): string {
         return localStorage.getItem(tag);
     }

@@ -6,6 +6,7 @@ import {locale as germany} from './i18n/de';
 import {locale as dutch} from './i18n/nl';
 import {TranslateService} from '@ngx-translate/core';
 import {PageInterface} from '../../../core/page-interface';
+import {StorageService} from '../../../shared/services/storage.service';
 
 
 @Component({
@@ -19,15 +20,16 @@ export class HomePage extends PageInterface implements OnInit {
     };
 
     userName: string;
+    statusColor: string;
 
     constructor(public translateService: TranslateService,
-    ) {
+                private storageService: StorageService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
     }
 
     ngOnInit() {
-        this.userName = localStorage.getItem('quarentimeName');
-        // console.log(this.homeService.itemsInformationList);
+        this.userName = this.storageService.personalDataName;
+        this.statusColor = this.storageService.userStatusColor;
     }
 
 }

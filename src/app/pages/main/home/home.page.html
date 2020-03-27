@@ -6,7 +6,7 @@
   <ion-col size="4">
     <ion-row>
     <ion-label class="my-status">{{'HOME.STATUS' | translate}}</ion-label> &nbsp;
-      <span class="dot"></span>
+      <span class="dot" [ngStyle]="{'background-color': statusColor}"></span>
     </ion-row>
   </ion-col>
 </ion-row>
