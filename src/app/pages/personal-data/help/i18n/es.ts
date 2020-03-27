@@ -6,30 +6,30 @@ export const locale = {
             GROUP: 'Grupo',
             LOADING: 'Cargando...',
             blue: {
-                TITLE: 'Healthy',
-                TEXT: 'Based on your answers it seems that you have not been infected by the novel coronavirus. However, please follow the local guidelines and avoid unnecessary exposure to other people.<br><br>' +
-                    '<strong>Maintain social distancing!</strong><br><br>' +
-                    'In the meantime, take care of yourself, take care of others and remember together is better!',
+                TITLE: 'Sano',
+                TEXT: 'Basado en tus respuestas, parece que no estas infectado por el Coronavirus. De todos modos, por favor, seguí los lineamientos locales y evitar exposición innecesaria a otras personas.<br><br>' +
+                    '<strong>Mantené el distanciamiento social!</strong><br><br>' +
+                    'Mientras tanto, cuidate y cuidá a los demás, y recordá que juntos es mejor!',
             },
             yellow: {
-                TITLE: 'Suspected case',
-                TEXT: 'Based on your answers, you might have been infected by the novel coronavirus. Whether you have severe symptoms or not please isolate yourself and keep away from your loved ones to avoid infecting them.<br><br>' +
-                    'If your symptoms get worse, contact a medical professional.<br><br>' +
-                    'In the meantime, take care of yourself, take care of others and remember together is better!<br><br>' +
-                    '<strong>Stay indoors!</strong>'
+                TITLE: 'Caso sospechoso',
+                TEXT: 'Basado en tus respuestas, podés estar infectado por el Coronavirus. Sin importar si tenés síntomas o no, por favor, aislese y mantengase alejado de sus seres queridos para evitar infectarlos.<br><br>' +
+                    'Si los síntomas empeoran, contacte un médico.<br><br>' +
+                    'ientras tanto, cuidate y cuidá a los demás, y recordá que juntos es mejor!<br><br>' +
+                    '<strong>Quedate en casa!</strong>'
             },
             purple: {
-                TITLE: 'Recovered patients',
-                TEXT: '<strong>Congratulations!</strong><br><br>' +
-                    'It seems like you fought the novel coronavirus and survived. However, it is important that you still follow the local guidelines and avoid unnecessary exposure to other people.'
+                TITLE: 'Paciente recuperado',
+                TEXT: '<strong>Felicitaciones!</strong><br><br>' +
+                    'Peleaste contra el Coronavirus y sobreviviste. Sin embargo, es importante que sigas los lineamientos locales y evites exposición innesesaria con otras personas.'
             },
             red: {
-                TITLE: 'COVID-19 Positive',
-                TEXT: 'Since you have tested positive for COVID-19 you have probably received information from a local medical professional on the right course of action.<br><br>' +
-                    'Whether you have severe symptoms or not please isolate yourself and keep away from your loved ones to avoid infecting them.<br><br>' +
-                    'If your symptoms get worse, contact a medical professional.<br><br>' +
-                    '<strong>Take care!</strong>'
-            }
+                TITLE: 'Positivo para COVID-19',
+                TEXT: 'Como fue testeado positivo para COVID-19, seguramente ya recibió información por parte de un profesional médico de cómo continuar.<br><br>' +
+                    'Sin importar si tenés síntomas o no, por favor, aislese y mantengase alejado de sus seres queridos para evitar infectarlos.' +
+                    'Si los síntomas empeoran, contacte un médico.<br><br>' +
+                    '<strong>Cuidate!</strong>'
+            },
         }
     }
 }

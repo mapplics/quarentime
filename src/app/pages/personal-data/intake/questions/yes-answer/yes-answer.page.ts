@@ -28,7 +28,7 @@ export class YesAnswerPage extends PageInterface implements OnInit {
 
   answer(value) {
     this.question.answer = value;
-    this.personalDataService._questionAnswers.hasRecovered = value;
+    this.personalDataService._questionAnswers.has_recovered = value;
     this.navController.navigateForward('personal-data/intake/confirm');
   }
 

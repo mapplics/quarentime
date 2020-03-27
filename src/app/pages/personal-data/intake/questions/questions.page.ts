@@ -47,7 +47,7 @@ export class QuestionsPage extends PageInterface implements OnInit {
 
   answer(value) {
     this.currentQuestion.answer = value;
-    this.personalDataService._questionAnswers.isTestedPositive = value;
+    this.personalDataService._questionAnswers.is_tested_positive = value;
     if (value) {
       this.personalDataService.currentQuestion = this.currentQuestion.yesQuestion;
       this.navController.navigateForward(`/personal-data/intake/questions/yesAnswer`);

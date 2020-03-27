@@ -28,7 +28,7 @@ export class NoAnswerPage extends PageInterface implements OnInit {
 
   answer(value) {
     this.question.answer = value;
-    this.personalDataService._questionAnswers.hasCloseContact = value;
+    this.personalDataService._questionAnswers.has_close_contact = value;
     this.navController.navigateForward('personal-data/intake/confirm');
   }
 }

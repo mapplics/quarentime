@@ -28,7 +28,7 @@ export class NoAnswerPage extends PageInterface implements OnInit {
 
   answer(value) {
     this.question.answer = value;
-    this.personalDataService._questionAnswers.hasRecentTravelLast14Days = value;
+    this.personalDataService._questionAnswers.has_recent_travel_last_14_days = value;
     this.personalDataService.currentQuestion = this.question.noQuestion;
     this.navController.navigateForward('personal-data/intake/confirm');
   }

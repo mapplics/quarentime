@@ -2,18 +2,18 @@ export const locale = {
     lang: 'es',
     data: {
         QUESTIONS: {
-            TITLE: 'Intake',
-            EXPLANATION: 'This intake is not intended to provide medical advice. If you have medical questions, consult your healthcare provider.',
+            TITLE: 'Admisión',
+            EXPLANATION: 'Esta app no esta destinada a proporcionar asesoramiento médico. Si surge alguna pregunta, consulte con un médico de confianza',
             CONFIRM_INFO: 'Afirmo que la información brindada en este formulario es veraz, completa y precisa.',
             NO: 'No',
-            YES: 'Yes',
+            YES: 'Si',
             CONTACT_PERSON_DEFINITION: {
-                TITLE: 'Definition: contact person',
-                TEXT: 'A person who experienced any one of the following exposures during the 2 days before and the 14 days after the onset of symptoms of a probable or confirmed case:<br><br>' +
-                    '1. Face-to-face contact with a probable or confirmed case within 1 meter and for more than 15 minutes;<br><br>' +
-                    '2. Direct physical contact with a probable or confirmed case;;<br><br>' +
-                    '3. Direct care for a patient with probable or confirmed COVID-19 disease without using proper personal protective equipment;<br><br>' +
-                    '4. Other situations as indicated by local risk assessments.'
+                TITLE: 'Definicion: persona de contacto',
+                TEXT: 'Una persona que haya experimentado alguno de las siguientes exposiciones durante los dos dias previos y los 14 días posteriores a la aparición de síntomas de un caso probable o confirmado:<br><br>' +
+                    '1. Contacto cara a cara con un caso probable o un caso confirmado a un metro y por más de 15 minutos;<br><br>' +
+                    '2. Contacto físico con un caso probable o confirmado;<br><br>' +
+                    '3. Atención directa a un paciente con COVID-19 probable o confirmado sin usar el equipo de protección personal adecuado;<br><br>' +
+                    '4. Otras situaciones indicadas por las autoridades locales.'
             },
             NEXT: 'Siguiente'
         }
