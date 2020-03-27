@@ -11,7 +11,9 @@
   </ion-row>
   <ion-list>
     <ion-item lines="full" detail="false" *ngFor="let item of filteredList">
-      <ion-checkbox slot="start" (ionChange)="selectedChange($event, item)" color="gold"></ion-checkbox>
+      <ion-checkbox slot="start" (ionChange)="selectedChange($event, item)" color="gold"
+                    [(ngModel)]="item.selected"
+      ></ion-checkbox>
       <ion-label>
         <p><strong>{{item.displayName}}</strong></p>
         <ion-text color="medium"><p>{{item.phoneNumbers[0].value}}</p></ion-text>

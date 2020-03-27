@@ -19,11 +19,9 @@ export class InviteService extends BaseService {
 
   sendInvite(contactList: ContactModel[]): Observable<{} | GeneralResponse> {
     const url = `${this._API}User/Contacts`;
-    debugger;
     return this.http.post<GeneralResponse>(url, {contacts: contactList})
         .pipe(
             map((res: GeneralResponse) => {
-              debugger;
               return res;
             }),
             catchError(err => {

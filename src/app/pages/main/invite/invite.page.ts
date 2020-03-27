@@ -76,14 +76,18 @@ export class InvitePage extends PageInterface implements OnInit {
     }
 
     selectedChange(event, item) {
+        item.selected = event.detail.checked;
         if (event.detail.checked) {
             this.selectedContacts.push(item);
         } else {
-            this.selectedContacts.splice(this.selectedContacts.indexOf(item), 1);
+            if (this.selectedContacts.indexOf(item) !== -1) {
+                this.selectedContacts.splice(this.selectedContacts.indexOf(item), 1);
+            }
         }
     }
 
     delete(item) {
+        item.selected = false;
         this.selectedContacts.splice(this.selectedContacts.indexOf(item), 1);
     }
 
