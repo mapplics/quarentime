@@ -4,6 +4,9 @@ export const locale = {
         HOME: {
             TITLE: 'healthy',
             TYPE: 'Recovered',
+            TIPS: 'Algunos Tips',
+            HELLO: 'Hola',
+            STATUS: 'Mi estado'
         }
     }
 };
