@@ -11,7 +11,7 @@
         <ion-col size="12" class="ion-padding">
           <ion-icon *ngIf="showBadge()" [src]="getIcon()" size="large"></ion-icon>
           <div>
-            <ion-badge mode="ios" color="medium" *ngIf="showBadge()">{{('STATUS.'+status.status+'.TAG') | translate}}</ion-badge>
+            <ion-chip mode="ios" color="light" *ngIf="showBadge()">{{('STATUS.'+status.status+'.TAG') | translate}}</ion-chip>
           </div>
           <span class="status-text">{{('STATUS.'+status.status+'.TITLE') | translate}}</span>
         </ion-col>
