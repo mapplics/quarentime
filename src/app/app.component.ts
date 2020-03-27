@@ -9,6 +9,7 @@ import {PersonalDataService} from './pages/personal-data/personal-data.service';
 import { Globalization } from '@ionic-native/globalization/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from '../environments/environment';
+import { StorageService } from './shared/services/storage.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class AppComponent {
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
+        private storageService: StorageService,
         private statusBar: StatusBar,
         private authService: AuthService,
         private router: Router,
@@ -37,6 +39,7 @@ export class AppComponent {
             this.globalization.getPreferredLanguage()
                 .then((res) => {
                     const lang = res.value.split('-')[0];
+                    this.storageService.storeUserLanguage(lang);
                     if (this.canChangeLang(lang)) {
                         this.translateService.use(lang);
                     }

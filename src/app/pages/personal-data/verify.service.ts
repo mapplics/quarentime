@@ -64,7 +64,4 @@ export class VerifyService extends BaseService {
     setUserVerified() {
         localStorage.setItem('codeVerified', '1');
     }
-
-    
-
 }

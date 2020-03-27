@@ -8,6 +8,7 @@ import {catchError, map, take} from 'rxjs/internal/operators';
 import { GeneralResponse } from 'src/app/models/general-response.model';
 import {QuestionModel} from './models/question.model';
 import { AuthService } from 'src/app/providers/auth.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +18,7 @@ export class PersonalDataService extends BaseService {
     public _questionAnswers: any;
 
     constructor(public router: Router,
+                private storageService: StorageService,
                 private authService: AuthService,
                 public http: HttpClient) {
         super(router);
@@ -85,6 +87,7 @@ export class PersonalDataService extends BaseService {
         })
             .pipe(
                 map((res: GeneralResponse) => {
+                    this.storageService.storePersonalData(this._personalData);
                     return res;
                 }),
                 catchError(err => {
@@ -139,5 +142,4 @@ export class PersonalDataService extends BaseService {
                 })
             );
     }
-
 }

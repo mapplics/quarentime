@@ -25,10 +25,9 @@ export class HeaderComponent extends PageInterface implements OnInit {
 
   constructor(public translateService: TranslateService,
 				private verifyService: VerifyService,
-              private personalDataService: PersonalDataService
+              private personalDataService: PersonalDataService,
               private navController: NavController) {
-    super(translateService, english, spanish, macedonian, germany, dutch);
-              ) {
+    super(translateService, english, spanish, macedonian, germany, dutch);               
   }
 
   ngOnInit() {}

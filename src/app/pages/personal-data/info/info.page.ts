@@ -19,6 +19,7 @@ import { VerifyService } from '../verify.service';
 import { GeneralResponse } from 'src/app/models/general-response.model';
 import { LoadingHelperService } from 'src/app/shared/helpers/loading-helper.service';
 import { ToastHelperService } from 'src/app/shared/helpers/toast-helper.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-info',
@@ -38,6 +39,7 @@ export class InfoPage extends PageInterface implements OnInit {
               private navController: NavController,
               private toastCtrl: ToastHelperService,
               private personalDataService: PersonalDataService,
+              private storageService: StorageService,
               private popoverController: PopoverController) {
     super(translateService, english, spanish, macedonian, germany, dutch);
   }
@@ -91,7 +93,8 @@ export class InfoPage extends PageInterface implements OnInit {
       this.form.get('phone').setValue(data.phone);
       this.form.get('country').setValue(data.country);
     } else {
-      const currCountry = this.countries.find(x => x.tag === 'ar');
+      // find the user country
+      const currCountry = this.countries.find(x => x.tag === this.storageService.userLanguage);
       this.form.get('country').setValue(currCountry);
       this.form.get('phone').setValue(currCountry.prefix);
     }
@@ -119,8 +122,8 @@ export class InfoPage extends PageInterface implements OnInit {
               if (response.error) {
                 this.toastCtrl.errorToast(this.translateService.instant('INFO.SENDING_ERROR'));                
               } else {
-                //this.goToNextPage(response.result.verified);                
-                this.goToNextPage(true);                
+                this.goToNextPage(response.result.verified);                
+                //this.goToNextPage(true);                
               }
               this.loadingCtrl.dismiss();
             },
