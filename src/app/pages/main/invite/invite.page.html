@@ -1,9 +1,10 @@
 <app-header title="INVITE" [btnBack]="true" [defaultHref]="'..'"></app-header>
 
-<ion-content>
-  <ion-searchbar mode="ios" [placeholder]="'INVITE.SEARCHBAR' | translate"
-                 (keyup)="onKeyUp($event)" (ionClear)="onClear($event)"></ion-searchbar>
+<ion-searchbar mode="ios" [placeholder]="'INVITE.SEARCHBAR' | translate"
+               (keyup)="onKeyUp($event)" (ionClear)="onClear($event)">
+</ion-searchbar>
 
+<ion-content>
   <ion-row class="ion-margin-horizontal">
     <ion-chip *ngFor="let c of selectedContacts" color="purple" outline="true">
       <ion-label>{{c.displayName}}</ion-label>

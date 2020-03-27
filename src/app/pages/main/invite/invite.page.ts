@@ -72,7 +72,7 @@ export class InvitePage extends PageInterface implements OnInit {
     }
 
     filter(query: string) {
-        this.filteredList = this.contactList.filter(x => x.displayName.includes(query) );
+        this.filteredList = this.contactList.filter(x => x.displayName.toLowerCase().includes(query.toLowerCase()) );
     }
 
     selectedChange(event, item) {
