@@ -7,6 +7,8 @@ import {locale as germany} from './i18n/de';
 import {locale as dutch} from './i18n/nl';
 import {TranslateService} from '@ngx-translate/core';
 import {NavController} from '@ionic/angular';
+import {PersonalDataService} from '../personal-data.service';
+import { VerifyService } from '../verify.service';
 
 @Component({
   selector: 'app-header',
@@ -22,8 +24,11 @@ export class HeaderComponent extends PageInterface implements OnInit {
   @Input() completedSteps: number[] = [];
 
   constructor(public translateService: TranslateService,
+				private verifyService: VerifyService,
+              private personalDataService: PersonalDataService
               private navController: NavController) {
     super(translateService, english, spanish, macedonian, germany, dutch);
+              ) {
   }
 
   ngOnInit() {}
@@ -56,12 +61,12 @@ export class HeaderComponent extends PageInterface implements OnInit {
     switch (page) {
       case 'info':
         return true;
-        break;
       case 'intake':
-        return !!(+localStorage.getItem('codeVerified'));
-        break;
+        return this.verifyService.isVerifiedUser;
+        // return !!(+localStorage.getItem('codeVerified'));
       case 'health-status':
-        return  !!(+localStorage.getItem('codeVerified')); // todo add questions answered
+        //return  !!(+localStorage.getItem('codeVerified')); // todo add questions answered
+        return this.verifyService.isVerifiedUser;
     }
   }
 }

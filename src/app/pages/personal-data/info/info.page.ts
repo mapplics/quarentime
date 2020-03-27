@@ -90,11 +90,11 @@ export class InfoPage extends PageInterface implements OnInit {
       this.form.get('age').setValue(data.age);
       this.form.get('phone').setValue(data.phone);
       this.form.get('country').setValue(data.country);
+    } else {
+      const currCountry = this.countries.find(x => x.tag === 'ar');
+      this.form.get('country').setValue(currCountry);
+      this.form.get('phone').setValue(currCountry.prefix);
     }
-
-    const currCountry = this.countries.find(x => x.tag === 'ar');
-    this.form.get('country').setValue(currCountry);
-    this.form.get('phone').setValue(currCountry.prefix);
   }
 
   saveData(): void {
@@ -119,7 +119,8 @@ export class InfoPage extends PageInterface implements OnInit {
               if (response.error) {
                 this.toastCtrl.errorToast(this.translateService.instant('INFO.SENDING_ERROR'));                
               } else {
-                this.goToNextPage();                
+                //this.goToNextPage(response.result.verified);                
+                this.goToNextPage(true);                
               }
               this.loadingCtrl.dismiss();
             },
@@ -132,11 +133,12 @@ export class InfoPage extends PageInterface implements OnInit {
     });
   }
 
-  goToNextPage() {
-    if (this.verifyService.isVerifiedUser) {
+  goToNextPage(verified: boolean) {
+    if (verified) {
+      this.verifyService.setUserVerified();
       this.navController.navigateRoot('personal-data/intake');
-    } else {
-      this.navController.navigateRoot('personal-data/verify');
+    } else {      
+      this.navController.navigateRoot('personal-data/verify');      
     }
   }
 
