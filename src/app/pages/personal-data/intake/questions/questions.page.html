@@ -1,15 +1,5 @@
 <ion-header class="ion-no-border">
     <app-header title="QUESTIONS_TITLE" [defaultHref]="'personal-data/intake'" [btnBack]="true"></app-header>
-<!--    <ion-toolbar>-->
-<!--        <ion-buttons slot="start">-->
-<!--            <ion-button (click)="goBack()">-->
-<!--                <ion-icon slot="icon-only" color="primary" name="arrow-back"></ion-icon>-->
-<!--            </ion-button>-->
-<!--        </ion-buttons>-->
-<!--        <ion-title>-->
-<!--            <ion-label color="primary"><b>{{'QUESTIONS.TITLE' | translate}}</b></ion-label>-->
-<!--        </ion-title>-->
-<!--    </ion-toolbar>-->
 </ion-header>
 
 <ion-content  class="ion-padding">
@@ -17,10 +7,15 @@
     <div>
         <p><strong>{{currentQuestion.question[currentLanguage]}}</strong></p>
         <p *ngIf="currentQuestion.comment"><i>{{currentQuestion.comment[currentLanguage]}}</i></p>
-        <ion-buttons *ngIf="currentQuestion.simpleAnswer">
-            <ion-button [color]="currentQuestion.selectedYes ? 'dark' : 'medium'" fill="solid" (click)="answer(true)">{{'QUESTIONS.YES' | translate}}</ion-button>
-            <ion-button [color]="currentQuestion.selectedNo ? 'dark' : 'medium'" fill="solid" (click)="answer( false)">{{'QUESTIONS.NO' | translate}}</ion-button>
-        </ion-buttons>
+        <ion-row *ngIf="currentQuestion.simpleAnswer">
+            <ion-col size="3">
+                <ion-button expand="block" size="small" [color]="currentQuestion.selectedYes ? 'dark' : 'medium'" fill="solid" (click)="answer(true)">{{'QUESTIONS.YES' | translate}}</ion-button>
+            </ion-col>
+
+            <ion-col size="3">
+                <ion-button expand="block" [color]="currentQuestion.selectedNo ? 'dark' : 'medium'" fill="solid" (click)="answer( false)">{{'QUESTIONS.NO' | translate}}</ion-button>
+            </ion-col>
+        </ion-row>
     </div>
 
 </ion-content>

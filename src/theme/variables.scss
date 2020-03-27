@@ -27,6 +27,12 @@
     }
   }
 
+  ion-button {
+    height: 50px !important;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
 
   /** primary **/
   --ion-color-primary: #000000;

@@ -55,9 +55,6 @@ export class QuestionsPage extends PageInterface implements OnInit {
       this.personalDataService.currentQuestion = this.currentQuestion.noQuestion;
       this.navController.navigateForward(`/personal-data/intake/questions/noAnswer`);
     }
-    // else {
-    //   this.navController.navigateForward('personal-data/intake/confirm');
-    // }
   }
 
   goBack(): void {

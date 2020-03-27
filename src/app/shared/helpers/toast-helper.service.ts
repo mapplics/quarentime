@@ -13,7 +13,8 @@ export class ToastHelperService {
         const toast = await this.toastCtrl.create({
             message,
             color,
-            duration: 5000
+            duration: 5000,
+            position: 'top'
         });
         await toast.present();
     }

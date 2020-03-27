@@ -10,6 +10,7 @@ import {NavController} from '@ionic/angular';
 import {LoadingHelperService} from '../../../../shared/helpers/loading-helper.service';
 import {PersonalDataService} from '../../personal-data.service';
 import {take} from 'rxjs/operators';
+import {ToastHelperService} from '../../../../shared/helpers/toast-helper.service';
 
 @Component({
   selector: 'app-confirm-info',
@@ -23,7 +24,8 @@ export class ConfirmInfoPage extends PageInterface implements OnInit {
   constructor(public translateService: TranslateService,
               private navController: NavController,
               private loadingController: LoadingHelperService,
-              private personalDataService: PersonalDataService) {
+              private personalDataService: PersonalDataService,
+              private toastService: ToastHelperService) {
     super(translateService, english, spanish, macedonian, germany, dutch);
     this.getTranslations('CONFIRM');
   }
@@ -35,10 +37,10 @@ export class ConfirmInfoPage extends PageInterface implements OnInit {
     this.loadingController.presentLoading(this.translates.LOADING).then(() => {
       this.personalDataService.sendSurvey().pipe(take(1))
           .subscribe((resp) => {
-            debugger;
             this.loadingController.dismiss();
             this.navController.navigateRoot('personal-data/health-status');
           }, (err) => {
+            this.toastService.errorToast(err.message);
             this.loadingController.dismiss();
           });
     });
