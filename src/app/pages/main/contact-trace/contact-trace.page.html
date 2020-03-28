@@ -44,11 +44,24 @@
   </ion-row-->
 
   <div>
-    <div class="circle gray-blue" [ngStyle]="{position: 'absolute', top:centerY + 'px', left: centerX +'px'}">SG</div>
+    <div class="circle-friend gray-blue" [ngStyle]="{position: 'absolute',
+     top:centerY + 'px',
+     left: centerX +'px',
+     width: widthBase,
+     fontSize: textBase,
+     height: widthBase,
+     lineHeight: widthBase}">SG
+    </div>
     <div *ngFor="let circle of circles"
-         class="circle"
+         class="circle-friend"
          [ngClass]="circle.color"
-         [ngStyle]="{position: 'absolute', top:circle.top, left: circle.left}">{{circle.title}}</div>
+         [ngStyle]="{position: 'absolute',
+         top:circle.top,
+         left: circle.left,
+         fontSize: textBase,
+         width: widthBase,
+         height: widthBase,
+         lineHeight: widthBase}">{{circle.title}}</div>
   </div>
 
 </ion-content>

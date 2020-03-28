@@ -22,6 +22,9 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     centerX: number;
     centerY: number;
 
+    widthBase: string;
+    textBase: string;
+
     //@ViewChild('content', {read: ElementRef, static: false}) elementView: ElementRef;
     @ViewChild('content2', {read: ElementRef, static: false}) elementView: ElementRef;
 
@@ -58,8 +61,9 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     calculateRamdon() {
         this.spaces = [];
 
-
+        // variable utilzada para acumular las distancias verticales
         let topInit = 0;
+        // variable utilizada para calcular la distancia horizontal
         let leftInit = 2;
         // const height = this.platform.height() * 0.50 - 60;
         const width = this.platform.width();
@@ -69,11 +73,16 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         const diametro = 58;
         const radio = diametro / 2;
 
-        // ccalculo cuantos entran orizontalmente
+        // calculo cuantos entran horizontalmente, 2 es el padding
         const totalWidth = Math.trunc(width / (diametro + 2));
         // calculo cuantos entran verticalmente
         const totalHeight = Math.trunc(height / (diametro + 2));
-        const total = (totalHeight) * totalWidth - 1;
+        // total que entra le resto 1 para la bola mas grande
+        const total = (totalHeight) * totalWidth - 3;
+
+        const values = this.calculateWidthHeight(width, height, diametro, 50, diametro);
+
+        console.log(values);
 
         //let height2 = (this.elementView.nativeElement);
 
@@ -86,38 +95,26 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
 
         // formo la cuadrilla con los spacios para distribuir los circulos
-        for (let i = 0; i < totalHeight; i++) {
-            for (let j = 0; j < totalWidth; j++) {
+        for (let i = 0; i < values.totalHeight; i++) {
+            for (let j = 0; j < values.totalWidth; j++) {
                 // controlo que no pise el centro
-                /*if ((leftInit < (centerX) && (topInit < (centerY - radio) || topInit > (centerY + radio)))
-                    || (topInit < (centerY - radio) || topInit > (centerX + radio) || leftInit < (centerX - radio) || leftInit > (centerX + radio))
-                    || (leftInit > (centerX + radio) && (topInit < (centerY - radio) || topInit > (centerY + radio)))) {
-                    this.spaces.push({
-                        top: topInit + 'px',
-                        left: leftInit + 'px'
-                    });
-                } else {
-                    debugger;
-                    const error = false;
-                }*/
 
-                const overlap = this.collision(width / 2, height / 2, leftInit + radio, topInit + radio, diametro);
+                const overlap = this.collision(width / 2, height / 2, leftInit + values.d2 / 2, topInit + values.d2 / 2, values.d2);
                 if (!overlap) {
                     this.spaces.push({
                         top: topInit + 'px',
                         left: leftInit + 'px'
                     });
-                } else {
-                    // debugger;
                 }
-
-
-                leftInit += diametro + 2;
+                leftInit += values.d2 + 2;
             }
             leftInit = 2;
-            topInit += diametro + 2;
+            topInit += values.d2 + 2;
 
         }
+
+        this.textBase = ((values.d2 - 2) * 24 / (diametro - 2)) + 'px';
+        this.widthBase = (values.d2 - 2) + 'px';
 
         // esto deberia venir del servidor title and color
         this.prepareCircle('NL', 'gray-blue');
@@ -130,6 +127,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.prepareCircle('LA', 'red');
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
+
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
         this.prepareCircle('JM', 'gold');
@@ -140,6 +138,8 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.prepareCircle('LA', 'red');
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
+
+
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
         this.prepareCircle('JM', 'gold');
@@ -150,6 +150,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.prepareCircle('LA', 'red');
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
+
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
         this.prepareCircle('JM', 'gold');
@@ -160,33 +161,27 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.prepareCircle('LA', 'red');
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
+
+        this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
+        this.prepareCircle('JM', 'gold');
+        this.prepareCircle('LA', 'red');
+        this.prepareCircle('NL', 'gray-blue');
+        this.prepareCircle('ML', 'purple');
+        this.prepareCircle('JM', 'gold');
+        this.prepareCircle('LA', 'red');
+        this.prepareCircle('NL', 'gray-blue');
+        this.prepareCircle('ML', 'purple');
+
 
     }
 
     collision(x1: number, y1: number, x2: number, y2: number, r: number) {
-        //for (i = 0; i < circles.length; i++) {
-        //Distance formula
+        // Distance formula
         if (Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)) < r) {
             return true;
         }
         return false;
-        // }
-    }
-
-
-    circleCollisionDetect(c1, c2) {
-        var dx = c1[0] - c2[0];
-        var dy = c1[1] - c2[1];
-        var distance = Math.sqrt(dx * dx + dy * dy);
-        return distance < c1[2] + c2[2];
-    }
-
-    circlePointCollisionDetect(p, c) {
-        const dx = p[0] - c[0];
-        const dy = p[1] - c[1];
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        return distance < c[2];
     }
 
     prepareCircle(title, color) {
@@ -196,10 +191,33 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
             title,
             color,
             top: this.spaces[random].top,
-            left: this.spaces[random].left
+            left: this.spaces[random].left,
+            // width: String(diametro) + 'px',
+            // text: text + 'px'
         });
         // elimino este espacio para q no se repita
         this.spaces.splice(random, 1);
+    }
+
+    calculateWidthHeight(width, height, diametro, contactCount, d2) {
+        // calculo cuantos entran horizontalmente, 2 es el padding
+        const totalWidth = Math.trunc(width / (d2 + 2));
+        // calculo cuantos entran verticalmente
+        const totalHeight = Math.trunc(height / (d2 + 2));
+        // total que entra le resto 1 para la bola mas grande
+        const total = (totalHeight) * totalWidth - 3;
+        if (contactCount <= total) {
+            return {
+                totalWidth,
+                totalHeight,
+                d2,
+                total
+            };
+        } else {
+            // pongo un diametro mas pequeño
+            d2 = d2 - 2;
+            return this.calculateWidthHeight(width, height, diametro, contactCount, d2);
+        }
     }
 
     get totalPurple() {
