@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
@@ -16,6 +16,19 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
 import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 import {Globalization} from '@ionic-native/globalization/ngx';
 import {Contacts} from '@ionic-native/contacts/ngx';
+import {AuthService} from './providers/auth.service';
+import { registerLocaleData } from '@angular/common';
+import localeSpanish from '@angular/common/locales/es';
+import localeEnglish from '@angular/common/locales/en';
+import localeGermany from '@angular/common/locales/de';
+import localeDutch from '@angular/common/locales/nl';
+import localeMacedonia from '@angular/common/locales/mk';
+
+registerLocaleData(localeSpanish, 'es');
+registerLocaleData(localeEnglish, 'en');
+registerLocaleData(localeGermany, 'de');
+registerLocaleData(localeDutch, 'nl');
+registerLocaleData(localeMacedonia, 'mk');
 
 @NgModule({
     declarations: [AppComponent],
@@ -37,6 +50,11 @@ import {Contacts} from '@ionic-native/contacts/ngx';
         Globalization,
         Contacts,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        {
+            provide: LOCALE_ID,
+            deps: [AuthService],
+            useFactory: (authService) => authService.getLocale()
+        }
     ],
     bootstrap: [AppComponent]
 })

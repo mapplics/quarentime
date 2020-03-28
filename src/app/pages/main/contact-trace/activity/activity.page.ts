@@ -17,6 +17,7 @@ import {ContactModel} from '../models/contact.model';
 export class ActivityPage extends PageInterface implements OnInit {
 
   contactList: ContactModel[];
+  date = new Date();
 
   constructor(public translateService: TranslateService,
               private loadingController: LoadingHelperService,
@@ -35,6 +36,7 @@ export class ActivityPage extends PageInterface implements OnInit {
           .subscribe((resp: GeneralResponse) => {
             debugger;
             this.contactList = resp.result;
+            // this.groupByMonth();
             this.loadingController.dismiss();
           }, () => {
             // todo error
@@ -43,7 +45,24 @@ export class ActivityPage extends PageInterface implements OnInit {
     });
   }
 
-  groupByMonth():void {
+  groupByMonth(): void {
+    const groups = this.contactList.reduce((groupList, contact) => {
+      const date = new Date(contact.dateAdded.split('T')[0]);
+      debugger;
+      if (!groupList[date.toDateString()]) {
+        groupList[date.toDateString()] = [];
+      }
+      groupList[date.toDateString()].push(contact);
+      return groupList;
+    }, {});
+
+// Edit: to add it in the array format instead
+    const groupArrays = Object.keys(groups).map((date) => {
+      return {
+        date,
+        contacts: groups[date]
+      };
+    });
 
   }
   

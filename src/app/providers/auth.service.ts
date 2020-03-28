@@ -128,4 +128,8 @@ export class AuthService extends BaseService {
             return false;
         }
     }
+
+    getLocale(): string {
+       return localStorage.getItem('quarentimeUserLanguage');
+    }
 }

@@ -3,7 +3,7 @@
 <ion-content>
   <ion-list class="ion-padding-start">
     <ion-list-header color="light">
-      <p><strong>April 2020</strong></p>
+      <p><strong>{{date | date:'MMMM yyyy' | titlecase}}</strong></p>
     </ion-list-header>
     <ion-item lines="full" detail="false" *ngFor="let c of contactList">
       <ion-avatar slot="start" class="ion-text-center" [ngStyle]="{'background-color': c.statusColor}">
