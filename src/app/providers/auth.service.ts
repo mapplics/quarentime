@@ -39,7 +39,6 @@ export class AuthService extends BaseService {
         firebase.initializeApp(firebaseConfig);
         // Emit logged in status whenever auth state changes
         firebase.auth().onAuthStateChanged(firebaseUser => {
-            debugger;
             if (firebaseUser) {
                 this.auth = new AuthModel();
                 this.auth.name = firebaseUser.displayName;
@@ -107,7 +106,7 @@ export class AuthService extends BaseService {
 
     refreshToken(): Promise<string> {
        return this.getActiveUser().getIdToken(true).then(
-            (newToken) => { 
+            (newToken) => {
                 console.log('token-new', newToken);
                 localStorage.setItem('quarentimeToken', newToken);
                 return newToken;
@@ -122,7 +121,7 @@ export class AuthService extends BaseService {
     get isAuthenticated() {
         // si hay token esta ok, y lo mando a refresacar
         if (this.getEmail()) {
-            // refresco el token por las dudas            
+            // refresco el token por las dudas
             return true;
         } else {
             return false;
