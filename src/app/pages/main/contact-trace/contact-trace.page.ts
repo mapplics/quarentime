@@ -9,6 +9,14 @@ import {locale as dutch} from './i18n/nl';
 import {NavController, Platform} from '@ionic/angular';
 import {CirclesModel} from './models/circles.model';
 import {SpacesWindowModel} from './models/spaces-window.model';
+import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
+import {ContactTraceService} from '../contact-trace.service';
+import {ContactModel} from '../invite/models/contact.model';
+import {take} from 'rxjs/operators';
+import {GeneralResponse} from '../../../models/general-response.model';
+import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
+import {ContactTraceModel} from './models/contact-trace.model';
+import {StorageService} from '../../../shared/services/storage.service';
 
 @Component({
     selector: 'app-contact-trace',
@@ -19,19 +27,24 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     circles: CirclesModel[] = [];
     spaces: SpacesWindowModel[] = [];
 
-    centerX: number;
-    centerY: number;
+    leftCenter: number;
+    topCenter: number;
 
     widthBase: string;
     textBase: string;
 
-    //@ViewChild('content', {read: ElementRef, static: false}) elementView: ElementRef;
-    @ViewChild('content2', {read: ElementRef, static: false}) elementView: ElementRef;
+    @ViewChild('content', {read: ElementRef, static: false}) elementView: ElementRef;
+
+    contacts: ContactTraceModel[] = [];
 
 
     constructor(public translateService: TranslateService,
                 private platform: Platform,
-                private navCtrl: NavController) {
+                private navCtrl: NavController,
+                private loadingCtrl: LoadingHelperService,
+                private toastCtrl: ToastHelperService,
+                private contactTraceService: ContactTraceService,
+                private storageService: StorageService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
     }
 
@@ -47,7 +60,25 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     }
 
     ionViewDidEnter() {
-        this.calculateRamdon();
+        this.getContacts();
+    }
+
+    getContacts(): void {
+        this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
+            this.contactTraceService.getContacts().pipe(take(1)).subscribe(
+                (resp: GeneralResponse) => {
+                    this.contacts = ContactTraceModel.createArray(resp.result, new ContactTraceModel());
+                    console.log(this.contacts);
+
+
+                    this.calculateRamdon();
+                    this.loadingCtrl.dismiss();
+                    // this.navCtrl.navigateRoot('congratulation');
+                }, (err) => {
+                    this.loadingCtrl.dismiss();
+                    this.toastCtrl.errorToast(err.message);
+                });
+        });
     }
 
     onShareContact() {
@@ -74,24 +105,24 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         const radio = diametro / 2;
 
         // calculo cuantos entran horizontalmente, 2 es el padding
-        const totalWidth = Math.trunc(width / (diametro + 2));
+        // const totalWidth = Math.trunc(width / (diametro + 2));
         // calculo cuantos entran verticalmente
-        const totalHeight = Math.trunc(height / (diametro + 2));
+        // const totalHeight = Math.trunc(height / (diametro + 2));
         // total que entra le resto 1 para la bola mas grande
-        const total = (totalHeight) * totalWidth - 3;
+        // const total = (totalHeight) * totalWidth - 3;
 
-        const values = this.calculateWidthHeight(width, height, diametro, 50, diametro);
+        const values = this.calculateWidthHeight(width, height, diametro, this.contacts.length, diametro);
 
         console.log(values);
 
-        //let height2 = (this.elementView.nativeElement);
+        // let height2 = (this.elementView.nativeElement);
 
 
         const centerY = height / 2;
         const centerX = width / 2;
 
-        this.centerX = centerX - radio;
-        this.centerY = centerY - radio;
+        this.leftCenter = centerX - radio;
+        this.topCenter = centerY - radio;
 
 
         // formo la cuadrilla con los spacios para distribuir los circulos
@@ -117,6 +148,10 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.widthBase = (values.d2 - 2) + 'px';
 
         // esto deberia venir del servidor title and color
+        for (let contact of this.contacts) {
+            this.prepareCircle(contact.nameInitialWord, contact.status);
+        }
+        /*
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
         this.prepareCircle('JM', 'gold');
@@ -127,51 +162,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.prepareCircle('LA', 'red');
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
-
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-
-
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
-        this.prepareCircle('JM', 'gold');
-        this.prepareCircle('LA', 'red');
-        this.prepareCircle('NL', 'gray-blue');
-        this.prepareCircle('ML', 'purple');
+*/
 
 
     }
@@ -220,24 +211,35 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         }
     }
 
-    get totalPurple() {
-        return this.circles.filter(c => c.color === 'purple').length;
+    getUserState(type){
+        return this.userStatus === type ? 1: 0;
+    }
+    get totalRecovered() {
+        return this.circles.filter(c => c.color === 'recovered').length + this.getUserState('recovered');
     }
 
-    get totalGold() {
-        return this.circles.filter(c => c.color === 'gold').length;
+    get totalCarrier() {
+        return this.circles.filter(c => c.color === 'carrier').length + this.getUserState('carrier');
     }
 
-    get totalGray() {
-        return this.circles.filter(c => c.color === 'gray-blue').length + 1;
+    get totalHealthy() {
+        return this.circles.filter(c => c.color === 'healthy').length + this.getUserState('healthy');
     }
 
-    get totalRed() {
-        return this.circles.filter(c => c.color === 'red').length;
+    get totalHightRisk() {
+        return this.circles.filter(c => c.color === 'hight_risk').length + this.getUserState('hight_risk');
     }
 
-    get totalLightBlue() {
-        return this.circles.filter(c => c.color === 'light-blue').length;
+    get totalPositive() {
+        return this.circles.filter(c => c.color === 'positive').length + this.getUserState('positive');
+    }
+
+    get userNameInitialWord() {
+        return this.storageService.nameInitialWord;
+    }
+
+    get userStatus() {
+        return this.storageService.userStatus;
     }
 
 }

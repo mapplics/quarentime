@@ -8,7 +8,9 @@ export const locale = {
             HIGH_RISK: 'high-risk',
             CARRIER: 'carrier',
             TOTAL: 'Total',
-            PENDING: 'Pending'
+            PENDING: 'Pending',
+
+            LOADING_CONTACT: 'Loading Contacts...'
         }
     }
 };

@@ -32,7 +32,7 @@
   </ion-row>
 </ion-header>
 
-<ion-content #content2 class="ion-padding">
+<ion-content #content class="ion-padding">
 
 
   <!--ion-row  id="content2"  class="ion-text-center ion-align-items-center" style="height: 80%">
@@ -44,13 +44,14 @@
   </ion-row-->
 
   <div>
-    <div class="circle-friend gray-blue" [ngStyle]="{position: 'absolute',
-     top:centerY + 'px',
-     left: centerX +'px',
+    <div class="circle-friend" [ngClass]="userStatus" [ngStyle]="{
+     position: 'absolute',
+     top:topCenter + 'px',
+     left: leftCenter +'px',
      width: widthBase,
      fontSize: textBase,
      height: widthBase,
-     lineHeight: widthBase}">SG
+     lineHeight: widthBase}">{{userNameInitialWord}}
     </div>
     <div *ngFor="let circle of circles"
          class="circle-friend"
@@ -73,25 +74,25 @@
     </ion-col>
   </ion-row>
   <ion-row class="ion-no-padding ion-no-margin">
-    <ion-col size="2" *ngIf="totalGray">
+    <ion-col size="2" *ngIf="totalHealthy">
       <ion-icon name="ellipse" color="gray-blue"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalGray}}</ion-text>
+      <ion-text class="margin-dot-number">{{totalHealthy}}</ion-text>
     </ion-col>
-    <ion-col size="2" *ngIf="totalPurple">
+    <ion-col size="2" *ngIf="totalRecovered">
       <ion-icon name="ellipse" color="purple"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalPurple}}</ion-text>
+      <ion-text class="margin-dot-number">{{totalRecovered}}</ion-text>
     </ion-col>
-    <ion-col size="2" *ngIf="totalLightBlue">
+    <ion-col size="2" *ngIf="totalPositive">
       <ion-icon name="ellipse" color="light-blue"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalLightBlue}}</ion-text>
+      <ion-text class="margin-dot-number">{{totalPositive}}</ion-text>
     </ion-col>
-    <ion-col size="2" *ngIf="totalGold">
+    <ion-col size="2" *ngIf="totalCarrier">
       <ion-icon name="ellipse" color="gold"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalGold}}</ion-text>
+      <ion-text class="margin-dot-number">{{totalCarrier}}</ion-text>
     </ion-col>
-    <ion-col size="2" *ngIf="totalRed">
+    <ion-col size="2" *ngIf="totalHightRisk">
       <ion-icon name="ellipse" color="red"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalRed}}</ion-text>
+      <ion-text class="margin-dot-number">{{totalHightRisk}}</ion-text>
     </ion-col>
   </ion-row>
 </ion-footer>
