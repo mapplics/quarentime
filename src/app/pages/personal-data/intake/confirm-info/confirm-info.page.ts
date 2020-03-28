@@ -45,6 +45,8 @@ export class ConfirmInfoPage extends PageInterface implements OnInit {
             }, (err) => {
               this.toastService.errorToast(err.message);
               this.loadingController.dismiss();
+              // lo dejo pasar por ahora porq es problema del back
+              this.navController.navigateRoot('personal-data/health-status');
             });
           });    
     });
