@@ -9,12 +9,12 @@ import {locale as dutch} from './i18n/nl';
 import {ContactFieldType, Contacts, IContactFindOptions} from '@ionic-native/contacts/ngx';
 import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 import {NavController} from '@ionic/angular';
-import {ContactModel} from './models/contact.model';
 import {take} from 'rxjs/operators';
 import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
 import {GeneralResponse} from '../../../models/general-response.model';
 import {ContactTraceService} from '../contact-trace.service';
 import { AuthService } from 'src/app/providers/auth.service';
+import {ContactPhoneModel} from './models/contact-phone.model';
 
 @Component({
     selector: 'app-invite',
@@ -94,7 +94,7 @@ export class InvitePage extends PageInterface implements OnInit {
     }
 
     sendInvite(): void {
-        const list = ContactModel.createFromObjectCollection(this.selectedContacts);
+        const list = ContactPhoneModel.createFromObjectCollection(this.selectedContacts);
         this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
             this.authService.refreshToken().then(() => {
                 this.contactTraceService.sendInvite(list).pipe(take(1)).subscribe(

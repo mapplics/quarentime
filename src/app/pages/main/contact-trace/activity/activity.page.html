@@ -1,0 +1,32 @@
+<app-header title="ACTIVITY" [btnBack]="true" [defaultHref]="'main/contact-trace'"></app-header>
+
+<ion-content>
+  <ion-list class="ion-padding-start">
+    <ion-list-header color="light">
+      <p><strong>April 2020</strong></p>
+    </ion-list-header>
+    <ion-item lines="full" detail="false" *ngFor="let c of contactList">
+      <ion-avatar slot="start" class="ion-text-center" [ngStyle]="{'background-color': c.statusColor}">
+        <h5 class="avatar-text">{{c.letters}}</h5>
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">{{c.name}}</ion-label>
+      <ion-badge color="medium" *ngIf="c.pending">{{'ACTIVITY.PENDING' | translate}}...</ion-badge>
+      <ion-buttons slot="end" *ngIf="!c.pending">
+        <ion-button (click)="confirmContact(c)" class="ion-margin-end"><ion-icon color="danger" name="trash-outline"></ion-icon></ion-button>
+        <ion-button (click)="ignoreContact(c)"><ion-icon color="success" name="checkmark-outline"></ion-icon></ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item lines="full" detail="false" *ngFor="let c of contactList">
+      <ion-avatar slot="start" class="ion-text-center" [ngStyle]="{'background-color': c.statusColor}">
+        <h5 class="avatar-text">{{c.letters}}</h5>
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">{{c.name}}</ion-label>
+      <ion-badge color="medium" *ngIf="c.pending">{{'ACTIVITY.PENDING' | translate}}...</ion-badge>
+      <ion-buttons slot="end" *ngIf="!c.pending">
+        <ion-button color="success" size="small" fill="solid" (click)="confirmContact(c)">Confirm</ion-button>
+        <ion-button color="danger" size="small" fill="solid" (click)="ignoreContact(c)">Ignore</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

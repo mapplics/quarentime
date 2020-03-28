@@ -27,11 +27,11 @@
     }
   }
 
-  ion-button {
+  ion-button:not([size=small]) {
     height: 50px !important;
     border-radius: 4px;
     font-size: 14px;
-    text-transform: capitalize !important;
+    text-transform: uppercase !important;
   }
 
   .h-100 {
