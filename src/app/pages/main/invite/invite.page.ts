@@ -94,13 +94,13 @@ export class InvitePage extends PageInterface implements OnInit {
     }
 
     sendInvite(): void {
-        const list = ContactModel.createFromObjectCollection(this.selectedContacts);        
+        const list = ContactModel.createFromObjectCollection(this.selectedContacts);
         this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
             this.authService.refreshToken().then(() => { 
                 this.contactTraceService.sendInvite(list).pipe(take(1)).subscribe(
                     (resp: GeneralResponse) => {
                         this.loadingController.dismiss();
-                        this.navController.navigateRoot('congratulation');
+                        this.navController.navigateRoot('/main/invite/congratulation');
                     }, (err) => {
                         this.loadingController.dismiss();
                         this.toastController.errorToast(err.message);

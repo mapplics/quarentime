@@ -5,7 +5,7 @@ import {locale as macedonian} from './i18n/mk';
 import {locale as germany} from './i18n/de';
 import {locale as dutch} from './i18n/nl';
 import {TranslateService} from '@ngx-translate/core';
-import {PageInterface} from '../../core/page-interface';
+import {PageInterface} from '../../../../core/page-interface';
 import {NavController} from '@ionic/angular';
 
 @Component({
