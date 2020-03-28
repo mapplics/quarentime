@@ -6,11 +6,7 @@ import { InvitePage } from './invite.page';
 const routes: Routes = [
   {
     path: '',
-    component: InvitePage
-  },
-  {
-    path: 'congratulation',
-    loadChildren: () => import('./congratulation/congratulation.module').then(m => m.CongratulationPageModule)
+    component: InvitePage,
   }
 ];
 
