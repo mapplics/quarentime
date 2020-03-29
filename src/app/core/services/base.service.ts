@@ -26,26 +26,36 @@ export class BaseService {
         response.result = [];
         response.error = true;
 
-        if (error.error) {
-            response.message = error.error.message;
-
-            if (error.error.httpCode === 401) {
-                this.router.navigate(['/login']);
-            }
-
-            if (error.error.errors) {
-
-                const arrayErrors = Object.keys(error.error.errors).map(i => error.error.errors[i]);
-                for (const err of arrayErrors) {
-                    response.result.push(err);
-                }
-            }
+        if (error.status === 401) {
+            this.router.navigate(['/login']);
+        } else if (error.status === 500) {
+            response.message = `${error.name}: ${error.message}`;
+            // para salir live poner este errror
+            // response.message = 'We are having some server problems, please retry in a few seconds...';
+        } else {
+            response.message = error.error.error_code;
         }
 
-        if (response.message === '') {
-            // todo make general error message multilanguage
-            response.message = '';
-        }
+        // if (error.error) {
+        //     response.message = error.error.message;
+
+        //     if (error.error.httpCode === 401) {
+        //         this.router.navigate(['/login']);
+        //     }
+
+        //     if (error.error.errors) {
+
+        //         const arrayErrors = Object.keys(error.error.errors).map(i => error.error.errors[i]);
+        //         for (const err of arrayErrors) {
+        //             response.result.push(err);
+        //         }
+        //     }
+        // }
+
+        // if (response.message === '') {
+        //     // todo make general error message multilanguage
+        //     response.message = 'We are having some server problems, please retry in a few seconds...';
+        // }
         return throwError(response);
     }
 }

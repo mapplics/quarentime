@@ -1,15 +1,15 @@
-<app-header title="INVITE" [btnBack]="true" [defaultHref]="'..'"></app-header>
+<app-header title="INVITE"></app-header>
 
 <ion-searchbar mode="ios" [placeholder]="'INVITE.SEARCHBAR' | translate"
                (keyup)="onKeyUp($event)" (ionClear)="onClear($event)">
 </ion-searchbar>
+<ion-row class="ion-margin-horizontal">
+  <ion-chip *ngFor="let c of selectedContacts" color="purple" outline="true">
+    <ion-label>{{c.displayName}}</ion-label>
+    <ion-icon name="close-circle" (click)="delete(c)"></ion-icon></ion-chip>
+</ion-row>
 
 <ion-content>
-  <ion-row class="ion-margin-horizontal">
-    <ion-chip *ngFor="let c of selectedContacts" color="purple" outline="true">
-      <ion-label>{{c.displayName}}</ion-label>
-      <ion-icon name="close-circle" (click)="delete(c)"></ion-icon></ion-chip>
-  </ion-row>
   <ion-list>
     <ion-item lines="full" detail="false" *ngFor="let item of filteredList">
       <ion-checkbox slot="start" (ionChange)="selectedChange($event, item)" color="gold"
@@ -22,7 +22,7 @@
     </ion-item>
   </ion-list>
 
-  <div class="floating-button ion-margin-horizontal" *ngIf="selectedContacts.length > 0">
+  <div class="floating-button ion-margin-horizontal"  *ngIf="selectedContacts.length > 0">
     <ion-button color="primary"
                 expand="block"
                 class="button"

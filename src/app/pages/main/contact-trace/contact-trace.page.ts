@@ -110,4 +110,8 @@ export class ContactTracePage extends PageInterface implements OnInit {
         return this.circles.filter(c => c.color === 'light-blue').length;
     }
 
+    goToActivity(): void {
+        this.navCtrl.navigateForward('main/contact-trace/activity');
+    }
+
 }

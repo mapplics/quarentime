@@ -58,6 +58,11 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+
+  {
+    path: 'congratulation',
+    loadChildren: () => import('../main/congratulation/congratulation.module').then(m => m.CongratulationPageModule)
   }
 ];
 
