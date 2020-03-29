@@ -7,9 +7,11 @@ export const locale = {
             RECOVERED: 'Recovered',
             POSITIVE: 'positive',
             CARRIER: 'carrier',
-            SUSPECTED: 'suspected',
+            SUSPETED: 'suspeted',
             TOTAL: 'Total',
-            PENDING: 'Pending'
+            PENDING: 'Pending',
+
+            LOADING_CONTACT: 'Loading Contacts...'
         }
     }
 };

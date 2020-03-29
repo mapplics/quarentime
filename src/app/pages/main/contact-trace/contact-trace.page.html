@@ -1,22 +1,9 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar mode="md">
-    <ion-title>
-      <ion-label color="primary"><b>{{'CONTACT.TITLE' | translate}}</b></ion-label>
-    </ion-title>
-
-    <ion-buttons slot="end" >
-      <ion-button (click)="goToActivity()">
-        <ion-icon color="dark" slot="icon-only" size="large" src="assets/icon/list.svg"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-  </ion-toolbar>
-
-
-</ion-header>
-
-<ion-content class="ion-padding">
-  <ion-row class="ion-padding-horizontal">
+<ion-header>
+  <app-header
+      title="CONTACT_TRACE"
+      [btnShare]="true" [btnShowDetails]="true"
+      (onShare)="onShareContact()" (showDetails)="onShowDetails()"></app-header>
+  <ion-row>
     <ion-col class="ion-text-center">
       <ion-icon name="ellipse" color="light-blue"></ion-icon>
       <br>
@@ -32,61 +19,99 @@
       <br>
       <ion-text class="status-text ion-text-uppercase">{{'CONTACT.POSITIVE' | translate}}</ion-text>
     </ion-col>
+    <!--ion-col class="ion-text-center">
+      <ion-icon name="ellipse" color="red"></ion-icon>
+      <br>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.HIGH_RISK' | translate}}</ion-text>
+    </ion-col-->
     <ion-col class="ion-text-center">
       <ion-icon name="ellipse" color="gold"></ion-icon>
       <br>
-      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.SUSPECTED' | translate}}</ion-text>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.SUSPETED' | translate}}</ion-text>
     </ion-col>
   </ion-row>
+</ion-header>
+
+<ion-content #content class="ion-padding">
 
 
-  <ion-row class="ion-text-center ion-align-items-center" style="height: 80%">
+  <!--ion-row  id="content2"  class="ion-text-center ion-align-items-center" style="height: 80%">
     <ion-col style="z-index: 1">
       <div class="circle gray-blue">SG</div>
     </ion-col>
-    <!--div>
-      <div class="circle bg-purple" style="position: absolute; top:100px; left: 5px">MD</div>
-      <div class="circle bg-purple" style="position: absolute; top:300px; left: 30px">NL</div>
-      <div class="circle bg-gray-blue" style="position: absolute; top:100px; left: 180px">LA</div>
-      <div class="circle bg-purple" style="position: absolute; top:300px; left: 280px">JM</div>
-    </div-->
-    <div>
-      <div *ngFor="let circle of circles"
-           class="circle"
-           [ngClass]="circle.color"
-           [ngStyle]="{position: 'absolute', top:circle.top, left: circle.left}">{{circle.title}}</div>
-    </div>
-  </ion-row>
 
+
+  </ion-row-->
+
+  <div>
+    <!-- Fixme-->
+    <div *ngIf="loaded" class="circle-friend" [ngClass]="userStatus" [ngStyle]="{
+     position: 'absolute',
+     top:topCenter + 'px',
+     left: leftCenter +'px',
+     width: widthBase,
+     fontSize: textBase,
+     height: widthBase,
+     lineHeight: widthBase}">{{userNameInitialWord}}
+    </div>
+    <div *ngFor="let circle of circles"
+         class="circle-friend"
+         [ngClass]="circle.color"
+         [ngStyle]="{position: 'absolute',
+         top:circle.top,
+         left: circle.left,
+         fontSize: textBase,
+         width: widthBase,
+         height: widthBase,
+         lineHeight: widthBase}">{{circle.title}}</div>
+  </div>
 
 </ion-content>
 
-<ion-footer>
-  <ion-row class="ion-no-padding ion-no-margin">
+<ion-footer style="height: 50px">
+  <!--ion-row class="ion-no-padding ion-no-margin">
     <ion-col>
       <ion-text class="text-footer">{{'CONTACT.TOTAL' | translate}}</ion-text>
     </ion-col>
-  </ion-row>
+  </ion-row-->
   <ion-row class="ion-no-padding ion-no-margin">
-    <ion-col size="2" *ngIf="totalGray">
-      <ion-icon name="ellipse" color="gray-blue"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalGray}}</ion-text>
+    <ion-col class="ion-no-padding ion-no-margin">
+      <ion-row class="ion-no-padding ion-no-margin">
+        <ion-col size="12">
+          <ion-text class="text-footer">{{'CONTACT.TOTAL' | translate}}</ion-text>
+        </ion-col>
+        <ion-col size="2" *ngIf="totalHealthy">
+          <ion-icon name="ellipse" color="light-blue"></ion-icon>
+          <ion-text class="margin-dot-number">{{totalHealthy}}</ion-text>
+        </ion-col>
+        <ion-col size="2" *ngIf="totalRecovered">
+          <ion-icon name="ellipse" color="purple"></ion-icon>
+          <ion-text class="margin-dot-number">{{totalRecovered}}</ion-text>
+        </ion-col>
+        <ion-col size="2" *ngIf="totalPositive">
+          <ion-icon name="ellipse" color="red"></ion-icon>
+          <ion-text class="margin-dot-number">{{totalPositive}}</ion-text>
+        </ion-col>
+        <ion-col size="2" *ngIf="totalSuspeted">
+          <ion-icon name="ellipse" color="gold"></ion-icon>
+          <ion-text class="margin-dot-number">{{totalSuspeted}}</ion-text>
+        </ion-col>
+        <!--ion-col size="2" *ngIf="totalHightRisk">
+          <ion-icon name="ellipse" color="hight_risk"></ion-icon>
+          <ion-text class="margin-dot-number">{{totalHightRisk}}</ion-text>
+        </ion-col-->
+      </ion-row>
     </ion-col>
-    <ion-col size="2" *ngIf="totalPurple">
-      <ion-icon name="ellipse" color="purple"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalPurple}}</ion-text>
-    </ion-col>
-    <ion-col size="2" *ngIf="totalLightBlue">
-      <ion-icon name="ellipse" color="light-blue"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalLightBlue}}</ion-text>
-    </ion-col>
-    <ion-col size="2" *ngIf="totalGold">
-      <ion-icon name="ellipse" color="gold"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalGold}}</ion-text>
-    </ion-col>
-    <ion-col size="2" *ngIf="totalRed">
-      <ion-icon name="ellipse" color="red"></ion-icon>
-      <ion-text class="margin-dot-number">{{totalRed}}</ion-text>
+    <ion-col size="4" class="ion-no-padding ion-no-margin">
+      <ion-row class="ion-no-padding ion-no-margin">
+        <ion-col size="12">
+          <ion-text class="text-footer">{{'CONTACT.PENDING' | translate}}</ion-text>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon name="ellipse" color="gray-blue"></ion-icon>
+          <ion-text class="margin-dot-number">{{totalPending}}</ion-text>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
 </ion-footer>

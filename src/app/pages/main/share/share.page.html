@@ -1,8 +1,10 @@
 <ion-header>
   <app-header
       title="CONTACT_TRACE"
-      [btnShare]="true"
-      (onShare)="showInfo()"
+      [btnBack]="true"
+      [defaultHref]="'main/contact-trace'"
+      [btnShowDetails]="true"
+      (showDetails)="showInfo()"
   ></app-header>
 </ion-header>
 

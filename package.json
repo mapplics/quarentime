@@ -8,6 +8,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build-android-prod": "npx npm-force-resolutions & npm install & ionic cordova build android --prod",
+    "build-android-dev": "npx npm-force-resolutions & npm install & ionic cordova build android",
     "run-android-prod": "npx npm-force-resolutions & npm install & ionic cordova run android --device",
     "test": "ng test",
     "lint": "ng lint",

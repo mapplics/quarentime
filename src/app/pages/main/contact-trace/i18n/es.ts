@@ -6,9 +6,12 @@ export const locale = {
             HEALTHY: 'saludable',
             RECOVERED: 'recuperado',
             POSITIVE: 'positivo',
-            SUSPECTED: 'sospechoso',
+            HIGH_RISK: 'riesgo',
+            CARRIER: 'portador',
+            SUSPETED: 'sospechoso',
             TOTAL: 'Total',
-            PENDING: 'Pendientes'
+            PENDING: 'Pendientes',
+            LOADING_CONTACT: 'Cargando Contactos...',
         }
     }
 };
