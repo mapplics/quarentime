@@ -11,7 +11,6 @@ import {CirclesModel} from './models/circles.model';
 import {SpacesWindowModel} from './models/spaces-window.model';
 import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 import {ContactTraceService} from '../contact-trace.service';
-import {ContactModel} from '../invite/models/contact.model';
 import {take} from 'rxjs/operators';
 import {GeneralResponse} from '../../../models/general-response.model';
 import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
