@@ -17,6 +17,7 @@ import {GeneralResponse} from '../../../models/general-response.model';
 import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
 import {ContactTraceModel} from './models/contact-trace.model';
 import {StorageService} from '../../../shared/services/storage.service';
+import {AuthService} from '../../../providers/auth.service';
 
 @Component({
     selector: 'app-contact-trace',
@@ -36,6 +37,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     @ViewChild('content', {read: ElementRef, static: false}) elementView: ElementRef;
 
     contacts: ContactTraceModel[] = [];
+    loaded: boolean;
 
 
     constructor(public translateService: TranslateService,
@@ -44,41 +46,46 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
                 private loadingCtrl: LoadingHelperService,
                 private toastCtrl: ToastHelperService,
                 private contactTraceService: ContactTraceService,
-                private storageService: StorageService) {
+                private storageService: StorageService,
+                private authService: AuthService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
     }
 
     ngOnInit() {
-        console.log('width', this.platform.width());
-        console.log('height', this.platform.height());
 
     }
 
     ngAfterViewInit() {
-        const a = this.elementView.nativeElement.offsetHeight;
-
     }
 
     ionViewDidEnter() {
+        // para que calcule el tamaño del div cuando ya cargo todo
+        this.contacts = [];
+        this.circles = [];
+        this.loaded = false;
         this.getContacts();
     }
 
-    getContacts(): void {
-        this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
-            this.contactTraceService.getContacts().pipe(take(1)).subscribe(
-                (resp: GeneralResponse) => {
-                    this.contacts = ContactTraceModel.createArray(resp.result, new ContactTraceModel());
-                    console.log(this.contacts);
+    async getContacts() {
+        debugger;
+        await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT'));
+        //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
+        //this.authService.refreshToken().then(() => {
+        this.contactTraceService.getContacts().pipe(take(1)).subscribe(
+            (resp: GeneralResponse) => {
+                this.contacts = ContactTraceModel.createArray(resp.result, new ContactTraceModel());
+                console.log(this.contacts);
 
 
-                    this.calculateRamdon();
-                    this.loadingCtrl.dismiss();
-                    // this.navCtrl.navigateRoot('congratulation');
-                }, (err) => {
-                    this.loadingCtrl.dismiss();
-                    this.toastCtrl.errorToast(err.message);
-                });
-        });
+                this.calculateRamdon();
+                this.loadingCtrl.dismiss();
+                // this.navCtrl.navigateRoot('congratulation');
+            }, (err) => {
+                this.loadingCtrl.dismiss();
+                this.toastCtrl.errorToast(err.message);
+            });
+        //});
+        //});
     }
 
     onShareContact() {
@@ -149,8 +156,10 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
         // esto deberia venir del servidor title and color
         for (let contact of this.contacts) {
-            this.prepareCircle(contact.nameInitialWord, contact.status);
+            const status = contact.pending ? 'pending' : contact.status;
+            this.prepareCircle(contact.nameInitialWord, status);
         }
+        this.loaded = true;
         /*
         this.prepareCircle('NL', 'gray-blue');
         this.prepareCircle('ML', 'purple');
@@ -211,27 +220,36 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         }
     }
 
-    getUserState(type){
-        return this.userStatus === type ? 1: 0;
-    }
-    get totalRecovered() {
-        return this.circles.filter(c => c.color === 'recovered').length + this.getUserState('recovered');
+    getUserState(type) {
+        return this.userStatus === type ? 1 : 0;
     }
 
-    get totalCarrier() {
-        return this.circles.filter(c => c.color === 'carrier').length + this.getUserState('carrier');
+    get totalRecovered() {
+        return this.colorCircle('recovered').length + this.getUserState('recovered');
+    }
+
+    get totalSuspeted() {
+        return this.colorCircle('suspeted').length + this.getUserState('suspeted');
     }
 
     get totalHealthy() {
-        return this.circles.filter(c => c.color === 'healthy').length + this.getUserState('healthy');
+        return this.colorCircle('healthy').length + this.getUserState('healthy');
     }
 
     get totalHightRisk() {
-        return this.circles.filter(c => c.color === 'hight_risk').length + this.getUserState('hight_risk');
+        return this.colorCircle('hight_risk').length + this.getUserState('hight_risk');
     }
 
     get totalPositive() {
-        return this.circles.filter(c => c.color === 'positive').length + this.getUserState('positive');
+        return this.colorCircle('positive').length + this.getUserState('positive');
+    }
+
+    get totalPending() {
+        return this.colorCircle('pending').length;
+    }
+
+    colorCircle(type: string) {
+        return this.circles.filter(c => c.color === type);
     }
 
     get userNameInitialWord() {

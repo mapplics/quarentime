@@ -7,9 +7,10 @@ export const locale = {
             POSITIVE: 'positivo',
             HIGH_RISK: 'riesgo',
             CARRIER: 'portador',
+            SUSPETED: 'sospechoso',
             TOTAL: 'Total',
             PENDING: 'Pendientes',
-            LOADING_CONTACT: 'Cargando Contactos...'
+            LOADING_CONTACT: 'Cargando Contactos...',
         }
     }
 };

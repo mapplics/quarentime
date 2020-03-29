@@ -25,7 +25,7 @@
 }
 
 .margin-dot-number{
-  margin-left: 10px;
+  margin-left: 2px;
 }
 
 .circle {
@@ -48,19 +48,24 @@
 }
 
 .healthy{
-  background: var(--ion-color-gray-blue);
+  background: var(--ion-color-light-blue);
+  // background: var(--ion-color-gray-blue);
 }
 
 .recovered{
   background: var(--ion-color-purple);
 }
 
-.carrier{
+.suspeted{
   background: var(--ion-color-gold);
 }
 .hight_risk{
   background: var(--ion-color-red);
 }
 .positive{
-  background: var(--ion-color-light-blue);
+  background: var(--ion-color-red);
+}
+
+.pending{
+  background: var(--ion-color-gray-blue);
 }

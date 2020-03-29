@@ -7,6 +7,7 @@ export const locale = {
             POSITIVE: 'positive',
             HIGH_RISK: 'high-risk',
             CARRIER: 'carrier',
+            SUSPETED: 'suspeted',
             TOTAL: 'Total',
             PENDING: 'Pending',
 
