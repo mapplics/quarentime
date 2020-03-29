@@ -8,88 +8,108 @@ import {ContactTraceService} from '../../contact-trace.service';
 import {take} from 'rxjs/operators';
 import {GeneralResponse} from '../../../../models/general-response.model';
 import {ContactModel} from '../models/contact.model';
+import {AlertController} from '@ionic/angular';
 
 @Component({
-  selector: 'app-activity',
-  templateUrl: './activity.page.html',
-  styleUrls: ['./activity.page.scss'],
+    selector: 'app-activity',
+    templateUrl: './activity.page.html',
+    styleUrls: ['./activity.page.scss'],
 })
 export class ActivityPage extends PageInterface implements OnInit {
 
-  contactList: ContactModel[];
-  date = new Date();
+    contactList: ContactModel[];
+    date = new Date();
 
-  constructor(public translateService: TranslateService,
-              private loadingController: LoadingHelperService,
-              private contactTraceService: ContactTraceService) {
-    super(translateService, english, spanish);
-    this.getTranslations('ACTIVITY');
-  }
+    constructor(public translateService: TranslateService,
+                private loadingController: LoadingHelperService,
+                private contactTraceService: ContactTraceService,
+                private alertController: AlertController) {
+        super(translateService, english, spanish);
+        this.getTranslations('ACTIVITY');
+    }
 
-  ngOnInit() {
-    this.getContacts();
-  }
+    ngOnInit() {
+        this.getContacts();
+    }
 
-  getContacts(): void {
-    this.loadingController.presentLoading(this.translates.RETRIEVING).then(() => {
-      this.contactTraceService.getContacts().pipe(take(1))
-          .subscribe((resp: GeneralResponse) => {
-            debugger;
-            this.contactList = resp.result;
-            // this.groupByMonth();
-            this.loadingController.dismiss();
-          }, () => {
-            // todo error
-            this.loadingController.dismiss();
-          });
-    });
-  }
+    async presentConfirmDelete(contact: ContactModel) {
+        const alert = await this.alertController.create({
+            header: this.translates.ALERT_DELETE.HEADER,
+            buttons: [
+                {
+                    text: this.translates.ALERT_DELETE.NO,
+                    role: 'cancel',
+                    cssClass: 'secondary'
+                }, {
+                    text: this.translates.ALERT_DELETE.YES,
+                    cssClass: 'primary',
+                    handler: () => {
+                        this.ignoreContact(contact);
+                    }
+                }
+            ]
+        });
 
-  groupByMonth(): void {
-    const groups = this.contactList.reduce((groupList, contact) => {
-      const date = new Date(contact.dateAdded.split('T')[0]);
-      debugger;
-      if (!groupList[date.toDateString()]) {
-        groupList[date.toDateString()] = [];
-      }
-      groupList[date.toDateString()].push(contact);
-      return groupList;
-    }, {});
+        await alert.present();
+    }
+
+    getContacts(): void {
+        this.loadingController.presentLoading(this.translates.RETRIEVING).then(() => {
+            this.contactTraceService.getContacts().pipe(take(1))
+                .subscribe((resp: GeneralResponse) => {
+                    this.contactList = resp.result;
+                    // this.groupByMonth();
+                    this.loadingController.dismiss();
+                }, () => {
+                    // todo error
+                    this.loadingController.dismiss();
+                });
+        });
+    }
+
+    groupByMonth(): void {
+        const groups = this.contactList.reduce((groupList, contact) => {
+            const date = contact.dateAdded;
+            if (!groupList[date.toDateString()]) {
+                groupList[date.toDateString()] = [];
+            }
+            groupList[date.toDateString()].push(contact);
+            return groupList;
+        }, {});
 
 // Edit: to add it in the array format instead
-    const groupArrays = Object.keys(groups).map((date) => {
-      return {
-        date,
-        contacts: groups[date]
-      };
-    });
+        const groupArrays = Object.keys(groups).map((date) => {
+            return {
+                date,
+                contacts: groups[date]
+            };
+        });
 
-  }
-  
-  confirmContact(contact: ContactModel): void {
-    this.loadingController.presentLoading(this.translates.SEND).then(() => {
-      this.contactTraceService.acceptInvite(contact.userId).pipe(take(1))
-          .subscribe((resp: GeneralResponse) => {
-            debugger;
-            this.loadingController.dismiss();
-          }, () => {
-            // todo
-            this.loadingController.dismiss();
+    }
 
-          });
-    });
-  }
+    confirmContact(contact: ContactModel): void {
+        this.loadingController.presentLoading(this.translates.SEND).then(() => {
+            this.contactTraceService.acceptInvite(contact.inviteId).pipe(take(1))
+                .subscribe((resp: GeneralResponse) => {
+                    this.loadingController.dismiss();
+                }, () => {
+                    // todo
+                    this.loadingController.dismiss();
 
-  ignoreContact(contact: ContactModel): void {
-    this.loadingController.presentLoading(this.translates.SEND).then(() => {
-      this.contactTraceService.rejectInvite(contact.userId).pipe(take(1))
-          .subscribe((resp: GeneralResponse) => {
-            debugger;
-            this.loadingController.dismiss();
-          }, () => {
-            // todo
-            this.loadingController.dismiss();
-          });
-    });
-  }
+                });
+        });
+    }
+
+
+    ignoreContact(contact: ContactModel): void {
+        this.loadingController.presentLoading(this.translates.SEND).then(() => {
+            this.contactTraceService.rejectInvite(contact.inviteId).pipe(take(1))
+                .subscribe((resp: GeneralResponse) => {
+                    this.loadingController.dismiss();
+                }, () => {
+                    // todo
+                    this.loadingController.dismiss();
+                });
+        });
+    }
 }

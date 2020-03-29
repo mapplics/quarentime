@@ -1,5 +1,5 @@
 export const locale = {
-    lang: 'en',
+    lang: 'mk',
     data: {
         ACTIVITY: {
             TITLE: 'Activity',
