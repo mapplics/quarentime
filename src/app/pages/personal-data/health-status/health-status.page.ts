@@ -33,7 +33,7 @@ export class HealthStatusPage extends PageInterface implements OnInit {
   }
 
   goToApp() {
-    this.navController.navigateRoot('main/contact-trace/share');
+    this.navController.navigateRoot('main');
   }
 
   showHelp(): void {
