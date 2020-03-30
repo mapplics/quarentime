@@ -102,7 +102,6 @@ export class InfoPage extends PageInterface implements OnInit {
   }
 
   saveData(): void {
-    debugger;
     const data = new PersonalDataModel(
         this.form.value.name,
         this.form.value.surename,

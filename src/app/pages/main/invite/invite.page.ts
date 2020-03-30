@@ -95,6 +95,7 @@ export class InvitePage extends PageInterface implements OnInit {
 
     sendInvite(): void {
         const list = ContactPhoneModel.createFromObjectCollection(this.selectedContacts);
+        list.forEach(x => x.phone_number = x.phone_number.replace(/[- ]/g, ''));
         this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
             this.authService.refreshToken().then(() => {
                 this.contactTraceService.sendInvite(list).pipe(take(1)).subscribe(

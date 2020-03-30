@@ -12,9 +12,9 @@ export class ContactTraceModel extends Serializable {
 
         dataParsed.status = data.final_status;
         dataParsed.color = data.color_hex;
-
+        dataParsed.initials = data.initials;
         if (data.contacts) {
-            dataParsed.contacts = ContactTraceModel.createArray(data.contacts, new ContactTraceModel())
+            dataParsed.contacts = ContactTraceModel.createArray(data.contacts, new ContactTraceModel());
         }
         return dataParsed;
     }

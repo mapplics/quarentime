@@ -18,7 +18,8 @@ export const locale = {
                 LINE1: 'We care about protecting your data.',
                 LINE2: 'Here’s our'
             },
-            POLICIES: 'Privacy Policy'
+            POLICIES: 'Privacy Policy',
+            NEXT: 'Next'
         }
     }
 }

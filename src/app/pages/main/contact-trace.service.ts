@@ -92,7 +92,8 @@ export class ContactTraceService extends BaseService {
         return this.http.get<GeneralResponse>(url)
             .pipe(
                 map((res: GeneralResponse) => {
-                    return res;
+                    const data = ContactModel.createFromObjectCollection(res.result);
+                    return new GeneralResponse(res.request_id, data);
                 }),
                 catchError(err => {
                     return this.handleError(err);

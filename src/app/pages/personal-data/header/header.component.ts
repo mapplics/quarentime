@@ -9,6 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {NavController} from '@ionic/angular';
 import {PersonalDataService} from '../personal-data.service';
 import { VerifyService } from '../verify.service';
+import {StorageService} from '../../../shared/services/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +27,8 @@ export class HeaderComponent extends PageInterface implements OnInit {
   constructor(public translateService: TranslateService,
 				private verifyService: VerifyService,
               private personalDataService: PersonalDataService,
-              private navController: NavController) {
+              private navController: NavController,
+              private storageService: StorageService) {
     super(translateService, english, spanish, macedonian, germany, dutch);               
   }
 
@@ -64,8 +66,8 @@ export class HeaderComponent extends PageInterface implements OnInit {
         return this.verifyService.isVerifiedUser;
         // return !!(+localStorage.getItem('codeVerified'));
       case 'health-status':
-        //return  !!(+localStorage.getItem('codeVerified')); // todo add questions answered
-        return this.verifyService.isVerifiedUser;
+       // todo add questions answered
+        return (this.verifyService.isVerifiedUser && !!this.storageService.userStatus);
     }
   }
 }

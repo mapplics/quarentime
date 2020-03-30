@@ -2,16 +2,16 @@
 
 <ion-content>
   <ion-list class="ion-padding-start">
-    <ion-list-header color="light">
-      <p><strong>{{date | date:'MMMM yyyy' | titlecase}}</strong></p>
-    </ion-list-header>
+<!--    <ion-list-header color="light">-->
+<!--      <p><strong>{{date | date:'MMMM yyyy' | titlecase}}</strong></p>-->
+<!--    </ion-list-header>-->
     <ion-item lines="full" detail="false" *ngFor="let c of contactList">
       <ion-avatar slot="start" class="ion-text-center" style="background-color: #dddddd">
         <h5 class="avatar-text">{{c.letters}}</h5>
       </ion-avatar>
       <ion-label class="ion-text-wrap">{{c.name}}</ion-label>
-      <ion-badge color="medium" *ngIf="c.pending">{{'ACTIVITY.PENDING' | translate}}...</ion-badge>
-      <ion-buttons slot="end" *ngIf="!c.pending">
+      <ion-badge color="medium" *ngIf="c.pending && !c.inviteId">{{'ACTIVITY.PENDING' | translate}}...</ion-badge>
+      <ion-buttons slot="end" *ngIf="!c.pending && c.inviteId">
         <ion-button (click)="confirmContact(c)" class="ion-margin-end"><ion-icon color="danger" name="close-outline"></ion-icon></ion-button>
         <ion-button (click)="presentConfirmDelete(c)"><ion-icon color="success" name="checkmark-outline"></ion-icon></ion-button>
       </ion-buttons>

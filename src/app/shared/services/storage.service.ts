@@ -37,14 +37,14 @@ export class StorageService {
     }
 
     get userStatus(): string {
-        return JSON.parse(this.getItem('health')).status;
+        return this.getItem('health') ? JSON.parse(this.getItem('health')).status : null;
     }
 
     private getItem(tag: string): string {
         return localStorage.getItem(tag);
     }
 
-    get nameInitialWord(){
+    get nameInitialWord() {
         return this.personalDataName.charAt(0).toUpperCase() + this.personalDataSurName.charAt(0).toUpperCase();
     }
 }

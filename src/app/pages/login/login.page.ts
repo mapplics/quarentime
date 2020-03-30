@@ -14,6 +14,7 @@ import {NavController, Platform} from '@ionic/angular';
 import * as firebase from 'firebase';
 import {AuthService} from '../../providers/auth.service';
 import {LoadingHelperService} from '../../shared/helpers/loading-helper.service';
+import {StorageService} from '../../shared/services/storage.service';
 
 @Component({
     selector: 'app-login',
@@ -29,15 +30,20 @@ export class LoginPage extends PageInterface implements OnInit {
                 private navCtrl: NavController,
                 private authService: AuthService,
                 private loadingCtrl: LoadingHelperService,
-                private platform: Platform) {
+                private platform: Platform,
+                private storageService: StorageService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
     }
 
     ngOnInit(): void {
         super.ngOnInit();
 
-        if (this.authService.isAuthenticated) {            
-            this.goToPersonalData();
+        if (this.authService.isAuthenticated) {
+            if (this.storageService.personalDataName) {
+                this.goToMainPage();
+            } else {
+                this.goToPersonalData();
+            }
         }
     }
 
@@ -118,6 +124,9 @@ export class LoginPage extends PageInterface implements OnInit {
     }
     goToPersonalData() {
         this.navCtrl.navigateRoot('personal-data');
+    }
+    goToMainPage() {
+        this.navCtrl.navigateRoot('main');
     }
 
 }

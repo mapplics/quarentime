@@ -29,6 +29,8 @@
             </span>
         </ion-item>
 
+        <ion-button color="primary" fill="solid" expand="full" (click)="saveData()" [disabled]="!form.valid">{{'INFO.NEXT' | translate}}</ion-button>
+
     </ion-item-group>
 </ion-content>
 <ion-footer class="ion-no-border ion-text-center ion-padding">

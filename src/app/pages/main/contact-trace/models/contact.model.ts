@@ -1,32 +1,35 @@
+import {InitialsHelper} from '../../../../shared/helpers/initials.helper';
+
 export class ContactModel {
 
     public name: string;
+    public phoneNumber: string;
+    public userId: string;
+    public dateAdded: Date;
+    public status: string;
+    public pending: boolean;
+    public letters: string;
+
+    // if is pending request
     public inviteId: string;
     public fromUserPhoneNumber: string;
     public fromUserId: string;
     public fromUserName: string;
-
-    public dateAdded: Date;
-    public status: string;
-    public letters: string;
-
-    public phoneNumber: string;
-    public pending: boolean;
 
     constructor() {}
 
     public static createFromObject(d: any): ContactModel {
         const data = new ContactModel();
         data.name = d.name;
-        data.inviteId = d.invite_id;
-        data.fromUserPhoneNumber = d.from_user_phone_number;
-        data.fromUserId = d.from_user_id;
-        data.fromUserName = d.from_user_name;
-        data.phoneNumber = d.phone_number;
-        data.dateAdded = d.date_added ? new Date(d.date_added) : new Date();
-        // data.status = d.status;
+        data.phoneNumber = d.phone_number ? d.phone_number : null;
+        data.userId = d.user_id ? d.user_id : null;
+        data.dateAdded = new Date(d.date_added);
+        data.status  = d.status ? d.status : null;
+        data.letters = d.letters ? d.letters : InitialsHelper.nameInitialWord(data.name);
+        data.fromUserPhoneNumber = d.from_user_phone_number ? d.from_user_phone_number : null;
+        data.fromUserId = d.from_user_id ? d.from_user_id : null;
+        data.fromUserName = d.from_user_name ? d.from_user_name : null;
         data.pending = d.pending;
-        data.letters = (data.name.split(' ').map(x => x[0])).join().toUpperCase();
         return data;
     }
 
@@ -52,6 +55,5 @@ export class ContactModel {
             case 'positive': return '#F76161';
         }
     }
-
 
 }

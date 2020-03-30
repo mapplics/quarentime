@@ -17,6 +17,8 @@ import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
 import {ContactTraceModel} from './models/contact-trace.model';
 import {StorageService} from '../../../shared/services/storage.service';
 import {AuthService} from '../../../providers/auth.service';
+import {forkJoin} from 'rxjs';
+import {ContactModel} from './models/contact.model';
 
 @Component({
     selector: 'app-contact-trace',
@@ -37,7 +39,8 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     contactTrace: ContactTraceModel;
     loaded: boolean;
-
+    pendingRequests: ContactModel[];
+    totalPending: number = 0;
 
     constructor(public translateService: TranslateService,
                 private platform: Platform,
@@ -90,25 +93,28 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     // }
 
     async getContacts() {
-        debugger;
+        const obsPendings = this.contactTraceService.getContacts();
+        const obsContacts = this.contactTraceService.getContactTrace();
         await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT_TRACE'));
         //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
-        this.authService.refreshToken().then(() => {
-            this.contactTraceService.getContactTrace()
-                .pipe(take(1))
-                .subscribe(
-                    (resp: GeneralResponse) => {
-                        this.contactTrace = resp.result;
-                        console.log(this.contactTrace);
+        // this.authService.refreshToken().then(() => {
+        forkJoin([obsContacts, obsPendings])
+            .pipe(take(1))
+            .subscribe(
+                (resp: any) => {
+                    this.contactTrace = resp[0].result;
+                    this.pendingRequests = resp[1].result.filter(x => x.pending);
+                    this.totalPending = this.pendingRequests.length;
+                    console.log(this.contactTrace);
 
-                        this.calculateRamdon();
-                        this.loadingCtrl.dismiss();
-                        // this.navCtrl.navigateRoot('congratulation');
-                    }, (err) => {
-                        this.loadingCtrl.dismiss();
-                        this.toastCtrl.errorToast(err.message);
-                    });
-        });
+                    this.calculateRamdon();
+                    this.loadingCtrl.dismiss();
+                    // this.navCtrl.navigateRoot('congratulation');
+                }, (err) => {
+                    this.loadingCtrl.dismiss();
+                    this.toastCtrl.errorToast(err.message);
+                    // });
+                });
         //});
     }
 
@@ -189,6 +195,14 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
             this.prepareCircle(contact.initials, contact.status);
         }
+
+        for (let contact of this.pendingRequests) {
+            //const status = contact.pending ? 'pending' : contact.status;
+            // pending no se ven mas aca
+
+            this.prepareCircle(contact.letters, 'pending');
+        }
+
         this.loaded = true;
         /*
         this.prepareCircle('NL', 'gray-blue');
@@ -250,28 +264,30 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         }
     }
 
-    // getUserState(type) {
-    //     return this.contactTrace.status === type ? 1 : 0;
-    // }
+    getUserState(type) {
+        return (this.contactTrace ? (this.contactTrace.status === type ? 1 : 0) : 0);
+    }
 
     get totalHealthy() {
-        return this.colorCircle('healthy').length; // + this.getUserState('healthy');
+        return this.colorCircle('healthy').length +
+            this.colorCircle('healty_social_distancing').length +
+            this.getUserState('healthy') +
+            this.getUserState('healty_social_distancing');
     }
 
     get totalRecovered() {
-        return this.colorCircle('recovered').length; // + this.getUserState('recovered');
+        return this.colorCircle('recovered').length + this.getUserState('recovered');
     }
 
     get totalSuspected() {
-        return this.colorCircle('suspected').length; // + this.getUserState('suspected');
-    }
-    
-    get totalPositive() {
-        return this.colorCircle('positive').length; // + this.getUserState('positive');
+        return this.colorCircle('low_probability_suspected').length +
+            this.colorCircle('high_probability_suspected').length +
+            this.getUserState('low_probability_suspected') +
+            this.getUserState('high_probability_suspected');
     }
 
-    get totalPending() {
-        return 0; // todo => ver como traerlos
+    get totalPositive() {
+        return this.colorCircle('positive').length + this.getUserState('positive');
     }
 
     colorCircle(type: string) {

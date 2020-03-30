@@ -10,6 +10,7 @@ import {GeneralResponse} from '../../../../models/general-response.model';
 import {ContactModel} from '../models/contact.model';
 import {AlertController} from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
+import {forkJoin} from 'rxjs';
 
 @Component({
     selector: 'app-activity',
@@ -56,23 +57,27 @@ export class ActivityPage extends PageInterface implements OnInit {
     }
 
     getContacts(): void {
+        const pendingsObs = this.contactTraceService.getPendingRequest();
+        const contactsObs = this.contactTraceService.getContacts();
         this.loadingController.presentLoading(this.translates.RETRIEVING).then(() => {
             this.authService.refreshToken().then(() => {
-            this.contactTraceService.getContacts().pipe(take(1))
-                .subscribe((resp: GeneralResponse) => {
-                    this.contactList = resp.result;
-                    // this.groupByMonth();
-                    this.loadingController.dismiss();
-                }, () => {
-                    // todo error
-                    this.loadingController.dismiss();
-                });
+                forkJoin([pendingsObs, contactsObs]).pipe(take(1))
+                    .subscribe((resp: any) => {
+                        this.contactList = resp[0].result.concat(resp[1].result);
+                        // this.groupByMonth();
+                        this.loadingController.dismiss();
+                    }, () => {
+                        // todo error
+                        this.loadingController.dismiss();
+                    });
             });
         });
     }
 
     groupByMonth(): void {
+        debugger;
         const groups = this.contactList.reduce((groupList, contact) => {
+            debugger;
             const date = contact.dateAdded;
             if (!groupList[date.toDateString()]) {
                 groupList[date.toDateString()] = [];
