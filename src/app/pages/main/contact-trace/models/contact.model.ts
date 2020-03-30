@@ -30,6 +30,7 @@ export class ContactModel {
         data.fromUserId = d.from_user_id ? d.from_user_id : null;
         data.fromUserName = d.from_user_name ? d.from_user_name : null;
         data.pending = d.pending;
+        data.inviteId = d.invite_id ? d.invite_id : null;
         return data;
     }
 
@@ -53,6 +54,7 @@ export class ContactModel {
                 return '#F7BA61';
             case 'recovered': return '#C18EBD';
             case 'positive': return '#F76161';
+            default: return '#AFC5C9';
         }
     }
 

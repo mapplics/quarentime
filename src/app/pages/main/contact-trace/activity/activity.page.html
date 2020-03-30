@@ -1,19 +1,19 @@
 <app-header title="ACTIVITY" [btnBack]="true" [defaultHref]="'main/contact-trace'"></app-header>
 
 <ion-content>
-  <ion-list class="ion-padding-start">
+  <ion-list>
 <!--    <ion-list-header color="light">-->
 <!--      <p><strong>{{date | date:'MMMM yyyy' | titlecase}}</strong></p>-->
 <!--    </ion-list-header>-->
     <ion-item lines="full" detail="false" *ngFor="let c of contactList">
-      <ion-avatar slot="start" class="ion-text-center" style="background-color: #dddddd">
+      <ion-avatar slot="start" class="ion-text-center"  [ngStyle]="{'background-color': c.pending ? '#AFC5C9' : c.statusColor}">
         <h5 class="avatar-text">{{c.letters}}</h5>
       </ion-avatar>
-      <ion-label class="ion-text-wrap">{{c.name}}</ion-label>
+      <ion-label class="ion-text-wrap">{{c.inviteId ? c.fromUserName : c.name}}</ion-label>
       <ion-badge color="medium" *ngIf="c.pending && !c.inviteId">{{'ACTIVITY.PENDING' | translate}}...</ion-badge>
-      <ion-buttons slot="end" *ngIf="!c.pending && c.inviteId">
-        <ion-button (click)="confirmContact(c)" class="ion-margin-end"><ion-icon color="danger" name="close-outline"></ion-icon></ion-button>
-        <ion-button (click)="presentConfirmDelete(c)"><ion-icon color="success" name="checkmark-outline"></ion-icon></ion-button>
+      <ion-buttons slot="end" *ngIf="c.pending && c.inviteId">
+        <ion-button (click)="presentConfirmDelete(c)" class="ion-margin-end"><ion-icon color="danger" size="large" name="close-outline"></ion-icon></ion-button>
+        <ion-button (click)="confirmContact(c)"><ion-icon color="success" name="checkmark-outline" size="large"></ion-icon></ion-button>
       </ion-buttons>
     </ion-item>
 
