@@ -8,6 +8,7 @@ import {Facebook} from '@ionic-native/facebook/ngx';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import {ToastHelperService} from '../shared/helpers/toast-helper.service';
 import { promise } from 'protractor';
+import { Platform } from '@ionic/angular';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +18,7 @@ export class AuthService extends BaseService {
     auth: AuthModel;
 
     constructor(public router: Router,
+                private platform: Platform,
                 private zone: NgZone,
                 private facebook: Facebook,
                 private googlePlus: GooglePlus) {
@@ -105,6 +107,9 @@ export class AuthService extends BaseService {
     }
 
     refreshToken(): Promise<string> {
+        if (this.platform.is('mobileweb')) {
+            return Promise.resolve('done');
+        }
        return this.getActiveUser().getIdToken(true).then(
             (newToken) => {
                 console.log('token-new', newToken);

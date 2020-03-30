@@ -53,11 +53,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         super(translateService, english, spanish, macedonian, germany, dutch);
     }
 
-    ngOnInit() {
-
-
-
-    }
+    ngOnInit() {}
 
     ngAfterViewInit() {
     }
@@ -70,34 +66,14 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.getContacts();
     }
 
-    // async getContacts() {
-    //     debugger;
-    //     await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT'));
-    //     //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
-    //     //this.authService.refreshToken().then(() => {
-    //     this.contactTraceService.getContacts().pipe(take(1)).subscribe(
-    //         (resp: GeneralResponse) => {
-    //             this.contacts = ContactTraceModel.createArray(resp.result, new ContactTraceModel());
-    //             console.log(this.contacts);
-
-
-    //             this.calculateRamdon();
-    //             this.loadingCtrl.dismiss();
-    //             // this.navCtrl.navigateRoot('congratulation');
-    //         }, (err) => {
-    //             this.loadingCtrl.dismiss();
-    //             this.toastCtrl.errorToast(err.message);
-    //         });
-    //     //});
-    //     //});
-    // }
-
-    async getContacts() {
-        const obsPendings = this.contactTraceService.getContacts();
-        const obsContacts = this.contactTraceService.getContactTrace();
+    async getContacts() {        
         await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT_TRACE'));
         //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
         this.authService.refreshToken().then(() => {
+            // lo de contactos no deberia ser necesario deberia tener un ep solo para endpoints
+            const obsPendings = this.contactTraceService.getContacts();
+            const obsContacts = this.contactTraceService.getContactTrace();
+
             forkJoin([obsContacts, obsPendings])
                 .pipe(take(1))
                 .subscribe(
@@ -117,10 +93,6 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
                     });
         });
     }
-
-    // onShareContact() {
-    //     this.navCtrl.navigateForward('main/contact-trace/share');
-    // }
 
     onViewContacts() {
         this.navCtrl.navigateForward('main/contact-trace/activity');
@@ -196,12 +168,13 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
             this.prepareCircle(contact.initials, contact.status);
         }
 
-        for (let contact of this.pendingRequests) {
-            //const status = contact.pending ? 'pending' : contact.status;
-            // pending no se ven mas aca
+        // las bolas pending no las muestro
+        // for (let contact of this.pendingRequests) {
+        //     //const status = contact.pending ? 'pending' : contact.status;
+        //     // pending no se ven mas aca
 
-            this.prepareCircle(contact.letters, 'pending');
-        }
+        //     this.prepareCircle(contact.letters, 'pending');
+        // }
 
         this.loaded = true;
         /*
@@ -270,24 +243,24 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     get totalHealthy() {
         return this.colorCircle('healthy').length +
-            this.colorCircle('healty_social_distancing').length +
-            this.getUserState('healthy') +
-            this.getUserState('healty_social_distancing');
+            this.colorCircle('healty_social_distancing').length;
+            //this.getUserState('healthy') +
+            //this.getUserState('healty_social_distancing');
     }
 
     get totalRecovered() {
-        return this.colorCircle('recovered').length + this.getUserState('recovered');
+        return this.colorCircle('recovered').length; // + this.getUserState('recovered');
     }
 
     get totalSuspected() {
         return this.colorCircle('low_probability_suspected').length +
-            this.colorCircle('high_probability_suspected').length +
-            this.getUserState('low_probability_suspected') +
-            this.getUserState('high_probability_suspected');
+            this.colorCircle('high_probability_suspected').length;
+            // this.getUserState('low_probability_suspected') +
+            // this.getUserState('high_probability_suspected');
     }
 
     get totalPositive() {
-        return this.colorCircle('positive').length + this.getUserState('positive');
+        return this.colorCircle('positive').length; // + this.getUserState('positive');
     }
 
     colorCircle(type: string) {

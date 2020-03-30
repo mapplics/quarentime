@@ -39,7 +39,7 @@ export class LoginPage extends PageInterface implements OnInit {
         super.ngOnInit();
 
         if (this.authService.isAuthenticated) {
-            if (this.storageService.personalDataName) {
+            if (this.storageService.appVerified) {
                 this.goToMainPage();
             } else {
                 this.goToPersonalData();
@@ -76,6 +76,11 @@ export class LoginPage extends PageInterface implements OnInit {
     onLoginGoogle() {
         if (this.platform.is('mobileweb')) {
             this.goToOnboarding();
+            // simulo los datos
+            localStorage.setItem('quarentimeToken', "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgzYTczOGUyMWI5MWNlMjRmNDM0ODBmZTZmZWU0MjU4Yzg0ZGI0YzUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU2VyZ2lvIEdyZWdvcmkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2ktRWxWQThIRUl0UXdjbXhkWVRiaGNmV1ltN1ZFdDZaN0NKSFRGT2c9czk2LWMiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcXVhcmVudGltZSIsImF1ZCI6InF1YXJlbnRpbWUiLCJhdXRoX3RpbWUiOjE1ODU1OTIyODIsInVzZXJfaWQiOiJQeE5Nb1lUNHBoYXM0WXFvRVlXTXlMUGU1ckgzIiwic3ViIjoiUHhOTW9ZVDRwaGFzNFlxb0VZV015TFBlNXJIMyIsImlhdCI6MTU4NTU5MjU2OCwiZXhwIjoxNTg1NTk2MTY4LCJlbWFpbCI6ImNoZWNob25vYkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwNTE2NjQyMDEwNjcwMjkwODUxMyJdLCJlbWFpbCI6WyJjaGVjaG9ub2JAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.gGBRdVuaIyioaTgxZsZd9qII16KYehA6Ap_zrmG3T8tkBAgEZBEvQ4vFHlg5gBnxmuSBIc6fSoRJxBMDXvEnH56-o-jMxKx5eb4MuYRXoiFqbWOnnsB7ldeedN11aclkT7sP67n5Lq0oZmqhjPu-uL4DjuATAGsEu5rFXr7IA-uk1_-nQ9HIzMRHOcSEDVJp6ZNIHM2-wa5YhU2zG7MxI-eevYlgWchuAKzBSXkXo-siXMOtlVJhWBGmopnrQRG8U_5ucQ6Cl9ZFOFEIkiXYeY-TFqzc7UTDRsZKLWcq6P6_pdlnIN4zT7wAkir7Ap0CniR5zMAlaEc8GJa8ZQM_pw");
+            localStorage.setItem('quarentimeName', "mocked user");
+            localStorage.setItem('quarentimeRefreshToken', "refresh");
+            localStorage.setItem('quarentimeType', "google"); // logeado pro gamil o facebook
             return;
         }
         this.loadingCtrl.presentLoading(this.translateService.instant('LOGIN.LOADING'))

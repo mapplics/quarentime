@@ -7,6 +7,9 @@ import { PersonalDataModel } from 'src/app/pages/personal-data/models/personal-d
 })
 export class StorageService {
 
+    private getItem(tag: string): string {
+        return localStorage.getItem(tag);
+    }
 
     storePersonalData(personalData: PersonalDataModel) {
         localStorage.setItem('quarentimeDataName', personalData.name);
@@ -40,11 +43,15 @@ export class StorageService {
         return this.getItem('health') ? JSON.parse(this.getItem('health')).status : null;
     }
 
-    private getItem(tag: string): string {
-        return localStorage.getItem(tag);
-    }
-
     get nameInitialWord() {
         return this.personalDataName.charAt(0).toUpperCase() + this.personalDataSurName.charAt(0).toUpperCase();
+    }
+
+    get appVerified(): boolean {
+        if (this.getItem('codeVerified')) {
+            return (this.getItem('codeVerified') === '1');
+        } else {
+            return false;
+        }
     }
 }
