@@ -97,25 +97,25 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         const obsContacts = this.contactTraceService.getContactTrace();
         await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT_TRACE'));
         //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
-        // this.authService.refreshToken().then(() => {
-        forkJoin([obsContacts, obsPendings])
-            .pipe(take(1))
-            .subscribe(
-                (resp: any) => {
-                    this.contactTrace = resp[0].result;
-                    this.pendingRequests = resp[1].result.filter(x => x.pending);
-                    this.totalPending = this.pendingRequests.length;
-                    console.log(this.contactTrace);
+        this.authService.refreshToken().then(() => {
+            forkJoin([obsContacts, obsPendings])
+                .pipe(take(1))
+                .subscribe(
+                    (resp: any) => {
+                        this.contactTrace = resp[0].result;
+                        this.pendingRequests = resp[1].result.filter(x => x.pending);
+                        this.totalPending = this.pendingRequests.length;
+                        console.log(this.contactTrace);
 
-                    this.calculateRamdon();
-                    this.loadingCtrl.dismiss();
-                    // this.navCtrl.navigateRoot('congratulation');
-                }, (err) => {
-                    this.loadingCtrl.dismiss();
-                    this.toastCtrl.errorToast(err.message);
-                    // });
-                });
-        //});
+                        this.calculateRamdon();
+                        this.loadingCtrl.dismiss();
+                        // this.navCtrl.navigateRoot('congratulation');
+                    }, (err) => {
+                        this.loadingCtrl.dismiss();
+                        this.toastCtrl.errorToast(err.message);
+                        // });
+                    });
+        });
     }
 
     // onShareContact() {
