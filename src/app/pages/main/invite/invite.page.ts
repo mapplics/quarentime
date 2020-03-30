@@ -28,6 +28,7 @@ export class InvitePage extends PageInterface implements OnInit {
     options: IContactFindOptions;
     filteredList: any[];
     selectedContacts: any[] = [];
+    loading: boolean = false;
 
     constructor(public translateService: TranslateService,
                 private contacts: Contacts,
@@ -65,6 +66,25 @@ export class InvitePage extends PageInterface implements OnInit {
         });
     }
 
+    doRefresh(event) {
+        this.options = {
+            filter: '',
+            multiple: true,
+            desiredFields: ['displayName', 'phoneNumbers'],
+            hasPhoneNumber: true
+        };
+        this.contacts.find(this.type, this.options).then((data) => {
+            this.contactList = data;
+            this.contactList = this.contactList.filter(x => (x.phoneNumbers && x.phoneNumbers.length > 0 && !!x.displayName));
+            this.filteredList = this.contactList;
+            this.sort(this.filteredList);
+            event.target.complete();
+        }).catch((err) => {
+            this.navController.pop();
+        });
+
+    }
+
     onKeyUp(event) {
         this.filter(event.target.value);
     }
@@ -74,7 +94,11 @@ export class InvitePage extends PageInterface implements OnInit {
     }
 
     filter(query: string) {
-        this.filteredList = this.contactList.filter(x => x.displayName.toLowerCase().includes(query.toLowerCase()) );
+        if (query.length >= 3 || query.length === 0) {
+            this.loading = true;
+            this.filteredList = this.contactList.filter(x => x.displayName.toLowerCase().includes(query.toLowerCase()));
+            this.loading = false;
+        }
     }
 
     selectedChange(event, item) {
@@ -98,15 +122,15 @@ export class InvitePage extends PageInterface implements OnInit {
         list.forEach(x => x.phone_number = x.phone_number.replace(/[- ]/g, ''));
         this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
             // this.authService.refreshToken().then(() => {
-                this.contactTraceService.sendInvite(list).pipe(takeUntil(this.componentDestroyed)).subscribe(
-                    (resp: GeneralResponse) => {
-                        this.loadingController.dismiss();
-                        this.navController.navigateRoot('main/congratulation');
-                    }, (err) => {
-                        this.loadingController.dismiss();
-                        this.toastController.errorToast(err.message);
-                    });
-                // });
+            this.contactTraceService.sendInvite(list).pipe(takeUntil(this.componentDestroyed)).subscribe(
+                (resp: GeneralResponse) => {
+                    this.loadingController.dismiss();
+                    this.navController.navigateRoot('main/congratulation');
+                }, (err) => {
+                    this.loadingController.dismiss();
+                    this.toastController.errorToast(err.message);
+                });
+            // });
         });
 
     }

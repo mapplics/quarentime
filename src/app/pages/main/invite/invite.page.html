@@ -10,8 +10,14 @@
 </ion-row>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
-    <ion-item lines="full" detail="false" *ngFor="let item of filteredList">
+  <ion-virtual-scroll [items]="filteredList" approxItemHeight="50px">
+
+    <ion-item lines="full" detail="false" *virtualItem="let item, let itemBounds = bounds;">
       <ion-checkbox slot="start" (ionChange)="selectedChange($event, item)" color="gold"
                     [(ngModel)]="item.selected"
       ></ion-checkbox>
@@ -20,7 +26,9 @@
         <ion-text color="medium"><p>{{item.phoneNumbers[0].value}}</p></ion-text>
       </ion-label>
     </ion-item>
+  </ion-virtual-scroll>
   </ion-list>
+
 
   <div class="floating-button ion-margin-horizontal"  *ngIf="selectedContacts.length > 0">
     <ion-button color="primary"
