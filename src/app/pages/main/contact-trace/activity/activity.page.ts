@@ -9,6 +9,7 @@ import {take} from 'rxjs/operators';
 import {GeneralResponse} from '../../../../models/general-response.model';
 import {ContactModel} from '../models/contact.model';
 import {AlertController} from '@ionic/angular';
+import { AuthService } from 'src/app/providers/auth.service';
 
 @Component({
     selector: 'app-activity',
@@ -23,6 +24,7 @@ export class ActivityPage extends PageInterface implements OnInit {
     constructor(public translateService: TranslateService,
                 private loadingController: LoadingHelperService,
                 private contactTraceService: ContactTraceService,
+                private authService: AuthService,
                 private alertController: AlertController) {
         super(translateService, english, spanish);
         this.getTranslations('ACTIVITY');
@@ -55,6 +57,7 @@ export class ActivityPage extends PageInterface implements OnInit {
 
     getContacts(): void {
         this.loadingController.presentLoading(this.translates.RETRIEVING).then(() => {
+            this.authService.refreshToken().then(() => {
             this.contactTraceService.getContacts().pipe(take(1))
                 .subscribe((resp: GeneralResponse) => {
                     this.contactList = resp.result;
@@ -64,6 +67,7 @@ export class ActivityPage extends PageInterface implements OnInit {
                     // todo error
                     this.loadingController.dismiss();
                 });
+            });
         });
     }
 

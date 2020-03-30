@@ -91,7 +91,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     async getContacts() {
         debugger;
-        await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT'));
+        await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT_TRACE'));
         //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
         this.authService.refreshToken().then(() => {
             this.contactTraceService.getContactTrace()

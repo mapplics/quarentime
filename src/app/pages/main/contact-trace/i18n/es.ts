@@ -12,7 +12,7 @@ export const locale = {
             TOTAL: 'Total',
             PENDING: 'Pendientes',
             LOADING_CONTACT: 'Cargando Contactos...',
-            LOADING_CONTACT_TRACE: 'Loading Contact Trace ...'
+            LOADING_CONTACT_TRACE: 'Cargando red de contactos ...'
         }
     }
 };
