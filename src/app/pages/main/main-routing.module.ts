@@ -16,11 +16,7 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
                 import('./contact-trace/contact-trace.module').then(m => m.ContactTracePageModule)
-          },
-          {
-            path: 'share',
-            loadChildren: () => import('./share/share.module').then( m => m.SharePageModule)
-          },
+          }
         ]
       },
       {
@@ -59,11 +55,14 @@ const routes: Routes = [
       }
     ]
   },
-
   {
     path: 'congratulation',
     loadChildren: () => import('../main/congratulation/congratulation.module').then(m => m.CongratulationPageModule)
-  }
+  },
+  {
+    path: 'share',
+    loadChildren: () => import('./share/share.module').then( m => m.SharePageModule)
+  },
 ];
 
 @NgModule({
