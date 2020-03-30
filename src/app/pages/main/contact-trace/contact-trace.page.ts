@@ -35,7 +35,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     @ViewChild('content', {read: ElementRef, static: false}) elementView: ElementRef;
 
-    contacts: ContactTraceModel[] = [];
+    contactTrace: ContactTraceModel;
     loaded: boolean;
 
 
@@ -52,6 +52,8 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     ngOnInit() {
 
+
+
     }
 
     ngAfterViewInit() {
@@ -59,36 +61,63 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     ionViewDidEnter() {
         // para que calcule el tamaño del div cuando ya cargo todo
-        this.contacts = [];
+        // this.contacts = [];
         this.circles = [];
         this.loaded = false;
         this.getContacts();
     }
 
+    // async getContacts() {
+    //     debugger;
+    //     await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT'));
+    //     //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
+    //     //this.authService.refreshToken().then(() => {
+    //     this.contactTraceService.getContacts().pipe(take(1)).subscribe(
+    //         (resp: GeneralResponse) => {
+    //             this.contacts = ContactTraceModel.createArray(resp.result, new ContactTraceModel());
+    //             console.log(this.contacts);
+
+
+    //             this.calculateRamdon();
+    //             this.loadingCtrl.dismiss();
+    //             // this.navCtrl.navigateRoot('congratulation');
+    //         }, (err) => {
+    //             this.loadingCtrl.dismiss();
+    //             this.toastCtrl.errorToast(err.message);
+    //         });
+    //     //});
+    //     //});
+    // }
+
     async getContacts() {
         debugger;
         await this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT'));
         //this.loadingCtrl.presentLoading(this.translateService.instant('CONTACT.LOADING_CONTACT')).then(() => {
-        //this.authService.refreshToken().then(() => {
-        this.contactTraceService.getContacts().pipe(take(1)).subscribe(
-            (resp: GeneralResponse) => {
-                this.contacts = ContactTraceModel.createArray(resp.result, new ContactTraceModel());
-                console.log(this.contacts);
+        this.authService.refreshToken().then(() => {
+            this.contactTraceService.getContactTrace()
+                .pipe(take(1))
+                .subscribe(
+                    (resp: GeneralResponse) => {
+                        this.contactTrace = resp.result;
+                        console.log(this.contactTrace);
 
-
-                this.calculateRamdon();
-                this.loadingCtrl.dismiss();
-                // this.navCtrl.navigateRoot('congratulation');
-            }, (err) => {
-                this.loadingCtrl.dismiss();
-                this.toastCtrl.errorToast(err.message);
-            });
-        //});
+                        this.calculateRamdon();
+                        this.loadingCtrl.dismiss();
+                        // this.navCtrl.navigateRoot('congratulation');
+                    }, (err) => {
+                        this.loadingCtrl.dismiss();
+                        this.toastCtrl.errorToast(err.message);
+                    });
+        });
         //});
     }
 
-    onShareContact() {
-        this.navCtrl.navigateForward('main/contact-trace/share');
+    // onShareContact() {
+    //     this.navCtrl.navigateForward('main/contact-trace/share');
+    // }
+
+    onViewContacts() {
+        this.navCtrl.navigateForward('main/contact-trace/activity');
     }
 
     onShowDetails(): void {
@@ -117,7 +146,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         // total que entra le resto 1 para la bola mas grande
         // const total = (totalHeight) * totalWidth - 3;
 
-        const values = this.calculateWidthHeight(width, height, diametro, this.contacts.length, diametro);
+        const values = this.calculateWidthHeight(width, height, diametro, this.contactTrace.contacts.length, diametro);
 
         console.log(values);
 
@@ -154,9 +183,11 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         this.widthBase = (values.d2 - 2) + 'px';
 
         // esto deberia venir del servidor title and color
-        for (let contact of this.contacts) {
-            const status = contact.pending ? 'pending' : contact.status;
-            this.prepareCircle(contact.nameInitialWord, status);
+        for (let contact of this.contactTrace.contacts) {
+            //const status = contact.pending ? 'pending' : contact.status;
+            // pending no se ven mas aca
+
+            this.prepareCircle(contact.initials, contact.status);
         }
         this.loaded = true;
         /*
@@ -219,45 +250,41 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         }
     }
 
-    getUserState(type) {
-        return this.userStatus === type ? 1 : 0;
+    // getUserState(type) {
+    //     return this.contactTrace.status === type ? 1 : 0;
+    // }
+
+    get totalHealthy() {
+        return this.colorCircle('healthy').length; // + this.getUserState('healthy');
     }
 
     get totalRecovered() {
-        return this.colorCircle('recovered').length + this.getUserState('recovered');
+        return this.colorCircle('recovered').length; // + this.getUserState('recovered');
     }
 
-    get totalSuspeted() {
-        return this.colorCircle('suspeted').length + this.getUserState('suspeted');
+    get totalSuspected() {
+        return this.colorCircle('suspected').length; // + this.getUserState('suspected');
     }
-
-    get totalHealthy() {
-        return this.colorCircle('healthy').length + this.getUserState('healthy');
-    }
-
-    get totalHightRisk() {
-        return this.colorCircle('hight_risk').length + this.getUserState('hight_risk');
-    }
-
+    
     get totalPositive() {
-        return this.colorCircle('positive').length + this.getUserState('positive');
+        return this.colorCircle('positive').length; // + this.getUserState('positive');
     }
 
     get totalPending() {
-        return this.colorCircle('pending').length;
+        return 0; // todo => ver como traerlos
     }
 
     colorCircle(type: string) {
         return this.circles.filter(c => c.color === type);
     }
 
-    get userNameInitialWord() {
-        return this.storageService.nameInitialWord;
-    }
+    // get userNameInitialWord() {
+    //     return this.storageService.nameInitialWord;
+    // }
 
-    get userStatus() {
-        return this.storageService.userStatus;
-    }
+    // get userStatus() {
+    //     return this.storageService.userStatus;
+    // }
 
     goToActivity(): void {
         this.navCtrl.navigateForward('main/contact-trace/activity');

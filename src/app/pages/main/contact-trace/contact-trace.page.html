@@ -2,7 +2,7 @@
   <app-header
       title="CONTACT_TRACE"
       [btnShare]="true" [btnShowDetails]="true"
-      (onShare)="onShareContact()" (showDetails)="onShowDetails()"></app-header>
+      (onShare)="onViewContacts()" (showDetails)="onShowDetails()"></app-header>
   <ion-row>
     <ion-col class="ion-text-center">
       <ion-icon name="ellipse" color="light-blue"></ion-icon>
@@ -27,7 +27,7 @@
     <ion-col class="ion-text-center">
       <ion-icon name="ellipse" color="gold"></ion-icon>
       <br>
-      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.SUSPETED' | translate}}</ion-text>
+      <ion-text class="status-text ion-text-uppercase">{{'CONTACT.SUSPECTED' | translate}}</ion-text>
     </ion-col>
   </ion-row>
 </ion-header>
@@ -45,14 +45,14 @@
 
   <div>
     <!-- Fixme-->
-    <div *ngIf="loaded" class="circle-friend" [ngClass]="userStatus" [ngStyle]="{
+    <div *ngIf="loaded" class="circle-friend" [ngClass]="contactTrace.status" [ngStyle]="{
      position: 'absolute',
      top:topCenter + 'px',
      left: leftCenter +'px',
      width: widthBase,
      fontSize: textBase,
      height: widthBase,
-     lineHeight: widthBase}">{{userNameInitialWord}}
+     lineHeight: widthBase}">{{contactTrace.initials | uppercase}}
     </div>
     <div *ngFor="let circle of circles"
          class="circle-friend"
@@ -63,7 +63,7 @@
          fontSize: textBase,
          width: widthBase,
          height: widthBase,
-         lineHeight: widthBase}">{{circle.title}}</div>
+         lineHeight: widthBase}">{{circle.title | uppercase}}</div>
   </div>
 
 </ion-content>
@@ -74,9 +74,9 @@
       <ion-text class="text-footer">{{'CONTACT.TOTAL' | translate}}</ion-text>
     </ion-col>
   </ion-row-->
-  <ion-row class="ion-no-padding ion-no-margin">
-    <ion-col class="ion-no-padding ion-no-margin">
-      <ion-row class="ion-no-padding ion-no-margin">
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-no-padding">
+      <ion-row class="ion-no-padding">
         <ion-col size="12">
           <ion-text class="text-footer">{{'CONTACT.TOTAL' | translate}}</ion-text>
         </ion-col>
@@ -92,9 +92,9 @@
           <ion-icon name="ellipse" color="red"></ion-icon>
           <ion-text class="margin-dot-number">{{totalPositive}}</ion-text>
         </ion-col>
-        <ion-col size="2" *ngIf="totalSuspeted">
+        <ion-col size="2" *ngIf="totalSuspected">
           <ion-icon name="ellipse" color="gold"></ion-icon>
-          <ion-text class="margin-dot-number">{{totalSuspeted}}</ion-text>
+          <ion-text class="margin-dot-number">{{totalSuspected}}</ion-text>
         </ion-col>
         <!--ion-col size="2" *ngIf="totalHightRisk">
           <ion-icon name="ellipse" color="hight_risk"></ion-icon>
@@ -102,8 +102,8 @@
         </ion-col-->
       </ion-row>
     </ion-col>
-    <ion-col size="4" class="ion-no-padding ion-no-margin">
-      <ion-row class="ion-no-padding ion-no-margin">
+    <ion-col size="4" class="ion-no-padding ">
+      <ion-row class="ion-no-padding ">
         <ion-col size="12">
           <ion-text class="text-footer">{{'CONTACT.PENDING' | translate}}</ion-text>
         </ion-col>

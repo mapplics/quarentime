@@ -17,7 +17,7 @@ export class ContactModel {
 
     public static createFromObject(d: any): ContactModel {
         const data = new ContactModel();
-        data.name = d.from_user_name;
+        data.name = d.name;
         data.inviteId = d.invite_id;
         data.fromUserPhoneNumber = d.from_user_phone_number;
         data.fromUserId = d.from_user_id;

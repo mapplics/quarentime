@@ -47,16 +47,15 @@
   margin: auto;
 }
 
-.healthy{
+.healthy, .healty_social_distancing, .flu_like{
   background: var(--ion-color-light-blue);
-  // background: var(--ion-color-gray-blue);
 }
 
 .recovered{
   background: var(--ion-color-purple);
 }
 
-.suspeted{
+.suspected, .low_probability_suspected, .high_probability_suspected{
   background: var(--ion-color-gold);
 }
 .hight_risk{

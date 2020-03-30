@@ -7,6 +7,7 @@ import {GeneralResponse} from '../../models/general-response.model';
 import {catchError, map} from 'rxjs/internal/operators';
 import {ContactPhoneModel} from './invite/models/contact-phone.model';
 import {ContactModel} from './contact-trace/models/contact.model';
+import { ContactTraceModel } from './contact-trace/models/contact-trace.model';
 
 @Injectable({
     providedIn: 'root'
@@ -38,6 +39,20 @@ export class ContactTraceService extends BaseService {
             .pipe(
                 map((res: GeneralResponse) => {
                     const data = ContactModel.createFromObjectCollection(res.result);
+                    return new GeneralResponse(res.request_id, data);
+                }),
+                catchError(err => {
+                    return this.handleError(err);
+                })
+            );
+    }
+
+    getContactTrace(): Observable<{} | GeneralResponse> {
+        const url = `${this._API}User/Contacts/Trace`;
+        return this.http.get<GeneralResponse>(url)
+            .pipe(
+                map((res: GeneralResponse) => {
+                    const data = ContactTraceModel.createOne(res.result, new ContactTraceModel());
                     return new GeneralResponse(res.request_id, data);
                 }),
                 catchError(err => {

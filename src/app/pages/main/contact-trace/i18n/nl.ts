@@ -6,12 +6,14 @@ export const locale = {
             HEALTHY: 'healthy',
             RECOVERED: 'Recovered',
             POSITIVE: 'positive',
+            HIGH_RISK: 'high-risk',
             CARRIER: 'carrier',
-            SUSPETED: 'suspeted',
+            SUSPECTED: 'suspected',
             TOTAL: 'Total',
             PENDING: 'Pending',
 
-            LOADING_CONTACT: 'Loading Contacts...'
+            LOADING_CONTACT: 'Loading Contacts...',
+            LOADING_CONTACT_TRACE: 'Loading Contact Trace ...'
         }
     }
 };
