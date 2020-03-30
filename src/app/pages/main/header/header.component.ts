@@ -25,6 +25,7 @@ export class HeaderComponent extends PageInterface implements OnInit {
     @Input() btnShare: boolean;
     /* mostrar boton de ayuda*/
     @Input() btnShowDetails: boolean;
+    @Input() pendings: number = 0;
 
     /* Evento utilizado cuando se quiere poner una accoin al boton atras*/
     @Output() goBack: EventEmitter<void> = new EventEmitter<void>();

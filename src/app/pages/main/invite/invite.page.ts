@@ -9,7 +9,7 @@ import {locale as dutch} from './i18n/nl';
 import {ContactFieldType, Contacts, IContactFindOptions} from '@ionic-native/contacts/ngx';
 import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 import {NavController} from '@ionic/angular';
-import {take} from 'rxjs/operators';
+import {take, takeUntil} from 'rxjs/operators';
 import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
 import {GeneralResponse} from '../../../models/general-response.model';
 import {ContactTraceService} from '../contact-trace.service';
@@ -97,8 +97,8 @@ export class InvitePage extends PageInterface implements OnInit {
         const list = ContactPhoneModel.createFromObjectCollection(this.selectedContacts);
         list.forEach(x => x.phone_number = x.phone_number.replace(/[- ]/g, ''));
         this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
-            this.authService.refreshToken().then(() => {
-                this.contactTraceService.sendInvite(list).pipe(take(1)).subscribe(
+            // this.authService.refreshToken().then(() => {
+                this.contactTraceService.sendInvite(list).pipe(takeUntil(this.componentDestroyed)).subscribe(
                     (resp: GeneralResponse) => {
                         this.loadingController.dismiss();
                         this.navController.navigateRoot('main/congratulation');
@@ -106,7 +106,7 @@ export class InvitePage extends PageInterface implements OnInit {
                         this.loadingController.dismiss();
                         this.toastController.errorToast(err.message);
                     });
-                });
+                // });
         });
 
     }
