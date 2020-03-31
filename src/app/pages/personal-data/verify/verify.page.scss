@@ -1,0 +1,21 @@
+
+//ion-item-group.validation ion-item  {
+//  border: 1px solid #000000 !important;
+//  border-radius: 6px;
+//  --padding-end: var(--padding-start);
+//}
+ion-item-group.validation ion-item  {
+
+    --inner-padding-start: 0px !important;
+    --inner-padding-end: 0px !important;
+
+}
+
+
+.validation ion-item.ion-invalid.ion-touched {
+  border: 1px solid #f04141 !important;
+}
+
+ion-item div.item-native {
+  padding:  0px !important;
+}

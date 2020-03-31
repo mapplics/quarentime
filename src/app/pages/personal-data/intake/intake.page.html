@@ -1,0 +1,13 @@
+<app-header title="INTAKE" [currentStep]="2" [completedSteps]="[1]"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-row class="h-100 align-between">
+    <ion-col size="12">
+      <p>{{'INTAKE.TEXT1' | translate}}</p>
+      <p>{{'INTAKE.TEXT2' | translate}}</p>
+    </ion-col>
+    <ion-col size="12">
+      <ion-button expand="block" color="primary" (click)="next()">{{'INTAKE.BUTTON' | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

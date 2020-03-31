@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "627240942816",
+    "firebase_url": "https://quarentime.firebaseio.com",
+    "project_id": "quarentime",
+    "storage_bucket": "quarentime.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627240942816:android:ff7150f4b4679c87a2e485",
+        "android_client_info": {
+          "package_name": "com.quarentime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627240942816-2ihect79ckvkr4i87tp1hsv08b2q6pdc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quarentime",
+            "certificate_hash": "d64c215f2b4b41665debc1be04c94eef9cb24d1b"
+          }
+        },
+        {
+          "client_id": "627240942816-bgee9h9q4t7a1jl6h3vtrgfs3063urkm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDClLKAo3U1jSdti7J6ixNc5fTFdB_tX50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627240942816-bgee9h9q4t7a1jl6h3vtrgfs3063urkm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

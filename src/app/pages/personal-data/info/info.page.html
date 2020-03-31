@@ -1,0 +1,42 @@
+<app-header title="PERSONAL_INFORMATION" [currentStep]="1" [completedSteps]=""></app-header>
+
+<ion-content class="ion-padding">
+    <ion-item-group class="validation" [formGroup]="form">
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.NAME' | translate}}</ion-label>
+            <ion-input [placeholder]="'INFO.PLACEHOLDERS.NAME' | translate" mode="ios" formControlName="name"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.SURENAME' | translate}}</ion-label>
+            <ion-input [placeholder]="'INFO.PLACEHOLDERS.SURENAME' | translate" mode="ios" formControlName="surename"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.AGE' | translate}}</ion-label>
+            <ion-input [placeholder]="'INFO.PLACEHOLDERS.AGE' | translate" type="number" mode="ios" formControlName="age"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked">{{'INFO.PHONE' | translate}}</ion-label>
+            <span class="d-inline">
+                <ion-icon slot="start" size="large" class="m-auto" [src]="currCountry.flag"></ion-icon>
+                <ion-icon name="chevron-down-outline" class="ion-padding b-right" (click)="presentPopover($event)"></ion-icon>
+                <ion-input [placeholder]="'INFO.PLACEHOLDERS.PHONE' | translate"
+                           type="tel" mode="ios"
+                           formControlName="phone">
+                </ion-input>
+            </span>
+        </ion-item>
+
+        <ion-button color="primary" fill="solid" expand="full" (click)="saveData()" [disabled]="!form.valid">{{'INFO.NEXT' | translate}}</ion-button>
+
+    </ion-item-group>
+</ion-content>
+<ion-footer class="ion-no-border ion-text-center ion-padding">
+    <p class="ion-no-margin">{{'INFO.TERMS.LINE1' | translate }}
+        <br>
+        {{'INFO.TERMS.LINE2' | translate }}
+        <span (click)="policies()"><strong>{{'INFO.POLICIES' | translate }}</strong></span>
+    </p>
+</ion-footer>

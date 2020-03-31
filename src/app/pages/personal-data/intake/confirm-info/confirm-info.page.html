@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" [defaultHref]="'personal-data/intake/questions'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-label color="primary"><b>{{'CONFIRM.TITLE' | translate}}</b></ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row class="h-100 align-between">
+    <ion-col size="12">
+      <ion-item lines="none" detail="false">
+        <ion-checkbox slot="start"  [(ngModel)]="checkboxes[0]"></ion-checkbox>
+        <p class="ion-text-wrap ">{{'CONFIRM.CONF1' | translate}}</p>
+      </ion-item>
+
+      <ion-item lines="none" detail="false">
+        <ion-checkbox slot="start"  [(ngModel)]="checkboxes[1]"></ion-checkbox>
+        <p class="ion-text-wrap">{{'CONFIRM.CONF2' | translate}}&nbsp;
+          <strong (click)="terms()">{{'CONFIRM.TERMS_COND' | translate}}</strong>&nbsp;
+          {{'CONFIRM.CONNECTOR' | translate}}&nbsp;
+          <strong (click)="policies()">{{'CONFIRM.PRIVACY_POLICY' | translate}}</strong>
+        </p>
+      </ion-item>
+
+    </ion-col>
+    <ion-col size="12">
+      <ion-button expand="block" color="primary"
+                  (click)="next()"
+                  [disabled]="!btnAvailable">
+        {{'CONFIRM.BUTTON' | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

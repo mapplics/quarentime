@@ -1,0 +1,27 @@
+ion-card{
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.title{
+ font-weight: bold;
+  font-size: 25px;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.my-status{
+  font-size: 12px;
+  line-height:25px
+}

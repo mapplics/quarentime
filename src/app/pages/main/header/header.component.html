@@ -1,0 +1,23 @@
+<ion-toolbar mode="md">
+  <ion-buttons slot="start" *ngIf="btnBack">
+    <ion-back-button color="primary" *ngIf="defaultHref" defaultHref="{{defaultHref}}"></ion-back-button>
+    <ion-button *ngIf="!defaultHref" (click)="onGoBack()">
+      <ion-icon slot="icon-only" color="primary" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-title>
+    <ion-label color="primary"><b>{{'HEADER.'+ title | translate}}</b></ion-label>
+  </ion-title>
+
+  <ion-buttons slot="end" >
+    <ion-button *ngIf="btnShare" (click)="onShareContact()">
+      <ion-icon color="dark" slot="icon-only" size="large" [src]="pendings?  'assets/icon/list_with_dot.svg':  'assets/icon/bullet-list.svg'"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="btnShowDetails" (click)="onShowDetail()">
+      <ion-icon color="dark" slot="icon-only" size="large" name="help-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>
+

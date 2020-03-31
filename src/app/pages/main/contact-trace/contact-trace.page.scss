@@ -1,0 +1,70 @@
+.status-text {
+  font-size: 9px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  color: var(--ion-color-dark);
+}
+
+.text-footer{
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.1px;
+  color: #000000;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.margin-dot-number{
+  margin-left: 2px;
+}
+
+.circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #fff;
+  line-height: 58px;
+  text-align: center;
+  margin: auto;
+}
+
+.circle-friend {
+  border-radius: 50%;
+
+  color: #fff;
+  text-align: center;
+  margin: auto;
+}
+
+.healthy, .healty_social_distancing, .flu_like{
+  background: var(--ion-color-light-blue);
+}
+
+.recovered{
+  background: var(--ion-color-purple);
+}
+
+.suspected, .low_probability_suspected, .high_probability_suspected{
+  background: var(--ion-color-gold);
+}
+.hight_risk{
+  background: var(--ion-color-red);
+}
+.positive{
+  background: var(--ion-color-red);
+}
+
+.pending{
+  background: var(--ion-color-gray-blue);
+}

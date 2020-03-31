@@ -1,0 +1,49 @@
+
+<ion-content class="ion-padding">
+
+<ion-row class="ion-padding-top ion-padding-start">
+  <ion-col size="8"><ion-label class="title">{{'HOME.HELLO' | translate}}, {{userName}}</ion-label></ion-col>
+  <ion-col size="4">
+    <ion-row>
+    <ion-label class="my-status">{{'HOME.STATUS' | translate}}</ion-label> &nbsp;
+      <span class="dot" [ngStyle]="{'background-color': statusColor}"></span>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+
+  <ion-row class="ion-padding-top ion-padding-start">
+    <ion-col>
+      <ion-row > <ion-label class="subtitle">{{'HOME.TIPS' | translate}}</ion-label></ion-row>
+    </ion-col>
+  </ion-row>
+
+
+
+
+    <ion-slides pager="false" [options]="slideOpts" class="ion-padding">
+      <ion-slide class="slider-slide">
+        <ion-card></ion-card>
+      </ion-slide>
+
+           <ion-slide class="slider-slide">
+          <ion-card></ion-card>
+        </ion-slide>
+
+           <ion-slide class="slider-slide">
+          <ion-card></ion-card>
+        </ion-slide>
+
+           <ion-slide class="slider-slide">
+          <ion-card></ion-card>
+        </ion-slide>
+
+      <ion-slide class="slider-slide">
+        <ion-card></ion-card>
+      </ion-slide>
+
+
+
+    </ion-slides>
+
+</ion-content>

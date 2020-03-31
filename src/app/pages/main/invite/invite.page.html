@@ -1,0 +1,41 @@
+<app-header title="INVITE"></app-header>
+
+<ion-searchbar mode="ios" [placeholder]="'INVITE.SEARCHBAR' | translate"
+               (keyup)="onKeyUp($event)" (ionClear)="onClear($event)">
+</ion-searchbar>
+<ion-row class="ion-margin-horizontal">
+  <ion-chip *ngFor="let c of selectedContacts" color="purple" outline="true">
+    <ion-label>{{c.displayName}}</ion-label>
+    <ion-icon name="close-circle" (click)="delete(c)"></ion-icon></ion-chip>
+</ion-row>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+  <ion-virtual-scroll [items]="filteredList" approxItemHeight="50px">
+
+    <ion-item lines="full" detail="false" *virtualItem="let item, let itemBounds = bounds;">
+      <ion-checkbox slot="start" (ionChange)="selectedChange($event, item)" color="gold"
+                    [(ngModel)]="item.selected"
+      ></ion-checkbox>
+      <ion-label>
+        <p><strong>{{item.displayName}}</strong></p>
+        <ion-text color="medium"><p>{{item.phoneNumbers[0].value}}</p></ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-virtual-scroll>
+  </ion-list>
+
+
+  <div class="floating-button ion-margin-horizontal"  *ngIf="selectedContacts.length > 0">
+    <ion-button color="primary"
+                expand="block"
+                class="button"
+                (click)="sendInvite()">
+      {{'INVITE.BUTTON' | translate}}</ion-button>
+  </div>
+
+</ion-content>

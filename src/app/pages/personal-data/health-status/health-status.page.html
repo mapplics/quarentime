@@ -1,0 +1,22 @@
+<app-header title="HEALTH_STATUS" [currentStep]="3" [completedSteps]="[1,2]"
+            subTitle="HEALTH_STATUS_SUBT" [name]="userName"></app-header>
+
+<ion-content class="ion-padding" >
+  <div slot="fixed" class="fixed-content">
+    <ion-card [ngStyle]="{'background-color': status.color_hex}">
+      <ion-row class="h-100 align-between">
+        <ion-col size="12" class="ion-text-end">
+          <ion-icon name="help-circle-outline" size="large" color="light" (click)="showHelp()"></ion-icon>
+        </ion-col>
+        <ion-col size="12" class="ion-padding">
+          <ion-icon *ngIf="showBadge()" [src]="getIcon()" size="large"></ion-icon>
+          <div>
+            <ion-chip mode="ios" color="light" *ngIf="showBadge()">{{('STATUS.'+status.status+'.TAG') | translate}}</ion-chip>
+          </div>
+          <span class="status-text">{{('STATUS.'+status.status+'.TITLE') | translate}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-button (click)="goToApp()" fill="solid" color="primary" expand="block">{{'STATUS.BUTTON' | translate}}</ion-button>
+  </div>
+</ion-content>
