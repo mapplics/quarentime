@@ -18,7 +18,7 @@
   <ion-virtual-scroll [items]="filteredList" approxItemHeight="50px">
 
     <ion-item lines="full" detail="false" *virtualItem="let item, let itemBounds = bounds;">
-      <ion-checkbox slot="start" (ionChange)="selectedChange($event, item)" color="gold"
+      <ion-checkbox slot="start" (ionChange)="selectedChange($event, item)" color="primary"
                     [(ngModel)]="item.selected"
       ></ion-checkbox>
       <ion-label>

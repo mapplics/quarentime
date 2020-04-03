@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
 
-  --ion-font-family : 'Roboto', sans-serif;
+  --ion-font-family: 'Roboto', sans-serif;
 
   h1 {
     color: var(--ion-color-dark);
@@ -17,10 +17,11 @@
     font-size: 14px !important;
   }
 
-  ion-item-group.validation ion-item  {
+  ion-item-group.validation ion-item {
     border: 1px solid var(--ion-color-medium) !important;
     border-radius: 6px;
     --padding-end: var(--padding-start);
+
     &.validation-code {
       --inner-padding-start: 0px !important;
       --inner-padding-end: 0px !important;
@@ -29,7 +30,7 @@
 
   ion-button:not([size=small]) {
     height: 50px !important;
-    border-radius: 4px !important;
+    --border-radius: 4px;
     font-size: 14px;
     text-transform: uppercase !important;
   }
@@ -50,8 +51,12 @@
     align-content: space-between
   }
 
+  ion-slides {
+    --bullet-background: var(--ion-color-dark);
+  }
 
-  /** primary **/
+
+          /** primary **/
   --ion-color-primary: #000000;
   --ion-color-primary-rgb: 0,0,0;
   --ion-color-primary-contrast: #ffffff;
