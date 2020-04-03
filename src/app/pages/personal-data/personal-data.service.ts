@@ -23,7 +23,7 @@ export class PersonalDataService extends BaseService {
                 public http: HttpClient) {
         super(router);
         this._questionAnswers = {
-            has_recent_travel_last_14_days: false,
+            has_recent_travel_last14_days: false,
             has_recent_travel_before_symptoms: false,
             has_close_contact: false,
             has_symptoms: false,

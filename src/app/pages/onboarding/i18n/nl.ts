@@ -2,7 +2,7 @@ export const locale = {
     lang: 'nl',
     data: {
         ONBOARDING: {
-            TITLE1: 'Invite family, friends and collegues.',
+            TITLE1: 'Invite family, friends and colleague.',
             SUBTITLE1: 'Create your own close contact circle (contact trace)',
 
             TITLE2: 'Track how your contact circle is feeling.',
@@ -14,7 +14,7 @@ export const locale = {
             TITLE4: 'Get alerts! You are close to a high-risk patients.',
             SUBTITLE4: 'Take everyday precautions to keep space between yourself and others.',
 
-            TITLE5: 'Tanks for sign up!',
+            TITLE5: 'Thanks for sign up!',
 
             SKIP: 'SKIP',
             FINISH: "LET'S START",

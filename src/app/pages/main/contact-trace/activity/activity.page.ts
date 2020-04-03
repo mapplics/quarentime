@@ -100,6 +100,7 @@ export class ActivityPage extends PageInterface implements OnInit {
         this.loadingController.presentLoading(this.translates.SEND).then(() => {
             this.contactTraceService.acceptInvite(contact.inviteId).pipe(take(1))
                 .subscribe((resp: GeneralResponse) => {
+                    this.updateContactStatus(contact);
                     this.loadingController.dismiss();
                 }, () => {
                     // todo
@@ -113,12 +114,18 @@ export class ActivityPage extends PageInterface implements OnInit {
     ignoreContact(contact: ContactModel): void {
         this.loadingController.presentLoading(this.translates.SEND).then(() => {
             this.contactTraceService.rejectInvite(contact.inviteId).pipe(take(1))
-                .subscribe((resp: GeneralResponse) => {
+                .subscribe((resp: GeneralResponse) => {                    
                     this.loadingController.dismiss();
+                    // si lo ignora refresco el listado                    
+                    this.getContacts();
                 }, () => {
                     // todo
                     this.loadingController.dismiss();
                 });
         });
+    }
+
+    updateContactStatus(contact: ContactModel) {
+        contact.pending = false;
     }
 }

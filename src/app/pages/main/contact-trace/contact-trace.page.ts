@@ -103,6 +103,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     }
 
     calculateRamdon() {
+        debugger;
         this.spaces = [];
 
         // variable utilzada para acumular las distancias verticales
@@ -202,6 +203,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     }
 
     prepareCircle(title, color) {
+        debugger;
         // calculo un numero ramdo para determinar la posicion
         let random = Math.floor(Math.random() * (this.spaces.length));
         this.circles.push({
@@ -243,9 +245,9 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     get totalHealthy() {
         return this.colorCircle('healthy').length +
-            this.colorCircle('healty_social_distancing').length;
-            //this.getUserState('healthy') +
-            //this.getUserState('healty_social_distancing');
+            this.colorCircle('healty_social_distancing').length
+            this.getUserState('healthy') +
+            this.getUserState('healty_social_distancing');
     }
 
     get totalRecovered() {
@@ -254,9 +256,9 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     get totalSuspected() {
         return this.colorCircle('low_probability_suspected').length +
-            this.colorCircle('high_probability_suspected').length;
-            // this.getUserState('low_probability_suspected') +
-            // this.getUserState('high_probability_suspected');
+            this.colorCircle('high_probability_suspected').length
+            this.getUserState('low_probability_suspected') +
+            this.getUserState('high_probability_suspected');
     }
 
     get totalPositive() {

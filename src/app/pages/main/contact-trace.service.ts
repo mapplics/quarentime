@@ -75,8 +75,10 @@ export class ContactTraceService extends BaseService {
     }
 
     rejectInvite(inviteId: string): Observable<{} | GeneralResponse> {
-        const url = `${this._API}User/FriendRequests/Reject?invite_id=${inviteId}`;
-        return this.http.delete<GeneralResponse>(url)
+        //const url = `${this._API}User/FriendRequests/Reject?invite_id=${inviteId}`;
+        const url = `${this._API}User/FriendRequests/Reject`;
+        // return this.http.delete<GeneralResponse>(url)
+        return this.http.request<GeneralResponse>('delete', url, {body: { invite_id: inviteId }})
             .pipe(
                 map((res: GeneralResponse) => {
                     return res;
