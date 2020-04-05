@@ -9,10 +9,10 @@
     <p *ngIf="question.comment"><i>{{question.comment[currentLanguage]}}</i></p>
     <ion-row>
       <ion-col size="3">
-        <ion-button [color]="question.selectedYes ? 'dark' : 'medium'" fill="solid" expand="block" (click)="answer(true)">{{'QUESTIONS.YES' | translate}}</ion-button>
+        <ion-button color="dark" [fill]="question.selectedYes ? 'solid' : 'outline'" expand="block" (click)="answer(true)">{{'QUESTIONS.YES' | translate}}</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button [color]="question.selectedNo ? 'dark' : 'medium'" fill="solid" expand="block" (click)="answer( false)">{{'QUESTIONS.NO' | translate}}</ion-button>
+        <ion-button color="dark" [fill]="question.selectedNo ? 'solid' : 'outline'" expand="block" (click)="answer( false)">{{'QUESTIONS.NO' | translate}}</ion-button>
       </ion-col>
     </ion-row>
   </div>
