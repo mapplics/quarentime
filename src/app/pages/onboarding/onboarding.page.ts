@@ -6,7 +6,7 @@ import {locale as spanish} from './i18n/es';
 import {locale as macedonian} from './i18n/mk';
 import {locale as germany} from './i18n/de';
 import {locale as dutch} from './i18n/nl';
-import {Router} from "@angular/router";
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-onboarding',
@@ -20,13 +20,11 @@ export class OnboardingPage  extends PageInterface implements OnInit {
     super(translateService, english, spanish, macedonian, germany, dutch);
   }
 
-  ngOnInit() {
+  ngOnInit(){
   }
-
-
 
   goToHome() {
     // this.router.navigate(['', 'main', 'home']);
-    this.router.navigate(['personal-data']);
+    this.router.navigate(['onboarding/thanks']);
   }
 }

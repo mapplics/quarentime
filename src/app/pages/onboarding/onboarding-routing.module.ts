@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: OnboardingPage
+  },
+  {
+    path: 'thanks',
+    loadChildren: () => import('./thanks/thanks.module').then( m => m.ThanksPageModule)
   }
 ];
 

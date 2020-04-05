@@ -9,6 +9,7 @@ import { OnboardingPageRoutingModule } from './onboarding-routing.module';
 import { OnboardingPage } from './onboarding.page';
 import {TranslateModule} from "@ngx-translate/core";
 import {CircleAnimationModule} from '../../shared/component/circle-animation/circle-animation.module';
+import {OutbreakSimulatorModule} from '../../shared/component/outbreak-simulator/outbreak-simulator.module';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import {CircleAnimationModule} from '../../shared/component/circle-animation/cir
         IonicModule,
         OnboardingPageRoutingModule,
         TranslateModule,
-        CircleAnimationModule
+        CircleAnimationModule,
+        OutbreakSimulatorModule
     ],
   declarations: [OnboardingPage]
 })
