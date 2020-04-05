@@ -122,8 +122,8 @@ export class InfoPage extends PageInterface implements OnInit {
               if (response.error) {
                 this.toastCtrl.errorToast(this.translateService.instant('INFO.SENDING_ERROR'));                
               } else {
-                // this.goToNextPage(response.result.verified);                
-                this.goToNextPage(true);                
+                this.goToNextPage(response.result.verified);                
+                // this.goToNextPage(true);                
               }
               this.loadingCtrl.dismiss();
             },
