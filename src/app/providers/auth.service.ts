@@ -133,6 +133,10 @@ export class AuthService extends BaseService {
         }
     }
 
+    get isFirebaseReady(): boolean {
+        return (this.getActiveUser() !== null);
+    }
+
     getLocale(): string {
        return localStorage.getItem('quarentimeUserLanguage');
     }

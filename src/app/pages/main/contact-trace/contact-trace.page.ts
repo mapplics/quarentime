@@ -11,7 +11,7 @@ import {CirclesModel} from './models/circles.model';
 import {SpacesWindowModel} from './models/spaces-window.model';
 import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 import {ContactTraceService} from '../contact-trace.service';
-import {take} from 'rxjs/operators';
+import {take, takeUntil} from 'rxjs/operators';
 import {GeneralResponse} from '../../../models/general-response.model';
 import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
 import {ContactTraceModel} from './models/contact-trace.model';
@@ -19,6 +19,7 @@ import {StorageService} from '../../../shared/services/storage.service';
 import {AuthService} from '../../../providers/auth.service';
 import {forkJoin} from 'rxjs';
 import {ContactModel} from './models/contact.model';
+import { stat } from 'fs';
 
 @Component({
     selector: 'app-contact-trace',
@@ -53,7 +54,13 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         super(translateService, english, spanish, macedonian, germany, dutch);
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.authService.loggedIn.pipe(takeUntil(this.componentDestroyed)).subscribe(state => {
+            if (state) {
+                this.getContacts();
+            }
+        });
+    }
 
     ngAfterViewInit() {
     }
@@ -63,7 +70,9 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         // this.contacts = [];
         this.circles = [];
         this.loaded = false;
-        this.getContacts();
+        if (this.authService.isFirebaseReady){            
+            this.getContacts();
+        }
     }
 
     async getContacts() {        
