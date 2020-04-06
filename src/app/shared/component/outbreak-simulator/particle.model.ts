@@ -99,7 +99,7 @@ export class Particle {
 
             if (this.color === '#AFC5C9' && otherParticle.color === '#F76161') {
                 this.color = '#F76161';
-            } else  if (otherParticle.color === '#AFC5C9' && this.color === '#F76161') {
+            } else if (this.color === '#F76161' && otherParticle.color === '#AFC5C9') {
                 otherParticle.color = '#F76161';
             } else if (this.color === '#F76161' && otherParticle.color !== '#C18EBD') {
                 otherParticle.color = this.color;
@@ -151,6 +151,7 @@ export class ParticlesMoving {
 
     draw(maxHeight) {
         this.widthWindow = window.innerWidth;
+        console.log(this.widthWindow);
         this.heightWindow = window.innerHeight;
         this.heightWindow = this.heightWindow * maxHeight / 100;
         this.canvas.setAttribute('width', this.widthWindow.toString());

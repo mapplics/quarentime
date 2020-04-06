@@ -33,6 +33,6 @@ export class OutbreakSimulatorComponent implements OnInit {
           this.particles.draw(this.maxHeight);
         }, 100);
       };
-    }, 200);
+    }, 100);
   }
 }
