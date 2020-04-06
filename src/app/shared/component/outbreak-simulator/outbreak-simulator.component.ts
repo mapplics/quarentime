@@ -25,7 +25,6 @@ export class OutbreakSimulatorComponent implements OnInit {
       this.particles.draw(this.maxHeight);
 
       window.onresize = () => {
-        alert('reziseee');
         if (this.myResizeTimer != null) {
           clearTimeout(this.myResizeTimer);
         }
