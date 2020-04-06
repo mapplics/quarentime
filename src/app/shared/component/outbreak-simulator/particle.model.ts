@@ -97,8 +97,10 @@ export class Particle {
             otherParticle.velocity.x = vFinal2.x;
             otherParticle.velocity.y = vFinal2.y;
 
-            if (this.color === '#AFC5C9') {
-                this.color = otherParticle.color;
+            if (this.color === '#AFC5C9' && otherParticle.color === '#F76161') {
+                this.color = '#F76161';
+            } else  if (otherParticle.color === '#AFC5C9' && this.color === '#F76161') {
+                otherParticle.color = '#F76161';
             } else if (this.color === '#F76161' && otherParticle.color !== '#C18EBD') {
                 otherParticle.color = this.color;
             } else if (this.color !== '#C18EBD' && otherParticle.color === '#F76161') {
@@ -142,8 +144,8 @@ export class ParticlesMoving {
     private canvas: HTMLCanvasElement;
 
 
-    constructor(canvas: HTMLCanvasElement) {
-        this.ctx = canvas.getContext('2d');
+    constructor(canvas: HTMLCanvasElement, ctx) {
+        this.ctx = ctx;
         this.canvas = canvas;
     }
 
