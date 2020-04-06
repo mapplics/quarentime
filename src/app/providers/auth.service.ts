@@ -110,7 +110,7 @@ export class AuthService extends BaseService {
         if (this.platform.is('mobileweb')) {
             return Promise.resolve('done');
         }
-       return this.getActiveUser().getIdToken(true).then(
+       return this.getActiveUser().getIdToken(false).then(
             (newToken) => {
                 console.log('token-new', newToken);
                 localStorage.setItem('quarentimeToken', newToken);
@@ -120,7 +120,7 @@ export class AuthService extends BaseService {
     }
 
     async getTokenRefresh() {
-        return await this.getActiveUser().getIdToken(true);
+        return await this.getActiveUser().getIdToken(false);
     }
 
     get isAuthenticated() {
