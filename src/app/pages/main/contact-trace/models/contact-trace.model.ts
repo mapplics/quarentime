@@ -5,6 +5,7 @@ export class ContactTraceModel extends Serializable {
     public initials: string;
     public status: string;
     public color: string;
+    public pending: boolean;
     public contacts: ContactTraceModel[];
 
     newModel(data: any): ContactTraceModel {

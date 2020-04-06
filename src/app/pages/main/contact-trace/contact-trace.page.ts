@@ -55,11 +55,11 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     }
 
     ngOnInit() {
-        this.authService.loggedIn.pipe(takeUntil(this.componentDestroyed)).subscribe(state => {
-            if (state) {
-                this.getContacts();
-            }
-        });
+        // this.authService.loggedIn.pipe(takeUntil(this.componentDestroyed)).subscribe(state => {
+        //     if (state) {
+        //         this.getContacts();
+        //     }
+        // });
     }
 
     ngAfterViewInit() {
@@ -68,10 +68,17 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     ionViewDidEnter() {
         // para que calcule el tamaño del div cuando ya cargo todo
         // this.contacts = [];
+        debugger;
         this.circles = [];
         this.loaded = false;
         if (this.authService.isFirebaseReady){            
             this.getContacts();
+        } else {
+            this.authService.loggedIn.pipe(takeUntil(this.componentDestroyed)).subscribe(state => {
+                if (state) {
+                    this.getContacts();
+                }
+            });
         }
     }
 
@@ -99,6 +106,9 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
                         this.loadingCtrl.dismiss();
                         this.toastCtrl.errorToast(err.message);
                         // });
+                    },
+                    () => {
+                        this.loadingCtrl.dismiss();
                     });
         });
     }
@@ -172,10 +182,8 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
         // esto deberia venir del servidor title and color
         for (let contact of this.contactTrace.contacts) {
-            //const status = contact.pending ? 'pending' : contact.status;
-            // pending no se ven mas aca
-
-            this.prepareCircle(contact.initials, contact.status);
+            const status = contact.pending ? 'pending' : contact.status;            
+            this.prepareCircle(contact.initials, status);
         }
 
         // las bolas pending no las muestro
