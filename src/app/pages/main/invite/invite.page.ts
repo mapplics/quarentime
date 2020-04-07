@@ -97,8 +97,13 @@ export class InvitePage extends PageInterface implements OnInit {
         if (query.length >= 3 || query.length === 0) {
             this.loading = true;
             this.filteredList = this.contactList.filter(x => x.displayName.toLowerCase().includes(query.toLowerCase()));
+            this.getContent().scrollToTop(500);
             this.loading = false;
         }
+    }
+
+    getContent() {
+        return document.querySelector('ion-content');
     }
 
     selectedChange(event, item) {

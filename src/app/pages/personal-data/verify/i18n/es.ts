@@ -16,10 +16,10 @@ export const locale = {
                 }
             },
             TERMS: {
-                LINE1: 'We care about protecting your data.',
-                LINE2: 'Here’s our'
+                LINE1: 'Nos preocupamos por proteger sus datos.',
+                LINE2: 'Aquí está nuestra'
             },
-            POLICIES: 'Privacy Policy'
+            POLICIES: 'Política de Privacidad'
         }
     }
 }

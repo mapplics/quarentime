@@ -7,6 +7,9 @@ export const locale = {
             BUTTON: 'Send invite',
             LOADING: 'Loading contacts...',
             SENDING_INVITE: 'Sending invitations...',
+            ERRORS: {
+                phone_numbers_invalid: 'Phone numbers invalid!'
+            }
         }
     }
 };
