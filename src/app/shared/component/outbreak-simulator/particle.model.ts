@@ -151,7 +151,6 @@ export class ParticlesMoving {
 
     draw(maxHeight) {
         this.widthWindow = window.innerWidth;
-        console.log(this.widthWindow);
         this.heightWindow = window.innerHeight;
         this.heightWindow = this.heightWindow * maxHeight / 100;
         this.canvas.setAttribute('width', this.widthWindow.toString());
