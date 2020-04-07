@@ -8,9 +8,10 @@ import {ContactTraceService} from '../../contact-trace.service';
 import {take} from 'rxjs/operators';
 import {GeneralResponse} from '../../../../models/general-response.model';
 import {ContactModel} from '../models/contact.model';
-import {AlertController} from '@ionic/angular';
+import {AlertController, ModalController} from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
 import {forkJoin} from 'rxjs';
+import {ModalAcceptComponent} from './modal-accept/modal-accept.component';
 
 @Component({
     selector: 'app-activity',
@@ -26,7 +27,8 @@ export class ActivityPage extends PageInterface implements OnInit {
                 private loadingController: LoadingHelperService,
                 private contactTraceService: ContactTraceService,
                 private authService: AuthService,
-                private alertController: AlertController) {
+                private alertController: AlertController,
+                private modalController: ModalController) {
         super(translateService, english, spanish);
         this.getTranslations('ACTIVITY');
     }
@@ -56,6 +58,16 @@ export class ActivityPage extends PageInterface implements OnInit {
         await alert.present();
     }
 
+    async presentModalAccept() {
+        const modal = await this.modalController.create({
+            component: ModalAcceptComponent,
+            showBackdrop: true,
+            backdropDismiss: false,
+            cssClass: 'small'
+        });
+        return await modal.present();
+    }
+
     getContacts(): void {
         const pendingsObs = this.contactTraceService.getPendingRequest();
         const contactsObs = this.contactTraceService.getContacts();
@@ -75,9 +87,7 @@ export class ActivityPage extends PageInterface implements OnInit {
     }
 
     groupByMonth(): void {
-        debugger;
         const groups = this.contactList.reduce((groupList, contact) => {
-            debugger;
             const date = contact.dateAdded;
             if (!groupList[date.toDateString()]) {
                 groupList[date.toDateString()] = [];
@@ -100,12 +110,13 @@ export class ActivityPage extends PageInterface implements OnInit {
         this.loadingController.presentLoading(this.translates.SEND).then(() => {
             this.contactTraceService.acceptInvite(contact.inviteId).pipe(take(1))
                 .subscribe((resp: GeneralResponse) => {
-                    this.updateContactStatus(contact);
                     this.loadingController.dismiss();
+                    this.presentModalAccept().then(() => {
+                        this.updateContactStatus(contact);
+                    });
                 }, () => {
                     // todo
                     this.loadingController.dismiss();
-
                 });
         });
     }
@@ -114,7 +125,7 @@ export class ActivityPage extends PageInterface implements OnInit {
     ignoreContact(contact: ContactModel): void {
         this.loadingController.presentLoading(this.translates.SEND).then(() => {
             this.contactTraceService.rejectInvite(contact.inviteId).pipe(take(1))
-                .subscribe((resp: GeneralResponse) => {                    
+                .subscribe((resp: GeneralResponse) => {
                     this.loadingController.dismiss();
                     // si lo ignora refresco el listado                    
                     this.getContacts();

@@ -55,6 +55,11 @@
     --bullet-background: var(--ion-color-dark);
   }
 
+  ion-modal.small {
+    --width: 80%;
+    --height: 70%;
+    --backdrop-opacity: 0.8;
+  }
 
           /** primary **/
   --ion-color-primary: #000000;

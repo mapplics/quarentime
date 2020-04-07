@@ -9,6 +9,7 @@ import { ActivityPageRoutingModule } from './activity-routing.module';
 import { ActivityPage } from './activity.page';
 import {HeaderModule} from '../../header/header.module';
 import {TranslateModule} from '@ngx-translate/core';
+import {ModalAcceptComponent} from './modal-accept/modal-accept.component';
 
 @NgModule({
     imports: [
@@ -19,6 +20,13 @@ import {TranslateModule} from '@ngx-translate/core';
         HeaderModule,
         TranslateModule
     ],
-  declarations: [ActivityPage]
+    declarations: [
+        ActivityPage,
+        ModalAcceptComponent
+    ],
+    entryComponents: [
+        ModalAcceptComponent
+    ]
+
 })
 export class ActivityPageModule {}
