@@ -29,6 +29,7 @@ export class InvitePage extends PageInterface implements OnInit {
     filteredList: any[];
     selectedContacts: any[] = [];
     loading: boolean = false;
+    regex = /^\+[1-9]\d{1,14}$/;
 
     constructor(public translateService: TranslateService,
                 private contacts: Contacts,
@@ -55,7 +56,7 @@ export class InvitePage extends PageInterface implements OnInit {
         this.loadingController.presentLoading(this.translates.LOADING).then(() => {
             this.contacts.find(this.type, this.options).then((data) => {
                 this.contactList = data;
-                this.contactList = this.contactList.filter(x => (x.phoneNumbers && x.phoneNumbers.length > 0 && !!x.displayName));
+                this.contactList = this.contactList.filter(x => (x.phoneNumbers && x.phoneNumbers.length > 0 && !!x.displayName && x.phoneNumbers[0].value.match(this.regex)));
                 this.filteredList = this.contactList;
                 this.sort(this.filteredList);
                 this.loadingController.dismiss();
@@ -75,7 +76,7 @@ export class InvitePage extends PageInterface implements OnInit {
         };
         this.contacts.find(this.type, this.options).then((data) => {
             this.contactList = data;
-            this.contactList = this.contactList.filter(x => (x.phoneNumbers && x.phoneNumbers.length > 0 && !!x.displayName));
+            this.contactList = this.contactList.filter(x => (x.phoneNumbers && x.phoneNumbers.length > 0 && !!x.displayName && x.phoneNumbers[0].value.match(this.regex)));
             this.filteredList = this.contactList;
             this.sort(this.filteredList);
             event.target.complete();

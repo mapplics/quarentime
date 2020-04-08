@@ -15,7 +15,7 @@
   </ion-refresher>
 
   <ion-spinner *ngIf="loading"></ion-spinner>
-  <ion-list>
+  <div lines="full">
   <ion-virtual-scroll [items]="filteredList" approxItemHeight="50px">
 
     <ion-item lines="full" detail="false" *virtualItem="let item, let itemBounds = bounds;">
@@ -28,7 +28,7 @@
       </ion-label>
     </ion-item>
   </ion-virtual-scroll>
-  </ion-list>
+  </div>
 
 
   <div class="floating-button ion-margin-horizontal"  *ngIf="selectedContacts.length > 0">
