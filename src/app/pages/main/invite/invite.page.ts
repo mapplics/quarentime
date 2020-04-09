@@ -127,7 +127,7 @@ export class InvitePage extends PageInterface implements OnInit {
         const list = ContactPhoneModel.createFromObjectCollection(this.selectedContacts);
         list.forEach(x => x.phone_number = x.phone_number.replace(/[- ]/g, ''));
         this.loadingController.presentLoading(this.translates.SENDING_INVITE).then(() => {
-            // this.authService.refreshToken().then(() => {
+            this.authService.refreshToken().then(() => {
             this.contactTraceService.sendInvite(list).pipe(takeUntil(this.componentDestroyed)).subscribe(
                 (resp: GeneralResponse) => {
                     this.loadingController.dismiss();
@@ -136,7 +136,7 @@ export class InvitePage extends PageInterface implements OnInit {
                     this.loadingController.dismiss();
                     this.toastController.errorToast(err.message);
                 });
-            // });
+            });
         });
 
     }
