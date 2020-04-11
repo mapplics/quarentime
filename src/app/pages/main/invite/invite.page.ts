@@ -29,7 +29,7 @@ export class InvitePage extends PageInterface implements OnInit {
     filteredList: any[];
     selectedContacts: any[] = [];
     loading: boolean = false;
-    regex = /^\+[1-9]\d{1,14}$/;
+    regex = /^\+[1-9 -]+\d{1,14}$/;
 
     constructor(public translateService: TranslateService,
                 private contacts: Contacts,
