@@ -71,7 +71,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         debugger;
         this.circles = [];
         this.loaded = false;
-        if (this.authService.isFirebaseReady){            
+        if (!this.authService.isFirebaseReady){            
             this.getContacts();
         } else {
             this.authService.loggedIn.pipe(takeUntil(this.componentDestroyed)).subscribe(state => {
@@ -98,6 +98,9 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
                         this.pendingRequests = resp[1].result.filter(x => x.pending);
                         this.totalPending = this.pendingRequests.length;
                         console.log(this.contactTrace);
+
+                        // update current status user
+                        this.storageService.updateUserStatus(this.contactTrace.status, this.contactTrace.color);
 
                         this.calculateRamdon();
                         this.loadingCtrl.dismiss();

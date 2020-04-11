@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {locale as english} from './i18n/en';
 import {locale as spanish} from './i18n/es';
 import {locale as macedonian} from './i18n/mk';
@@ -28,6 +28,10 @@ export class HomePage extends PageInterface implements OnInit {
     }
 
     ngOnInit() {
+        
+    }
+
+    ionViewDidEnter() {
         this.userName = this.storageService.personalDataName;
         this.statusColor = this.storageService.userStatusColor;
     }

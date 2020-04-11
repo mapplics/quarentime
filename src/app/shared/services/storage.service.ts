@@ -23,6 +23,15 @@ export class StorageService {
         localStorage.setItem('quarentimeUserLanguage', language);
     }
 
+    updateUserStatus(status: string, statusColor: string) {
+        const current = this.getItem('health') ? JSON.parse(this.getItem('health')) : null;        
+        if (current) {
+            current.status = status;
+            current.color_hex = statusColor;
+            localStorage.setItem('health', JSON.stringify(current));
+        }
+    }
+
     get personalDataName(): string {
         return this.getItem('quarentimeDataName');
     }
@@ -41,7 +50,7 @@ export class StorageService {
 
     get userStatus(): string {
         return this.getItem('health') ? JSON.parse(this.getItem('health')).status : null;
-    }
+    }    
 
     get nameInitialWord() {
         return this.personalDataName.charAt(0).toUpperCase() + this.personalDataSurName.charAt(0).toUpperCase();
