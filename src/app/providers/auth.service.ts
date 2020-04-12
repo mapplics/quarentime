@@ -9,6 +9,7 @@ import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import {ToastHelperService} from '../shared/helpers/toast-helper.service';
 import { promise } from 'protractor';
 import { Platform } from '@ionic/angular';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -27,15 +28,15 @@ export class AuthService extends BaseService {
 
     init() {
         // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: 'AIzaSyBA3VcHnEWCy-mpShMLTdq1bEMkWsf2oIM',
-            authDomain: 'quarentime.firebaseapp.com',
-            databaseURL: 'https://quarentime.firebaseio.com',
-            projectId: 'quarentime',
-            storageBucket: 'quarentime.appspot.com',
-            messagingSenderId: '627240942816',
-            appId: '1:627240942816:web:c6f1da78976ae13aa2e485',
-            measurementId: 'G-1X9SMMCG6D'
+        const firebaseConfig = {
+            apiKey: environment.firebase_apiKey,
+            authDomain: environment.firebase_authDomain,
+            databaseURL: environment.firebase_databaseURL,
+            projectId: environment.firebase_projectId,
+            storageBucket: environment.firebase_storageBucket,
+            messagingSenderId: environment.firebase_messagingSenderId,
+            appId: environment.firebase_appId,
+            measurementId: environment.firebase_measurementId
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
