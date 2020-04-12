@@ -30,3 +30,4 @@ _doc.txt
 /platforms
 /plugins
 /www
+src/environments/environment.prod.ts

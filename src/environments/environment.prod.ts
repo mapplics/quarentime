@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   // api: 'https://quarentime-user-api-rcgccs4vga-ew.a.run.app/',
-  api: 'https://quarentime-gateway-rcgccs4vga-ew.a.run.app/',
+  api: 'https://quarentime-gateway-3mtz5tknuq-ew.a.run.app/',  
   availableLangs: ['es', 'en', 'mk', 'nl', 'de'],
   // todo change var production
   firebase_apiKey: 'AIzaSyBKS_gk_e4b9Ev1H1Of_-QQZbUfojI0sE0',
