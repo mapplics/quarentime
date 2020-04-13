@@ -31,3 +31,4 @@ _doc.txt
 /plugins
 /www
 src/environments/environment.prod.ts
+src/environments/environment.prod.ts
