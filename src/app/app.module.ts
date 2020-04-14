@@ -23,6 +23,7 @@ import localeEnglish from '@angular/common/locales/en';
 import localeGermany from '@angular/common/locales/de';
 import localeDutch from '@angular/common/locales/nl';
 import localeMacedonia from '@angular/common/locales/mk';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 registerLocaleData(localeSpanish, 'es');
 registerLocaleData(localeEnglish, 'en');
@@ -49,6 +50,7 @@ registerLocaleData(localeMacedonia, 'mk');
         SocialSharing,
         Globalization,
         Contacts,
+        FirebaseCrashlytics,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
         {
             provide: LOCALE_ID,

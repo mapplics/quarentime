@@ -28,6 +28,7 @@
     "@ionic-native/contacts": "^5.23.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/facebook": "^5.22.0",
+    "@ionic-native/firebase-crashlytics": "^5.23.0",
     "@ionic-native/globalization": "^5.23.0",
     "@ionic-native/google-plus": "^5.22.0",
     "@ionic-native/social-sharing": "^5.23.0",
@@ -38,6 +39,7 @@
     "cordova-android": "8.1.0",
     "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-facebook4": "^6.4.0",
+    "cordova-plugin-firebase-crashlytics": "^1.0.0",
     "cordova-plugin-globalization": "^1.11.0",
     "cordova-plugin-googleplus": "^8.4.0",
     "cordova-plugin-x-socialsharing": "^5.6.4",
@@ -103,7 +105,8 @@
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
       },
       "cordova-plugin-globalization": {},
-      "cordova-plugin-contacts": {}
+      "cordova-plugin-contacts": {},
+      "cordova-plugin-firebase-crashlytics": {}
     },
     "platforms": [
       "android"
