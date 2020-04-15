@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "299005490860-t6kgre18ah3d08mammbq6q20lrunbcti.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quarentime",
+            "certificate_hash": "a5bc3ad290fcc4bde1caadf663f4c18186c5c374"
+          }
+        },
+        {
+          "client_id": "299005490860-p04s9og3j21hn9n96mq0vest3r5l9iqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quarentime",
+            "certificate_hash": "d64c215f2b4b41665debc1be04c94eef9cb24d1b"
+          }
+        },
+        {
+          "client_id": "299005490860-jau8fn6ckdbv8squk5unr2bfviiup9r3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quarentime",
+            "certificate_hash": "1b40757bdda1a11ad3b2815b11b0ca902f6b5e28"
+          }
+        },
+        {
           "client_id": "299005490860-aq9f3006hs642c3poh6petfa24f1b6ee.apps.googleusercontent.com",
           "client_type": 3
         }

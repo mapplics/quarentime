@@ -2,7 +2,7 @@ export const locale = {
     lang: 'es',
     data: {
         SHARE: {
-            DESCRIPTION: 'Invitá a familiares, amigos y colegas.\ny seguí cómo se sienten.',
+            DESCRIPTION: 'Invitá a familiares, amigos y colegas.\Y hace un seguimiento de como se sienten.',
             INVITE_BTN: 'INVITAR CONTACTOS',
             SHARE_BTN: 'COMPARTIR',
             TERMS: {

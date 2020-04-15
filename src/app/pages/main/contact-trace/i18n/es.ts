@@ -3,12 +3,12 @@ export const locale = {
     data: {
         CONTACT: {
             TITLE: 'My red de contactos',
-            HEALTHY: 'saludable',
-            RECOVERED: 'recuperado',
-            POSITIVE: 'positivo',
-            HIGH_RISK: 'riesgo',
-            CARRIER: 'portador',
-            SUSPECTED: 'sospechoso',
+            HEALTHY: 'Saludable',
+            RECOVERED: 'Recuperado',
+            POSITIVE: 'Positivo',
+            HIGH_RISK: 'Riesgoso',
+            CARRIER: 'Portador',
+            SUSPECTED: 'Sospechoso',
             TOTAL: 'Total',
             PENDING: 'Pendientes',
             LOADING_CONTACT: 'Cargando Contactos...',

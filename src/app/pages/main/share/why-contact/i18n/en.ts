@@ -4,7 +4,7 @@ export const locale = {
         WHY: {
             TITLE: 'Benefits',
             SUBTITLE: 'Helping healthcare workers',
-            SUBTITLE2: ' In contact tracing process, time matters',
+            SUBTITLE2: 'In contact tracing process, time matters',
             TEXT: {
                 LINE1: 'Early detection could potentially help reduce the risk of the spread of the virus, and better protect our families and loved ones.\n' +
                     '\n' +

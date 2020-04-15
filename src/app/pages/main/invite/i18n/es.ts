@@ -3,7 +3,7 @@ export const locale = {
     data: {
         INVITE: {
             SEARCHBAR: 'Ingresá nombre o teléfono',
-            LIST_HEADER: 'asd',
+            LIST_HEADER: 'Agregado rápido',
             BUTTON: 'Enviar invitación',
             LOADING: 'Cargando contactos...',
             SENDING_INVITE: 'Enviando invitaciones...',

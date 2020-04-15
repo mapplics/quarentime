@@ -2,8 +2,8 @@ export const locale = {
     lang: 'es',
     data: {
         INTAKE: {
-            TEXT1: 'Usage of this app does not substitute medical treatment by a physician or clinical diagnostics.',
-            TEXT2: 'If you currently feel seriously ill, please immediately contact your personal healthcare provider.',
+            TEXT1: 'El uso de esta aplicación no sustituye el tratamiento médico o el diagnóstico médico.',
+            TEXT2: 'Si actualmente te sentís gravemente enfermo, por favor contactá a tu proveedor de atención médica de inmediato',
             BUTTON: 'Siguiente'
         }
     }
