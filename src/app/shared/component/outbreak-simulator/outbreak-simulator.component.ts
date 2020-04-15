@@ -6,7 +6,7 @@ import {ParticlesMoving} from './particle.model';
   templateUrl: './outbreak-simulator.component.html',
   styleUrls: ['./outbreak-simulator.component.scss'],
 })
-export class OutbreakSimulatorComponent implements OnInit {
+export class OutbreakSimulatorComponent implements OnInit, OnDestroy {
 
   @Input() maxHeight = 50;
   myResizeTimer = null;
@@ -34,5 +34,12 @@ export class OutbreakSimulatorComponent implements OnInit {
         }, 100);
       };
     }, 100);
+  }
+
+  ngOnDestroy(): void {
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.restore();
+    document.removeChild(this.canvas);
   }
 }
