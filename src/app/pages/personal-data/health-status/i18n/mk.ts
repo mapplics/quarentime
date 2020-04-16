@@ -2,29 +2,29 @@ export const locale = {
     lang: 'mk',
     data: {
         STATUS: {
-            BUTTON: 'Create my contact trace',
+            BUTTON: 'Создади го мојот круг на контакти',
             healthy: {
-                TITLE: 'Healthy'
+                TITLE: 'Здрав'
             },
             healty_social_distancing: {
-                TITLE: 'Healthy - Keep social distancing'
+                TITLE: 'Здрав - Држете социјално растојание'
             },
             low_probability_suspected: {
-                TITLE: 'Suspected case',
-                TAG: 'Low probability'
+                TITLE: 'Сомнителен случај',
+                TAG: 'Мала веројатност'
             },
             high_probability_suspected: {
-                TITLE: 'Suspected case',
-                TAG: 'High probability'
+                TITLE: 'Сомнителен случај',
+                TAG: 'Голема веројатност'
             },
             flu_like: {
-                TITLE:  'Flue-like symptoms'
+                TITLE:  'Симптоми слични на грип'
             },
             positive: {
-                TITLE: 'Tested positive'
+                TITLE: 'Позитивен тест'
             },
             recovered: {
-                TITLE: 'Recovered'
+                TITLE: 'Оздравен'
             }
         }
     }

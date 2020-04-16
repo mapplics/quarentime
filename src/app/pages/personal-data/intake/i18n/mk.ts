@@ -2,9 +2,9 @@ export const locale = {
     lang: 'mk',
     data: {
         INTAKE: {
-            TEXT1: 'Usage of this app does not substitute medical treatment by a physician or clinical diagnostics.',
-            TEXT2: 'If you currently feel seriously ill, please immediately contact your personal healthcare provider.',
-            BUTTON: 'Next'
+            TEXT1: 'Употребата на оваа апликација не го заменува медицинскиот третман од страна на лекар или клиничка дијагностика.',
+            TEXT2: 'Ако во моментов се чувствувате сериозно лошо, ве молиме веднаш контактирајте го вашиот матичен лекар.',
+            BUTTON: 'Следно'
         }
     }
 }

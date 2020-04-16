@@ -2,14 +2,14 @@ export const locale = {
     lang: 'mk',
     data: {
         CONFIRM: {
-            TITLE: 'Intake',
-            CONF1: 'I declare that the information is filled in truthfully.',
-            CONF2: 'Please indicate that you have read and agree to the',
-            TERMS_COND: 'Terms and Conditions',
-            CONNECTOR: 'and',
-            PRIVACY_POLICY: 'Privacy Policy',
-            BUTTON: 'Next',
-            LOADING: 'Loading...'
+            TITLE: 'Внес',
+            CONF1: 'Изјавувам дека информациите се пополнети точно.',
+            CONF2: 'Ве молиме, означете дека сте прочитале и се согласувате со',
+            TERMS_COND: 'Правила и услови',
+            CONNECTOR: 'и',
+            PRIVACY_POLICY: 'Политика на приватност',
+            BUTTON: 'Следно',
+            LOADING: 'Вчитување...'
         }
     }
 }

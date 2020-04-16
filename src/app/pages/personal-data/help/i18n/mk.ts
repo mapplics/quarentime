@@ -2,37 +2,37 @@ export const locale = {
     lang: 'mk',
     data: {
         HELP: {
-            TITLE: 'Help',
-            GROUP: 'Group',
-            LOADING: 'Loading...',
+            TITLE: 'Помош',
+            GROUP: 'Група',
+            LOADING: 'Се вчитува...',
             BLUE: {
-                COLOR: 'Blue',
-                TITLE: 'Healthy',
-                TEXT: 'Based on your answers it seems that you have not been infected by the novel coronavirus. However, please follow the local guidelines and avoid unnecessary exposure to other people.<br><br>' +
-                    '<strong>Maintain social distancing!</strong><br><br>' +
-                    'In the meantime, take care of yourself, take care of others and remember together is better!',
+                COLOR: 'Сина',
+                TITLE: 'Здрав',
+                TEXT: 'Врз основа на вашите одговори, се чини дека не сте заразени од коронавирус. Сепак, следете ги локалните упатства и избегнувајте непотребно изложување на други лица.<br><br>' +
+                    '<strong>Одржувајте социјална дистанца!</strong><br><br>' +
+                    'Во меѓувреме, грижете се за себе, грижете се за останатите и запомнете, подобро да се заштитиме отколку да се лечиме.',
             },
             YELLOW: {
-                COLOR: 'Yellow',
-                TITLE: 'Suspected case',
-                TEXT: 'Based on your answers, you might have been infected by the novel coronavirus. Whether you have severe symptoms or not please isolate yourself and keep away from your loved ones to avoid infecting them.<br><br>' +
-                    'If your symptoms get worse, contact a medical professional.<br><br>' +
-                    'In the meantime, take care of yourself, take care of others and remember together is better!<br><br>' +
-                    '<strong>Stay indoors!</strong>'
+                COLOR: 'Жолта',
+                TITLE: 'Сомнителен случај',
+                TEXT: 'Врз основа на вашите одговори, можеби сте биле заразени од коронавирус. Без разлика дали имате сериозни симптоми или не, ве молиме изолирајте се и држете се подалеку од вашите најблиски за да избегнете нивно инфицирање.<br><br>' +
+                    'Ако симптомите ви се влошат, контактирајте медицинско лице.<br><br>' +
+                    'Во меѓувреме, грижете се за себе, грижете се за останатите и запомнете, подобро да се заштитиме отколку да се лечиме.<br><br>' +
+                    '<strong>Останете дома!</strong>'
             },
             PURPLE: {
-                COLOR: 'Purple',
-                TITLE: 'Recovered patients',
-                TEXT: '<strong>Congratulations!</strong><br><br>' +
-                    'It seems like you fought the novel coronavirus and survived. However, it is important that you still follow the local guidelines and avoid unnecessary exposure to other people.'
+                COLOR: 'Виолетова',
+                TITLE: 'Оздравен пациент',
+                TEXT: '<strong>Честитаме!</strong><br><br>' +
+                    'Се чини дека вие се боревте со коронавирус и победивте. Сепак, важно е сè уште да ги следите локалните упатства и да избегнувате непотребно изложување на други лица.'
             },
             RED: {
-                COLOR: 'Red',
-                TITLE: 'COVID-19 Positive',
-                TEXT: 'Since you have tested positive for COVID-19 you have probably received information from a local medical professional on the right course of action.<br><br>' +
-                    'Whether you have severe symptoms or not please isolate yourself and keep away from your loved ones to avoid infecting them.<br><br>' +
-                    'If your symptoms get worse, contact a medical professional.<br><br>' +
-                    '<strong>Take care!</strong>'
+                COLOR: 'Црвена',
+                TITLE: 'COVID-19 Позитивен',
+                TEXT: 'Бидејќи вие сте со позитивен тест за коронавирус, веројатно сте добиле информации од локален медицински персонал за правиот начин на дејствување и процес за опоравување.<br><br>' +
+                    'Без разлика дали имате сериозни симптоми или не, ве молиме изолирајте се и држете се подалеку од вашите најблиски за да избегнете нивно инфицирање.<br><br>' +
+                    'Ако симптомите ви се влошат, контактирајте медицинско лице.<br><br>' +
+                    '<strong>Останете дома!</strong>'
             },
         }
     }

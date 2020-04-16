@@ -2,13 +2,13 @@ export const locale = {
     lang: 'mk',
     data: {
         INVITE: {
-            SEARCHBAR: 'Enter name or phone',
-            LIST_HEADER: 'Quick add',
-            BUTTON: 'Send invite',
-            LOADING: 'Loading contacts...',
-            SENDING_INVITE: 'Sending invitations...',
+            SEARCHBAR: 'Внесете име или телефон',
+            LIST_HEADER: 'Брзо додавање',
+            BUTTON: 'Испратете покана',
+            LOADING: 'Вчитување на контакти...',
+            SENDING_INVITE: 'Испраќање на покани...',
             ERRORS: {
-                phone_numbers_invalid: 'Phone numbers invalid!'
+                phone_numbers_invalid: 'Телефонските броеви се невалидни!'
             }
         }
     }

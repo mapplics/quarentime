@@ -2,13 +2,13 @@ export const locale = {
     lang: 'mk',
     data: {
         HEADER: {
-            PERSONAL_INFORMATION: 'Personal Information',
-            SYMPTOMS: 'My current symptoms',
-            QUESTIONS: 'Are you at risk?',
-            VERIFY_ACCOUNT: 'Verify account',
-            HEALTH_STATUS: 'Thanks',
-            HEALTH_STATUS_SUBT: 'Your initial status is:',
-            INTAKE: 'Quarentime Intake'
+            PERSONAL_INFORMATION: 'Лични податоци',
+            SYMPTOMS: 'Мои симптоми',
+            QUESTIONS: 'Дали сте изложени на ризик?',
+            VERIFY_ACCOUNT: 'Потврди профил',
+            HEALTH_STATUS: 'Благодарам',
+            HEALTH_STATUS_SUBT: 'Вашиот почетен статус е:',
+            INTAKE: 'КаранТајм внес'
         }
     }
 }

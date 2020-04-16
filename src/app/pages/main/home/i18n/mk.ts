@@ -2,14 +2,14 @@ export const locale = {
     lang: 'mk',
     data: {
         HOME: {
-            HEALTHY: 'healthy',
-            RECOVERED: 'Recovered',
-            POSITIVE: 'positive',
-            HIGH_RISK: 'high-risk',
-            CARRIER: 'carrier',
-            TIPS: 'Tips & Tricks',
-            HELLO: 'Hello',
-            STATUS: 'My status'
+            HEALTHY: 'Здрав',
+            RECOVERED: 'Оздравен',
+            POSITIVE: 'Позитивен',
+            HIGH_RISK: 'Висок ризик',
+            CARRIER: 'Преносител',
+            TIPS: 'Совети и трикови',
+            HELLO: 'Здраво',
+            STATUS: 'Мојот статус'
         }
     }
 };

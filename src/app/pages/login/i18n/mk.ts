@@ -2,12 +2,12 @@ export const locale = {
     lang: 'mk',
     data: {
         LOGIN: {
-            TITLE: 'Stay safe, be vigilant and most importantly remember, prevention is better than cure. ',
-            FACEBOOK_BTN: 'Sign in with Facebook',
-            GOOGLE_BTN: 'Sign in with Google',
-            LOGIN_OK: 'Login was successful',
-            LOGIN_ERR: 'Error logging',
-            LOADING: 'Validating credentials'
+            TITLE: 'Останете безбедни, будни и најважно запомнете, подобро е да се заштитиме отколку да се лечиме.',
+            FACEBOOK_BTN: 'Најавете се со Facebook',
+            GOOGLE_BTN: 'Најавете се со Google',
+            LOGIN_OK: 'Успешна најава',
+            LOGIN_ERR: 'Грешка при најава',
+            LOADING: 'Проверка на податоците'
         }
     }
 };

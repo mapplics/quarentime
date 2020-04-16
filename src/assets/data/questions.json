@@ -3,9 +3,9 @@
     "question": {
       "en": "1. Do you have tested positive of COVID-19?",
       "es": "1. ¿Te hiciste la prueba de COVID-19 y dió positivo?",
-      "mk": "",
-      "nl": "",
-      "de": ""
+      "mk": "1. Do you have tested positive of COVID-19?",
+      "nl": "1. Do you have tested positive of COVID-19?",
+      "de": "1. Do you have tested positive of COVID-19?",
     },
     "first": true,
     "type": "simple",
@@ -15,9 +15,9 @@
       "question": {
         "en": "1a. Have you been discharged from Covid-19?",
         "es": "1a. ¿Fuiste descartado de Covid-19?",
-        "mk": "",
-        "nl": "",
-        "de": ""
+        "mk": "1a. Have you been discharged from Covid-19?",
+        "nl": "1a. Have you been discharged from Covid-19?",
+        "de": "1a. Have you been discharged from Covid-19?",
       },
       "type": "simple",
       "comment":  null
@@ -26,26 +26,26 @@
       "question": {
         "en": "2. Have you developed any of the following new symptoms within the last 14 days?",
         "es": "2. ¿Tuviste alguno de estos síntomas dentro de los últimos 14 días?",
-        "mk": "",
-        "nl": "",
-        "de": ""
+        "mk": "2. Have you developed any of the following new symptoms within the last 14 days?",
+        "nl": "2. Have you developed any of the following new symptoms within the last 14 days?",
+        "de": "2. Have you developed any of the following new symptoms within the last 14 days?",
       },
       "type": "multiple",
       "comment": {
         "en": "Select at least two symptoms if applicable.",
         "es": "Seleccione al menos 2 síntomas que hayas experimentado",
-        "mk": "",
-        "nl": "",
-        "de": ""
+        "mk": "Select at least two symptoms if applicable.",
+        "nl": "Select at least two symptoms if applicable.",
+        "de": "Select at least two symptoms if applicable.",
       },
       "options": [
         {
           "text": {
             "en": "Fever",
             "es": "Fiebre",
-            "mk": "",
-            "nl": "",
-            "de": ""
+            "mk": "Fever",
+            "nl": "Fever",
+            "de": "Fever",
           },
           "value": "Fever"
         },
@@ -53,9 +53,9 @@
           "text": {
             "en": "Cough (dry)",
             "es": "Tos (seca)",
-            "mk": "",
-            "nl": "",
-            "de": ""
+            "mk": "Cough (dry)",
+            "nl": "Cough (dry)",
+            "de": "Cough (dry)",
           },
           "value": "DryCough"
         },
@@ -63,9 +63,9 @@
           "text": {
             "en": "Difficulty breathing",
             "es": "Dificultad para respirar",
-            "mk": "",
-            "nl": "",
-            "de": ""
+            "mk": "Difficulty breathing",
+            "nl": "Difficulty breathing",
+            "de": "Difficulty breathing",
           },
           "value": "DifficultBreathing"
         },
@@ -73,16 +73,19 @@
           "text": {
             "en": "Throat pain and/or runny nose",
             "es": "Dolor de garganta y/o mucosidad",
-            "mk": "",
-            "nl": "",
-            "de": ""
+            "mk": "Throat pain and/or runny nose",
+            "nl": "Throat pain and/or runny nose",
+            "de": "Throat pain and/or runny nose",
           },
           "value": "ThroatPainRunnyNose"
         },
         {
           "text": {
             "en": "Fatigue",
-            "es": "Fatiga"
+            "es": "Fatiga",
+            "mk": "Fatigue",
+            "nl": "Fatigue",
+            "de": "Fatigue",
           },
           "value": "Fatigue"
         },
@@ -90,9 +93,9 @@
           "text": {
             "en": "None of the above",
             "es": "Ninguna de las anteriores",
-            "mk": "",
-            "nl": "",
-            "de": ""
+            "mk": "None of the above",
+            "nl": "None of the above",
+            "de": "None of the above",
           },
           "value": null
         }
@@ -101,9 +104,9 @@
         "question": {
           "en": "2a. Have you travelled to a high risk area before your symptom started?",
           "es": "2a. ¿Viajaste a algún área de riesgo antes de experimentar los síntomas?",
-          "mk": "",
-          "nl": "",
-          "de": ""
+          "mk": "2a. Have you travelled to a high risk area before your symptom started?",
+          "nl": "2a. Have you travelled to a high risk area before your symptom started?",
+          "de": "2a. Have you travelled to a high risk area before your symptom started?",
         },
         "type": "simple",
         "comment": null,
@@ -112,9 +115,9 @@
           "question": {
             "en": "2b. Have you come in close contact (less than 1m/ 3feet) with a confirmed or suspected COVID-19 case?",
             "es": "2b. ¿Estuviste en contacto cercano (menos de 1mt) con una persona con COVID-19?",
-            "mk": "",
-            "nl": "",
-            "de": ""
+            "mk": "2b. Have you come in close contact (less than 1m/ 3feet) with a confirmed or suspected COVID-19 case?",
+            "nl": "2b. Have you come in close contact (less than 1m/ 3feet) with a confirmed or suspected COVID-19 case?",
+            "de": "2b. Have you come in close contact (less than 1m/ 3feet) with a confirmed or suspected COVID-19 case?",
           },
           "type": "simple",
           "comment": null,
@@ -125,9 +128,9 @@
         "question": {
           "en": "2a. Have you travelled to a high risk area within the last 14 days?",
           "es": "2a. ¿Viajaste a un aŕea de riesgo dentro de los últimos 14 días?",
-          "mk": "",
-          "nl": "",
-          "de": ""
+          "mk": "2a. Have you travelled to a high risk area within the last 14 days?",
+          "nl": "2a. Have you travelled to a high risk area within the last 14 days?",
+          "de": "2a. Have you travelled to a high risk area within the last 14 days?",
         },
         "type": "simple",
         "comments": null,

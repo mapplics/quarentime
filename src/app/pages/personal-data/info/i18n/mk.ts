@@ -2,24 +2,24 @@ export const locale = {
     lang: 'mk',
     data: {
         INFO: {
-            SENDING: 'Sending data',
-            SENDING_ERROR: `We couldn't send the data, please check your network connection and try again.`,
-            NAME: 'Name',
-            SURENAME: 'Surename',
-            AGE: 'Age',
-            PHONE: 'Telephone number',
+            SENDING: 'Испраќање на податоци',
+            SENDING_ERROR: `Не можевме да ги испратиме податоците, проверете ја мрежната врска и обидете се повторно.`,
+            NAME: 'Име',
+            SURENAME: 'Презиме',
+            AGE: 'Возраст',
+            PHONE: 'Телефонски број',
             PLACEHOLDERS: {
-                NAME: 'Enter your first name',
-                SURENAME: 'Enter tour surename',
-                AGE: 'Enter your age',
-                PHONE: '+31 111 111 111',
+                NAME: 'Внесете го вашето име',
+                SURENAME: 'Внесете го вашето презиме',
+                AGE: 'Внесете ја вашата возраст',
+                PHONE: '+389 071 111 111',
             },
             TERMS: {
-                LINE1: 'We care about protecting your data.',
-                LINE2: 'Here’s our'
+                LINE1: 'Ние се грижиме за заштита на вашите податоци',
+                LINE2: 'Еве ги нашите'
             },
-            POLICIES: 'Privacy Policy',
-            NEXT: 'Next'
+            POLICIES: 'Политика на приватност',
+            NEXT: 'Следно'
         }
     }
 }

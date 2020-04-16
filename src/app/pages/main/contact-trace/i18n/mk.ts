@@ -2,18 +2,18 @@ export const locale = {
     lang: 'mk',
     data: {
         CONTACT: {
-            TITLE: 'My contact trace',
-            HEALTHY: 'healthy',
-            RECOVERED: 'Recovered',
-            POSITIVE: 'positive',
-            HIGH_RISK: 'high-risk',
-            CARRIER: 'carrier',
-            SUSPECTED: 'suspected',
-            TOTAL: 'Total',
-            PENDING: 'Pending',
+            TITLE: 'Мој круг на контакти',
+            HEALTHY: 'Здрав',
+            RECOVERED: 'Оздравен',
+            POSITIVE: 'Позитивен',
+            HIGH_RISK: 'Висок ризик',
+            CARRIER: 'Преносител',
+            SUSPECTED: 'Сомнителен',
+            TOTAL: 'Вкупно',
+            PENDING: 'Чекање',
 
-            LOADING_CONTACT: 'Loading Contacts...',
-            LOADING_CONTACT_TRACE: 'Loading Contact Trace ...'
+            LOADING_CONTACT: 'Вчитување на контакти...',
+            LOADING_CONTACT_TRACE: 'Вчитување на круг на контакти...'
 
         }
     }

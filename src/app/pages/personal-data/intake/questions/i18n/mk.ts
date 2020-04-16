@@ -2,20 +2,20 @@ export const locale = {
     lang: 'mk',
     data: {
         QUESTIONS: {
-            TITLE: 'Intake',
-            EXPLANATION: 'This intake is not intended to provide medical advice. If you have medical questions, consult your healthcare provider.',
-            CONFIRM_INFO: 'I confirm that the information given in this form is true, complete and accurate.',
-            NO: 'No',
-            YES: 'Yes',
+            TITLE: 'Внес',
+            EXPLANATION: 'Овој внес не е наменет за да обезбеди медицински совет. Ако имате медицински прашања, консултирајте се со вашиот матичен лекар.',
+            CONFIRM_INFO: 'Потврдувам дека информациите дадени во оваа форма се вистинити, целосни и точни.',
+            NO: 'Не',
+            YES: 'Да',
             CONTACT_PERSON_DEFINITION: {
-                TITLE: 'Definition: contact person',
-                TEXT: 'A person who experienced any one of the following exposures during the 2 days before and the 14 days after the onset of symptoms of a probable or confirmed case:<br><br>' +
-                    '1. Face-to-face contact with a probable or confirmed case within 1 meter and for more than 15 minutes;<br><br>' +
-                    '2. Direct physical contact with a probable or confirmed case;;<br><br>' +
-                    '3. Direct care for a patient with probable or confirmed COVID-19 disease without using proper personal protective equipment;<br><br>' +
-                    '4. Other situations as indicated by local risk assessments.'
+                TITLE: 'Дефиниција: Контакт',
+                TEXT: 'Лице кое доживеало било кое од следниве изложености во текот на 2 дена пред и 14 дена по почетокот на симптомите на веројатниот или потврден случај:<br><br>' +
+                    '1. Контакт лице-в-лице со веројатен или потврден случај во близина од 1 метар и повеќе од 15 минути;<br><br>' +
+                    '2. Директен физички контакт со веројатен или потврден случај;;<br><br>' +
+                    '3. Директна грижа за пациент со веројатна или потврдена болест COVID-19 без употреба на соодветна опрема за лична заштита;<br><br>' +
+                    '4. Други ситуации, како што е прикажано со локалните проценки на ризик.'
             },
-            NEXT: 'Next'
+            NEXT: 'Следно'
         }
     }
 }

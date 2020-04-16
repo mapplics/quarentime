@@ -2,16 +2,16 @@ export const locale = {
     lang: 'mk',
     data: {
         ACTIVITY: {
-            TITLE: 'Activity',
-            PENDING: 'Pending',
-            CONFIRM: 'Confirm',
-            IGNORE: 'Ignore',
-            RETRIEVING: 'Retrieving contacts...',
-            SEND: 'Sending...',
+            TITLE: 'Активност',
+            PENDING: 'Чекање',
+            CONFIRM: 'Потврди',
+            IGNORE: 'Игнорирај',
+            RETRIEVING: 'Превземање контакти...',
+            SEND: 'Испраќање...',
             ALERT_DELETE: {
-                HEADER: 'Are you sure that you don’t want to add this person to your contact trace?',
-                NO: 'Cancel',
-                YES: 'Ok'
+                HEADER: 'Дали сте сигурни дека не сакате да ја додадете оваа личност во вашиот круг на контакти?',
+                NO: 'Откажи',
+                YES: 'Ок'
             }
         }
     }

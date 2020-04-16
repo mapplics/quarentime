@@ -2,24 +2,24 @@ export const locale = {
     lang: 'mk',
     data: {
         VERIFY: {
-            VERIFYING: 'Verifying code',
-            VERIFICATION_SUCCESS: 'The verification was successful',
-            EXPLANATION: 'Enter the 6 digits code we sent you via SMS to continue',
+            VERIFYING: 'Код за потврда',
+            VERIFICATION_SUCCESS: 'Потврдата е успешна',
+            EXPLANATION: 'Внесете го кодот со 6 цифри што ви го испративме преку СМС порака за да продолжите',
             RESEND_CODE: {
-                QUESTION: "Didn't get the code?",
-                LINK: 'Resend code'
+                QUESTION: "Не го добивте кодот?",
+                LINK: 'Препрати код'
             },
             ERRORS: {
                 VERIFICATION_FAILED: {
-                    TITLE: 'Verification failed',
-                    MESSAGE: 'Please, enter a valid code'
+                    TITLE: 'Неуспешна потврда',
+                    MESSAGE: 'Ве молиме, внесете важечки код'
                 }
             },
             TERMS: {
-                LINE1: 'We care about protecting your data.',
-                LINE2: 'Here’s our'
+                LINE1: 'Ние се грижиме за заштита на вашите податоци.',
+                LINE2: 'Еве ги нашите'
             },
-            POLICIES: 'Privacy Policy'
+            POLICIES: 'Политика за приватност'
         }
     }
 }

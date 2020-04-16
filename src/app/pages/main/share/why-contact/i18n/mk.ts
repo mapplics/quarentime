@@ -2,19 +2,19 @@ export const locale = {
     lang: 'mk',
     data: {
         WHY: {
-            TITLE: 'Benefits',
-            SUBTITLE: 'Helping healthcare workers',
-            SUBTITLE2: ' In contact tracing process, time matters',
+            TITLE: 'Придобивки',
+            SUBTITLE: 'Помагање на здравствените работници',
+            SUBTITLE2: ' Во процесот на следење на контактите, времето е важно',
             TEXT: {
-                LINE1: 'Early detection could potentially help reduce the risk of the spread of the virus, and better protect our families and loved ones.\n' +
+                LINE1: 'Раното откривање би можело потенцијално да помогне во намалувањето на ризикот од ширење на вирусот и подобра заштита за нашето семејство и најблиските \n' +
                     '\n' +
-                    '    Currently, contact tracing relies on the recall and memory of interviewees. There were however, instances when interviewees could not remember all their contacts, or did not have information on whom they had been in contact with.',
-                LINE2: 'It also helps us support the work of contact tracers and healthcare workers by combating the spread of COVID-19 together.',
-                LINE3: 'This enables users to take the necessary action sooner, such as monitoring his own health closely for signs of flu-like symptoms.\n' +
+                    '    Во моментов, следењето на контактите се потпира на отповикување и меморија на интервјуираните. Меѓутоа, има случаи кога интервјуираните не можеле да ги запомнат сите свои контакти или немале информации со кого биле во контакт.',
+                LINE2: 'Исто така, ни помага да ја поддржиме работата на следачите на контакти и здравствените работници со тоа што заедно ќе се бориме против ширењето на СОВИД-19.',
+                LINE3: 'Ова им овозможува на корисниците да ги преземат неопходните активности порано, како што е внимателно следење на сопственото здравје за знаци на симптоми слични на грип.\n' +
                     '\n' +
-                    '    The faster the contact tracing process can be initiated and can identify the people at risk, the faster we can advise to do quarantine if necessary and limit spread locally.'
+                    '    Колку побрзо се започне со процесот на следење на контакти и може да се индетификуваат лицата кои се изложени на ризик, толку побрзо можеме да ве советуваме да се изолирате ако е неопходно и да го ограничиме ширењето на локално ниво.'
             },
-            SHARE_ERROR: 'An error has occurred. Try againo'
+            SHARE_ERROR: 'Се појави грешка. Обидете се повторно'
         }
     }
 };

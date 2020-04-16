@@ -2,15 +2,15 @@ export const locale = {
     lang: 'mk',
     data: {
         SHARE: {
-            DESCRIPTION: 'Invite family, friends and colleagues\nand follow up how they are feeling.',
-            INVITE_BTN: 'INVITE FROM CONTACTS',
-            SHARE_BTN: 'SHARE',
+            DESCRIPTION: 'Поканете го семејството, пријателите и колегите и следете како се чуствуваат',
+            INVITE_BTN: 'ПОКАНЕТЕ ОД КОНТАКТИ',
+            SHARE_BTN: 'СПОДЕЛИ',
             TERMS: {
-                LINE1: 'We don’t collect any location data.',
-                LINE2: 'We care about protecting your data.',
-                LINE3: 'Here’s our Privacy Policy.'
+                LINE1: 'Ние не собираме податоци за вашата локација.',
+                LINE2: 'Ние се грижиме за заштита на вашите податоци.',
+                LINE3: 'Еве ја нашата политика на приватност.'
             },
-            SHARE_ERROR: 'An error has occurred. Try againo'
+            SHARE_ERROR: 'Се појави грешка, обидете се повторно'
         }
     }
 };

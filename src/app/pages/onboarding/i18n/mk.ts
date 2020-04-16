@@ -2,22 +2,22 @@ export const locale = {
     lang: 'mk',
     data: {
         ONBOARDING: {
-            TITLE1: 'Invite family, friends and colleague.',
-            SUBTITLE1: 'Create your own close contact circle (contact trace)',
+            TITLE1: 'Поканете го семејството, пријателите и колегите.',
+            SUBTITLE1: 'Создадете ваш личен круг на контакти(следење на контактите)',
 
-            TITLE2: 'Track how your contact circle is feeling.',
-            SUBTITLE2: 'Discover if someone of your circle has been tested positive for COVID-19. ',
+            TITLE2: 'Следете како се чувствува вашиот круг на контакти.',
+            SUBTITLE2: 'Откријте дали некој од вашиот круг на контакти е тестиран позитивен за COVID-19. ',
 
-            TITLE3: 'Monitor your symptoms daily. Share it!',
-            SUBTITLE3: 'Are you having cough or difficulty breathing or feel feverish? Share it!',
+            TITLE3: 'Следете ги вашите симптоми секој ден. Споделете!',
+            SUBTITLE3: 'Дали имате кашлица или имате потешкотии при дишењето или чувствувате треска? Споделете!',
 
-            TITLE4: 'Get alerts! You are close to a high-risk patients.',
-            SUBTITLE4: 'Take everyday precautions to keep space between yourself and others.',
+            TITLE4: 'Добијте известување! Вие сте блиску до пациенти од висок ризик.',
+            SUBTITLE4: 'Превземете секојдневни мерки на претпазливост за да држите растојание меѓу себе и другите',
 
-            TITLE5: 'Thanks for sign up!',
+            TITLE5: 'Ви благодариме на пријавувањето!',
 
-            SKIP: 'SKIP',
-            FINISH: "LET'S START",
+            SKIP: 'СЛЕДНО',
+            FINISH: "ДА ЗАПОЧНЕМЕ",
 
         }
     }

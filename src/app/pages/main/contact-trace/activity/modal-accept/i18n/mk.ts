@@ -2,10 +2,10 @@ export const locale = {
     lang: 'mk',
     data: {
         MODAL: {
-            HEADER: 'Please answer these 2 questions:',
-            FREQUENT_CONTACT: 'Is this person a frequent contact?',
-            CONTACT_RENEWAL: 'Do you want contact with this person to be renewed automatically?',
-            BUTTON: 'Save'
+            HEADER: 'Ве молиме одговорете ги овие 2 прашања:',
+            FREQUENT_CONTACT: 'Дали оваа личност ви е чест контакт?',
+            CONTACT_RENEWAL: 'Дали сакате контактот со оваа личност да се обновува автоматски?',
+            BUTTON: 'Зачувај'
         }
     }
 };

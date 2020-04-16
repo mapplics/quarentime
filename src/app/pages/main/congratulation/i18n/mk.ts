@@ -2,9 +2,9 @@ export const locale = {
     lang: 'mk',
     data: {
         CONGRATS: {
-            TITLE: 'Congratulations!',
-            SUBTITLE: 'Your invitation has been sent. Stay safe, be vigilant and mostly importantly remember, prevention is better than a cure.',
-            DONE: 'DONE'
+            TITLE: 'Честитки!',
+            SUBTITLE: 'Вашата покана е испратена. Останете безбедни, будни и најважно запомнете, подобро е да се заштитиме отколку да се лечиме.',
+            DONE: 'Готово'
         }
     }
 };
