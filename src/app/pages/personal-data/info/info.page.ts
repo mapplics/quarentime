@@ -144,8 +144,4 @@ export class InfoPage extends PageInterface implements OnInit {
       this.navController.navigateRoot('personal-data/verify');      
     }
   }
-
-  policies(): void {
-    // todo
-  }
 }

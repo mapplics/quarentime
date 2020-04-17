@@ -11,6 +11,7 @@ import {HeaderComponent} from '../header/header.component';
 import {HeaderModule} from '../header/header.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {CountryPopoverComponent} from './country-popover/country-popover.component';
+import {PoliciesModule} from '../../../shared/component/policies/policies.module';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import {CountryPopoverComponent} from './country-popover/country-popover.compone
         HeaderModule,
         ReactiveFormsModule,
         TranslateModule,
+        PoliciesModule,
     ],
     entryComponents: [
         HeaderComponent,

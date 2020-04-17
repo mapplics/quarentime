@@ -9,6 +9,7 @@ import { VerifyPageRoutingModule } from './verify-routing.module';
 import { VerifyPage } from './verify.page';
 import {HeaderModule} from '../header/header.module';
 import {TranslateModule} from '@ngx-translate/core';
+import {PoliciesModule} from '../../../shared/component/policies/policies.module';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import {TranslateModule} from '@ngx-translate/core';
         HeaderModule,
         TranslateModule,
         ReactiveFormsModule,
+        PoliciesModule,
     ],
   declarations: [VerifyPage]
 })

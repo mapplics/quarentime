@@ -76,7 +76,6 @@ export class PersonalDataService extends BaseService {
 
     // send personal information
     sendPersonalInformation(): Observable<{} | GeneralResponse> {
-        debugger;
         const url = `${this._API}User/PersonalInformation`;
         return this.http.post<GeneralResponse>(url, {
             email: this.authService.getEmail(),
@@ -97,7 +96,6 @@ export class PersonalDataService extends BaseService {
     }
 
     sendSurvey(): Observable<{} | GeneralResponse> {
-        debugger;
         const url = `${this._API}User/Survey`;
         return this.http.post<GeneralResponse>(url, this._questionAnswers)
             .pipe(

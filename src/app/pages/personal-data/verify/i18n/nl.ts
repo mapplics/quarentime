@@ -14,12 +14,7 @@ export const locale = {
                     TITLE: 'Verification failed',
                     MESSAGE: 'Please, enter a valid code'
                 }
-            },
-            TERMS: {
-                LINE1: 'We care about protecting your data.',
-                LINE2: 'Here’s our'
-            },
-            POLICIES: 'Privacy Policy'
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ export const locale = {
                 TITLE: 'Caso sospechoso',
                 TAG: 'Probabilidad alta'
             },
-            flu_like: {
+            flue_like: {
                 TITLE:  'Síntomas gripales'
             },
             positive: {

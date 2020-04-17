@@ -1,0 +1,19 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="end" class="ion-padding-end">
+      <ion-icon name="close" (click)="onCloseModal()"></ion-icon>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-label color="primary"><b>{{'POLICIES.MODAL.TITLE' | translate}}</b></ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="ion-padding-horizontal">
+    <p [innerHTML]="'POLICIES.MODAL.CONTENT' | translate"></p>
+  </div>
+
+</ion-content>

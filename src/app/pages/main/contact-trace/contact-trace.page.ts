@@ -12,14 +12,13 @@ import {SpacesWindowModel} from './models/spaces-window.model';
 import {LoadingHelperService} from '../../../shared/helpers/loading-helper.service';
 import {ContactTraceService} from '../contact-trace.service';
 import {take, takeUntil} from 'rxjs/operators';
-import {GeneralResponse} from '../../../models/general-response.model';
 import {ToastHelperService} from '../../../shared/helpers/toast-helper.service';
 import {ContactTraceModel} from './models/contact-trace.model';
 import {StorageService} from '../../../shared/services/storage.service';
 import {AuthService} from '../../../providers/auth.service';
 import {forkJoin} from 'rxjs';
 import {ContactModel} from './models/contact.model';
-import { stat } from 'fs';
+
 
 @Component({
     selector: 'app-contact-trace',
@@ -67,8 +66,6 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
 
     ionViewDidEnter() {
         // para que calcule el tamaño del div cuando ya cargo todo
-        // this.contacts = [];
-        debugger;
         this.circles = [];
         this.loaded = false;
         if (this.authService.isFirebaseReady){            
@@ -121,11 +118,10 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
     }
 
     onShowDetails(): void {
-        this.navCtrl.navigateForward('main/contact-trace/share/why-contact');
+        this.navCtrl.navigateForward('main/share/why-contact');
     }
 
     calculateRamdon() {
-        debugger;
         this.spaces = [];
 
         // variable utilzada para acumular las distancias verticales

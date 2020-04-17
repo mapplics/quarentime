@@ -8,6 +8,7 @@ import { ConfirmInfoPageRoutingModule } from './confirm-info-routing.module';
 
 import { ConfirmInfoPage } from './confirm-info.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {PoliciesModule} from '../../../../shared/component/policies/policies.module';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {TranslateModule} from '@ngx-translate/core';
         FormsModule,
         IonicModule,
         ConfirmInfoPageRoutingModule,
-        TranslateModule
+        TranslateModule,
+        PoliciesModule
     ],
   declarations: [ConfirmInfoPage]
 })

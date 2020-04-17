@@ -22,12 +22,16 @@
         <p class="ion-text-wrap">{{'CONFIRM.CONF2' | translate}}&nbsp;
           <strong (click)="terms()">{{'CONFIRM.TERMS_COND' | translate}}</strong>&nbsp;
           {{'CONFIRM.CONNECTOR' | translate}}&nbsp;
-          <strong (click)="policies()">{{'CONFIRM.PRIVACY_POLICY' | translate}}</strong>
+          <strong>{{'CONFIRM.PRIVACY_POLICY' | translate}}</strong>
         </p>
       </ion-item>
 
     </ion-col>
+
     <ion-col size="12">
+      <div class="ion-margin-bottom">
+        <app-policies></app-policies>
+      </div>
       <ion-button expand="block" color="primary"
                   (click)="next()"
                   [disabled]="!btnAvailable">
