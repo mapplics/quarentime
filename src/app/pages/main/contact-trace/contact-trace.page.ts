@@ -71,7 +71,7 @@ export class ContactTracePage extends PageInterface implements OnInit, AfterView
         debugger;
         this.circles = [];
         this.loaded = false;
-        if (!this.authService.isFirebaseReady){            
+        if (this.authService.isFirebaseReady){            
             this.getContacts();
         } else {
             this.authService.loggedIn.pipe(takeUntil(this.componentDestroyed)).subscribe(state => {
