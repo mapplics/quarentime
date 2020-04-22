@@ -82,7 +82,7 @@ export class InfoPage extends PageInterface implements OnInit {
       name: ['', Validators.required],
       surename: ['', Validators.required],
       age: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.minLength(13)]],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.pattern("^[+]+(\.?[0-9]+)?$")]],
       country: ['', Validators.required]
     });
     if (this.personalDataService.personalData) {
@@ -127,8 +127,8 @@ export class InfoPage extends PageInterface implements OnInit {
               }
               this.loadingCtrl.dismiss();
             },
-            () => {
-              this.toastCtrl.errorToast(this.translateService.instant('INFO.SENDING_ERROR'));                
+            (response: GeneralResponse) => {
+              this.toastCtrl.errorToast(response.message + '. Details: ' + response.result.join(', '));                
               this.loadingCtrl.dismiss();
             }
           ) 
