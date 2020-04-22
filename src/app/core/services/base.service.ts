@@ -32,30 +32,17 @@ export class BaseService {
             response.message = `${error.name}: ${error.message}`;
             // para salir live poner este errror
             // response.message = 'We are having some server problems, please retry in a few seconds...';
+        } else if (error.status === 400) {
+            response.message = 'Invalid data';
+
+            if (error.error.result) {
+
+                response.result = Object.keys(error.error.result).map(i => error.error.result[i]);                
+            }
         } else {
-            response.message = error.error.error_code;
+            response.message = 'We are having some server problems, please retry in a few seconds...';
         }
 
-        // if (error.error) {
-        //     response.message = error.error.message;
-
-        //     if (error.error.httpCode === 401) {
-        //         this.router.navigate(['/login']);
-        //     }
-
-        //     if (error.error.errors) {
-
-        //         const arrayErrors = Object.keys(error.error.errors).map(i => error.error.errors[i]);
-        //         for (const err of arrayErrors) {
-        //             response.result.push(err);
-        //         }
-        //     }
-        // }
-
-        // if (response.message === '') {
-        //     // todo make general error message multilanguage
-        //     response.message = 'We are having some server problems, please retry in a few seconds...';
-        // }
         return throwError(response);
     }
 }
