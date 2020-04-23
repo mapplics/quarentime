@@ -10,7 +10,7 @@ import { Globalization } from '@ionic-native/globalization/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from '../environments/environment';
 import { StorageService } from './shared/services/storage.service';
-// import {FirebaseCrashlytics} from '@ionic-native/firebase-crashlytics/ngx';
+import {FirebaseCrashlytics} from '@ionic-native/firebase-crashlytics/ngx';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class AppComponent {
         private dataService: PersonalDataService,
         private globalization: Globalization,
         private translateService: TranslateService,
-        // private firebaseCrashlytics: FirebaseCrashlytics
+        private firebaseCrashlytics: FirebaseCrashlytics
     ) {
         this.initializeApp();
     }
@@ -37,9 +37,7 @@ export class AppComponent {
     initializeApp() {
         this.authService.init();
         this.platform.ready().then(() => {
-            this.dataService.loadData();
-           // const crashlytics = this.firebaseCrashlytics.initialise();
-           // crashlytics.logException('prueba');
+            this.dataService.loadData();         
             this.globalization.getPreferredLanguage()
                 .then((res) => {
                     const lang = res.value.split('-')[0];
@@ -49,9 +47,8 @@ export class AppComponent {
                     }
                 })
                 .catch(e => {
-                    console.log(e);
-                    //const crashlytics = this.firebaseCrashlytics.initialise();
-                   // crashlytics.logException('my caught exception');
+                    const crashlytics = this.firebaseCrashlytics.initialise();
+                    crashlytics.logException(e);
                 });
 
             if (this.platform.is('ios')) {

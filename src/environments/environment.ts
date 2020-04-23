@@ -4,17 +4,17 @@
 
 export const environment = {
   production: false,
-  api: 'https://quarentime-user-api-rcgccs4vga-ew.a.run.app/',
+  api: 'https://quarentime-gateway-3mtz5tknuq-ew.a.run.app/',  
   availableLangs: ['es', 'en', 'mk', 'nl', 'de'],
-
-  firebase_apiKey: 'AIzaSyBA3VcHnEWCy-mpShMLTdq1bEMkWsf2oIM',
-  firebase_authDomain: 'quarentime.firebaseapp.com',
-  firebase_databaseURL: 'https://quarentime.firebaseio.com',
-  firebase_projectId: 'quarentime',
-  firebase_storageBucket: 'quarentime.appspot.com',
-  firebase_messagingSenderId: '627240942816',
-  firebase_appId: '1:627240942816:web:c6f1da78976ae13aa2e485',
-  firebase_measurementId: 'G-1X9SMMCG6D'
+  // todo change var production
+  firebase_apiKey: 'AIzaSyBKS_gk_e4b9Ev1H1Of_-QQZbUfojI0sE0',
+  firebase_authDomain: 'quarentime-prod.firebaseapp.com',
+  firebase_databaseURL: 'https://quarentime-prod.firebaseio.com',
+  firebase_projectId: 'quarentime-prod',
+  firebase_storageBucket: 'quarentime-prod.appspot.com',
+  firebase_messagingSenderId: '299005490860',
+  firebase_appId: '1:299005490860:web:d8bdb27464dc95cabfd109',
+  firebase_measurementId: 'G-E5JG6X7VHQ',
 };
 
 /*
