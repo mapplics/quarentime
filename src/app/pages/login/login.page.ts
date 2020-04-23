@@ -15,6 +15,7 @@ import * as firebase from 'firebase';
 import {AuthService} from '../../providers/auth.service';
 import {LoadingHelperService} from '../../shared/helpers/loading-helper.service';
 import {StorageService} from '../../shared/services/storage.service';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 @Component({
     selector: 'app-login',
@@ -31,6 +32,7 @@ export class LoginPage extends PageInterface implements OnInit {
                 private authService: AuthService,
                 private loadingCtrl: LoadingHelperService,
                 private platform: Platform,
+                private firebaseCrashlytics: FirebaseCrashlytics,
                 private storageService: StorageService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
     }
@@ -68,6 +70,8 @@ export class LoginPage extends PageInterface implements OnInit {
                     .catch(e => {
                         this.toastCtrl.errorToast(this.translateService.instant('LOGIN.LOGIN_ERR'));
                         console.log('Error logging into Facebook', e);
+                        const crashlytics = this.firebaseCrashlytics.initialise();
+                        crashlytics.logException('Error logging into facebook ' +  e);
                         this.loadingCtrl.dismiss();
                     });
             });
@@ -77,7 +81,7 @@ export class LoginPage extends PageInterface implements OnInit {
         if (this.platform.is('mobileweb')) {
             this.goToOnboarding();
             // simulo los datos
-            localStorage.setItem('quarentimeToken', "eyJhbGciOiJSUzI1NiIsImtpZCI6ImRjMGMzNWZlYjBjODIzYjQyNzdkZDBhYjIwNDQzMDY5ZGYzMGZkZWEiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU2VyZ2lvIEdyZWdvcmkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2ktRWxWQThIRUl0UXdjbXhkWVRiaGNmV1ltN1ZFdDZaN0NKSFRGT2c9czk2LWMiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcXVhcmVudGltZSIsImF1ZCI6InF1YXJlbnRpbWUiLCJhdXRoX3RpbWUiOjE1ODYzMTQ4NzQsInVzZXJfaWQiOiJQeE5Nb1lUNHBoYXM0WXFvRVlXTXlMUGU1ckgzIiwic3ViIjoiUHhOTW9ZVDRwaGFzNFlxb0VZV015TFBlNXJIMyIsImlhdCI6MTU4NjYzODQ1NCwiZXhwIjoxNTg2NjQyMDU0LCJlbWFpbCI6ImNoZWNob25vYkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwNTE2NjQyMDEwNjcwMjkwODUxMyJdLCJlbWFpbCI6WyJjaGVjaG9ub2JAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.SrLscAaLZd_4rNgkk_efsJCwYuvOa2V3rlZtMjZOeLlQw4GUDmY8j72LbtrAzJNJxdTMqBzt8wCSGNzv6cnK67gh3U47q5H42_qx1oL1JrEvyIuQuZOaw7YtA5gF5OAmzZnYajfdLiSJWSY9mBoc1UBdjgolWopY-bJhFFyZZwCQxvxKk0ATfrVYaqalwOYNpgYOCXuilklOheO_1lL09XKfkhEAb6Jk0oRpLZZaXwLfWy1xVz46KQx8UzizpdI6VBD_-Qau_yjqrw5sMTntMKqs9Y6SfLTr1uHUll2HBpX6_igXXw2V20aVFw6Z8PcqczuidENEFK9RzRUP7Cd1eg");
+            localStorage.setItem('quarentimeToken', "eyJhbGciOiJSUzI1NiIsImtpZCI6IjBiYWJiMjI0NDBkYTAzMmM1ZDAwNDJjZGFhOWQyODVjZjhkMjAyYzQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU2VyZ2lvIEdyZWdvcmkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2ktRWxWQThIRUl0UXdjbXhkWVRiaGNmV1ltN1ZFdDZaN0NKSFRGT2ciLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcXVhcmVudGltZS1wcm9kIiwiYXVkIjoicXVhcmVudGltZS1wcm9kIiwiYXV0aF90aW1lIjoxNTg3NDkxMjEzLCJ1c2VyX2lkIjoiVzVoMkdpOWpmQWJ6cWFCaGY4WUVkTmk5dGRDMyIsInN1YiI6Ilc1aDJHaTlqZkFienFhQmhmOFlFZE5pOXRkQzMiLCJpYXQiOjE1ODc1Njk4OTgsImV4cCI6MTU4NzU3MzQ5OCwiZW1haWwiOiJjaGVjaG9ub2JAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDUxNjY0MjAxMDY3MDI5MDg1MTMiXSwiZW1haWwiOlsiY2hlY2hvbm9iQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.bhkEdGaeBOMiEXFC0U-7APKzJyifhZI4Kh858-TzDpgDY85vt9XGp5Lo3evuurHsZPY_SEZUJoY_V_2Am92RZ24fm_PvWGp4ZyTyn2-av_fhoQsgKz1DsT4IScXq_gEfd0iLr3NuMroacASucIhZM-uJkI1dli8X8uvp8ZLyn46BjZA_q3cpFf9ZqpxgnDx7icMryDqSR9K8HjBnuzdACUGSqPPWS8-aBIzEin-Uu7OPJYMyHeR8C-XyuLxohbV_VlxMf5e-It7LKFlp4HTZsrRMBviXvdoQ55cc8WsCioA6TQ2EYufs9qdAj9YO4FGJhcr3yONEsS894_94FQrDzQ");
             localStorage.setItem('quarentimeName', "mocked user");
             localStorage.setItem('quarentimeEmail', "chechonob@gmail.com");
             localStorage.setItem('quarentimeRefreshToken', "refresh");
@@ -100,6 +104,8 @@ export class LoginPage extends PageInterface implements OnInit {
                     .catch(err => {
                         this.toastCtrl.errorToast(this.translateService.instant('LOGIN.LOGIN_ERR'));
                         console.log('Error logging into Google', err);
+                        const crashlytics = this.firebaseCrashlytics.initialise();
+                        crashlytics.logException('Error logging into Google ' +  err);
                         this.loadingCtrl.dismiss();
                     });
             });
@@ -120,6 +126,8 @@ export class LoginPage extends PageInterface implements OnInit {
             .catch(err => {
                 this.toastCtrl.errorToast(this.translateService.instant('LOGIN.LOGIN_ERR'));
                 console.log('Error firebase ' + type, err);
+                const crashlytics = this.firebaseCrashlytics.initialise();
+                crashlytics.logException('Error logging ' + type + ' ' +  err);
                 this.loadingCtrl.dismiss();
             });
 
