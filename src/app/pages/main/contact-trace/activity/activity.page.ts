@@ -111,9 +111,10 @@ export class ActivityPage extends PageInterface implements OnInit {
             this.contactTraceService.acceptInvite(contact.inviteId).pipe(take(1))
                 .subscribe((resp: GeneralResponse) => {
                     this.loadingController.dismiss();
-                    this.presentModalAccept().then(() => {
-                        this.updateContactStatus(contact);
-                    });
+                    // this.presentModalAccept().then(() => {
+                    //     this.updateContactStatus(contact);
+                    // });
+                    this.updateContactStatus(contact);
                 }, () => {
                     // todo
                     this.loadingController.dismiss();
