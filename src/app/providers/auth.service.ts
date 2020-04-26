@@ -10,6 +10,7 @@ import {ToastHelperService} from '../shared/helpers/toast-helper.service';
 import { promise } from 'protractor';
 import { Platform } from '@ionic/angular';
 import { environment } from '../../environments/environment';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -19,11 +20,12 @@ export class AuthService extends BaseService {
     auth: AuthModel;
 
     constructor(public router: Router,
+                public firebaseCrashlytics: FirebaseCrashlytics,
                 private platform: Platform,
                 private zone: NgZone,
                 private facebook: Facebook,
                 private googlePlus: GooglePlus) {
-        super(router);
+        super(router, firebaseCrashlytics);
     }
 
     init() {

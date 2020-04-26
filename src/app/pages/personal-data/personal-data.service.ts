@@ -9,6 +9,7 @@ import { GeneralResponse } from 'src/app/models/general-response.model';
 import {QuestionModel} from './models/question.model';
 import { AuthService } from 'src/app/providers/auth.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -20,8 +21,9 @@ export class PersonalDataService extends BaseService {
     constructor(public router: Router,
                 private storageService: StorageService,
                 private authService: AuthService,
+                public firebaseCrashlytics: FirebaseCrashlytics,
                 public http: HttpClient) {
-        super(router);
+        super(router, firebaseCrashlytics);
         this._questionAnswers = {
             has_recent_travel_last14_days: false,
             has_recent_travel_before_symptoms: false,

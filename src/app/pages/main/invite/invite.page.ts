@@ -15,6 +15,7 @@ import {GeneralResponse} from '../../../models/general-response.model';
 import {ContactTraceService} from '../contact-trace.service';
 import { AuthService } from 'src/app/providers/auth.service';
 import {ContactPhoneModel} from './models/contact-phone.model';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 @Component({
     selector: 'app-invite',
@@ -37,6 +38,7 @@ export class InvitePage extends PageInterface implements OnInit {
                 private navController: NavController,
                 private contactTraceService: ContactTraceService,
                 private authService: AuthService,
+                public firebaseCrashlytics: FirebaseCrashlytics,
                 private toastController: ToastHelperService) {
         super(translateService, english, spanish, macedonian, germany, dutch);
         this.getTranslations('INVITE');
@@ -61,8 +63,10 @@ export class InvitePage extends PageInterface implements OnInit {
                 this.sort(this.filteredList);
                 this.loadingController.dismiss();
             }).catch((err) => {
+                const crashlytics = this.firebaseCrashlytics.initialise();
+                crashlytics.logException('Error getting contacts ' +  err);
                 this.loadingController.dismiss();
-                this.navController.pop();
+                this.navController.pop();                
             });
         });
     }
@@ -81,6 +85,8 @@ export class InvitePage extends PageInterface implements OnInit {
             this.sort(this.filteredList);
             event.target.complete();
         }).catch((err) => {
+            const crashlytics = this.firebaseCrashlytics.initialise();
+            crashlytics.logException('Error refreshing contacts ' +  err);
             this.navController.pop();
         });
 

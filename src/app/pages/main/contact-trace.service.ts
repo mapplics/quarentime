@@ -8,6 +8,7 @@ import {catchError, map} from 'rxjs/internal/operators';
 import {ContactPhoneModel} from './invite/models/contact-phone.model';
 import {ContactModel} from './contact-trace/models/contact.model';
 import { ContactTraceModel } from './contact-trace/models/contact-trace.model';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -16,8 +17,9 @@ export class ContactTraceService extends BaseService {
 
 
     constructor(public router: Router,
+                public firebaseCrashlytics: FirebaseCrashlytics,
                 public http: HttpClient) {
-        super(router);
+        super(router, firebaseCrashlytics);
     }
 
     sendInvite(contactList: ContactPhoneModel[]): Observable<{} | GeneralResponse> {

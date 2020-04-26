@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {throwError} from 'rxjs';
 import { GeneralResponse } from 'src/app/models/general-response.model';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 
 
@@ -13,7 +14,7 @@ export class BaseService {
     public _API = environment.api;
     public _HEADERS = new HttpHeaders();
 
-    constructor(public router: Router) {
+    constructor(public router: Router, public firebaseCrashlytics: FirebaseCrashlytics) {
         this._HEADERS.set('Accept', 'application/json')
             .append('Access-Control-Allow-Origin', '*')
             .append('Content-type', 'application/json')
@@ -42,6 +43,9 @@ export class BaseService {
         } else {
             response.message = 'We are having some server problems, please retry in a few seconds...';
         }
+
+        const crashlytics = this.firebaseCrashlytics.initialise();
+        crashlytics.logException('Error http service ' +  response.message);
 
         return throwError(response);
     }

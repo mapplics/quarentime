@@ -8,6 +8,7 @@ import {catchError, map, take} from 'rxjs/internal/operators';
 import { GeneralResponse } from 'src/app/models/general-response.model';
 import {QuestionModel} from './models/question.model';
 import { AuthService } from 'src/app/providers/auth.service';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -16,8 +17,9 @@ export class VerifyService extends BaseService {
 
     constructor(public router: Router,
                 private authService: AuthService,
+                public firebaseCrashlytics: FirebaseCrashlytics,
                 public http: HttpClient) {
-        super(router);
+        super(router, firebaseCrashlytics);
     }
 
     // send personal information
