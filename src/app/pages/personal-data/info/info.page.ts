@@ -29,7 +29,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 export class InfoPage extends PageInterface implements OnInit {
 
   form: FormGroup;
-  countries: CountryModel[];
+  // countries: CountryModel[];
 
   constructor(public translateService: TranslateService,
               private loadingCtrl: LoadingHelperService,
@@ -52,30 +52,30 @@ export class InfoPage extends PageInterface implements OnInit {
   }
 
   ngOnInit() {
-    this.countries = this.personalDataService.countries;
-    this.countries = ArrayHelper.sortAsc(this.countries, 'name', this.currentLanguage);
+    // this.countries = this.personalDataService.countries;
+    // this.countries = ArrayHelper.sortAsc(this.countries, 'name', this.currentLanguage);
     this.initForm();
   }
 
-  get currCountry() {
-    return this.form.get('country').value;
-  }
+  // get currCountry() {
+  //   return this.form.get('country').value;
+  // }
 
-  async presentPopover(ev) {
-    const popover = await this.popoverController.create({
-      component: CountryPopoverComponent,
-      componentProps: {countries : this.countries, currentLanguage: this.currentLanguage},
-      event: ev,
-      translucent: true
-    });
-    popover.onDidDismiss().then((resp) => {
-      if (resp.data) {
-        this.form.get('country').setValue(resp.data);
-        this.form.get('phone').setValue(resp.data.prefix);
-      }
-    });
-    return await popover.present();
-  }
+  // async presentPopover(ev) {
+  //   const popover = await this.popoverController.create({
+  //     component: CountryPopoverComponent,
+  //     componentProps: {countries : this.countries, currentLanguage: this.currentLanguage},
+  //     event: ev,
+  //     translucent: true
+  //   });
+  //   popover.onDidDismiss().then((resp) => {
+  //     if (resp.data) {
+  //       this.form.get('country').setValue(resp.data);
+  //       this.form.get('phone').setValue(resp.data.prefix);
+  //     }
+  //   });
+  //   return await popover.present();
+  // }
 
   initForm(): void {
     this.form = this.formBuilder.group({
@@ -83,7 +83,7 @@ export class InfoPage extends PageInterface implements OnInit {
       surename: ['', Validators.required],
       age: ['', Validators.required],
       phone: ['', [Validators.required, Validators.minLength(10), Validators.pattern("^[+]+(\.?[0-9]+)?$")]],
-      country: ['', Validators.required]
+      // country: ['', Validators.required]
     });
     if (this.personalDataService.personalData) {
       const data = this.personalDataService.personalData;
@@ -91,13 +91,12 @@ export class InfoPage extends PageInterface implements OnInit {
       this.form.get('surename').setValue(data.surename);
       this.form.get('age').setValue(data.age);
       this.form.get('phone').setValue(data.phone);
-      this.form.get('country').setValue(data.country);
+      // this.form.get('country').setValue(data.country);
     } else {
       // find the user country      
-      //const currCountry = this.countries.find(x => x.tag === this.storageService.userLanguage);
-      const currCountry = this.countries.find(x => x.tag === 'ar');
-      this.form.get('country').setValue(currCountry);
-      this.form.get('phone').setValue(currCountry.prefix);
+      // const currCountry = this.countries.find(x => x.tag === 'ar');
+      // this.form.get('country').setValue(currCountry);
+      // this.form.get('phone').setValue(currCountry.prefix);
     }
   }
 
@@ -106,7 +105,7 @@ export class InfoPage extends PageInterface implements OnInit {
         this.form.value.name,
         this.form.value.surename,
         this.form.value.age,
-        this.form.value.country,
+        // this.form.value.country,
         this.form.value.phone
     );
     this.personalDataService.personalData = data;

@@ -8,10 +8,12 @@ export const locale = {
             SURENAME: 'Apellido',
             AGE: 'Edad',
             PHONE: 'Teléfono',
+            COUNTRY: 'País',
             PLACEHOLDERS: {
                 NAME: 'Ingresá tu nombre',
                 SURENAME: 'Ingresá tu apellido',
                 AGE: 'Ingresá tu edad',
+                COUNTRY: 'Seleccioná tu país',
                 PHONE: '+31 111 111 111',
             },
             TERMS: {

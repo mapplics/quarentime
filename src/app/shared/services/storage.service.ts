@@ -15,7 +15,7 @@ export class StorageService {
         localStorage.setItem('quarentimeDataName', personalData.name);
         localStorage.setItem('quarentimeDataSurname', personalData.surename);
         localStorage.setItem('quarentimeDataAge', personalData.age.toString());
-        localStorage.setItem('quarentimeDataCountryTag', personalData.country.tag);
+        // localStorage.setItem('quarentimeDataCountryTag', personalData.country.tag);
         localStorage.setItem('quarentimeDataPhone', personalData.phone);
     }
 

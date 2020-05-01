@@ -8,10 +8,12 @@ export const locale = {
             SURENAME: 'Презиме',
             AGE: 'Возраст',
             PHONE: 'Телефонски број',
+            COUNTRY: 'Country',
             PLACEHOLDERS: {
                 NAME: 'Внесете го вашето име',
                 SURENAME: 'Внесете го вашето презиме',
                 AGE: 'Внесете ја вашата возраст',
+                COUNTRY: 'Select your country',
                 PHONE: '+389 071 111 111',
             },
             TERMS: {
