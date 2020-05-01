@@ -7,7 +7,8 @@ export const locale = {
             EXPLANATION: 'Внесете го кодот со 6 цифри што ви го испративме преку СМС порака за да продолжите',
             RESEND_CODE: {
                 QUESTION: "Не го добивте кодот?",
-                LINK: 'Препрати код'
+                LINK: 'Препрати код',
+                RESEND_SUCCESS: 'The code was resend successfully',
             },
             ERRORS: {
                 VERIFICATION_FAILED: {

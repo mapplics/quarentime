@@ -7,7 +7,8 @@ export const locale = {
             EXPLANATION: 'Enter the 6 digits code we sent you via SMS to continue',
             RESEND_CODE: {
                 QUESTION: "Didn't get the code?",
-                LINK: 'Resend code'
+                LINK: 'Resend code',
+                RESEND_SUCCESS: 'The code was resend successfully',
             },
             ERRORS: {
                 VERIFICATION_FAILED: {

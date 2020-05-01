@@ -74,6 +74,7 @@ export class VerifyPage extends PageInterface implements OnInit {
 
   resendCode(): void {
     this.sendCode();
+    this.toastCtrl.successToast(this.translates.RESEND_CODE.RESEND_SUCCESS);          
   }
 
   policies(): void {
@@ -103,7 +104,7 @@ export class VerifyPage extends PageInterface implements OnInit {
             this.presentToast(this.translates.ERRORS.VERIFICATION_FAILED.TITLE, this.translates.ERRORS.VERIFICATION_FAILED.MESSAGE);
             this.form.reset();
           } else {
-            this.toastCtrl.successToast(this.translates.VERIFICATION_SUCCESS);          
+            //this.toastCtrl.successToast(this.translates.VERIFICATION_SUCCESS);          
             this.navController.navigateRoot('personal-data/intake');
           }
           this.loadingCtrl.dismiss();
